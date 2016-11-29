@@ -11,37 +11,40 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-   <cucumber-jvm.version>1.2.4</cucumber-jvm.version>
+		<cucumber-jvm.version>1.2.7</cucumber-jvm.version>
 		<selenium.version>2.53.0</selenium.version>
 		<junit.version>4.12</junit.version>
 	</properties>
-  <build>
+
+
+	<build>
 
 		<testResources>
 			<testResource>
-				<directory>src/test/resources</directory>
+				<directory>src/main/resources</directory>
 				<includes>
 					<include>log4j.properties</include>
 				</includes>
 			</testResource>
 		</testResources>
-
-
 		<plugins>
 
 			<!--plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-site-plugin</artifactId> 
 				<version>3.0-beta-3</version> </plugin> <plugin> <groupId>org.codehaus.mojo</groupId> 
 				<artifactId>surefire-report-maven-plugin</artifactId> </plugin -->
-
+	<plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.5</version>
+ 	</plugin>
 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.4.0</version>
+				<version>1.5.0</version>
 				<executions>
 					<execution>
 						<phase>integration-test</phase>
-
 						<goals>
 							<goal>java</goal>
 						</goals>
@@ -55,32 +58,29 @@
 
 					<mainClass>cucumber.api.cli.Main</mainClass>
 					<arguments>
-						<argument>--format</argument>
+						<argument>--plugin</argument>
 						<argument>junit:target/cucumber-junit-report/allcukes.xml</argument>
-						<argument>--format</argument>
+						<argument>--plugin</argument>
 						<argument>pretty</argument>
-						<argument>--format</argument>
+						<argument>--plugin</argument>
 						<argument>html:target/cucumber-html-report</argument>
 						<argument>--tags</argument>
-						<argument>@Login</argument>
+						<argument></argument>
 						<argument>--glue</argument>
 						<argument>com/</argument>
 						<argument>src/</argument>
-
 					</arguments>
 				</configuration>
 				<dependencies>
 					<dependency>
 						<groupId>info.cukes</groupId>
 						<artifactId>cucumber-core</artifactId>
-						<version>1.2.4</version>
+						<version>1.2.5</version>
 					</dependency>
 				</dependencies>
 			</plugin>
+			
 		</plugins>
-
-
-
 
 	</build>
 
@@ -88,12 +88,12 @@
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
-			<version>${cucumber-jvm.version}</version>
+			<version>1.2.5</version>
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>${cucumber-jvm.version}</version>
+			<version>1.2.5</version>
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
@@ -130,6 +130,16 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-
+ <!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.0</version>
+</dependency>
 	</dependencies>
+	
 </project>
+ 
+  
+
+  

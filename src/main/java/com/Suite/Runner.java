@@ -11,8 +11,7 @@ import cucumber.api.java.it.Date;
 	
 
 @RunWith(Cucumber.class)
-@cucumber.api.CucumberOptions(features="C:\\Maven\\SampleCuPom\\src\\main\\resources\\com\\Suite\\Features\\",
-		      tags= {"@Login"}, format={"html:output"})
+@cucumber.api.CucumberOptions(features = "src\\main\\resources\\com\\Suite\\")
 
 //@Cucumber.Options(format={"html:output"}
 	

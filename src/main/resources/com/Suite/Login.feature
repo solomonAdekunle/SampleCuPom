@@ -5,7 +5,7 @@ Feature: Login
          
   @Login 
  Scenario Outline:Login
-  Given I navigate to "siteName" on <browser>
+  Given I navigate to the homepage on <browser>
   When  I enter "LoginUsername_Selector" as "<username>"
    And  I enter "LoginPassword_Selector" as "<password>"
    And  I click on "LoginButton_Selector"
@@ -15,7 +15,7 @@ Feature: Login
    And  I should see "AccountMenu_Selector" displayed as Account Menu
  
  Examples:  
- 		|browser	|
+ 	|browser	|
     | Mozilla	|
        
        
