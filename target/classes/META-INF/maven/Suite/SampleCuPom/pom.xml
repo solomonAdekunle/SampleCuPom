@@ -65,7 +65,7 @@
 						<argument>--plugin</argument>
 						<argument>html:target/cucumber-html-report</argument>
 						<argument>--tags</argument>
-						<argument></argument>
+						<argument>@Login,@RegisterButton  </argument>
 						<argument>--glue</argument>
 						<argument>com/</argument>
 						<argument>src/</argument>

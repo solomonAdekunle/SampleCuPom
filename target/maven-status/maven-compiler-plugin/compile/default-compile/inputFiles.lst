@@ -1,6 +1,7 @@
-C:\Maven\SampleCuPom\src\main\java\Suite\Runner.java
-C:\Maven\SampleCuPom\src\main\java\Suite\HomePage.java
-C:\Maven\SampleCuPom\src\main\java\Connector\StepDefinition.java
-C:\Maven\SampleCuPom\src\main\java\Connector\Runner.java
-C:\Maven\SampleCuPom\src\main\java\Suite\LoginTest.java
-C:\Maven\SampleCuPom\src\main\java\Connector\WebConnector.java
+C:\Users\solomon.adekunle\GIT\SampleCuPom\src\main\java\pages\HomePage.java
+C:\Users\solomon.adekunle\GIT\SampleCuPom\src\main\java\pages\RegisterPage.java
+C:\Users\solomon.adekunle\GIT\SampleCuPom\src\main\java\com\Suite\BaseTest.java
+C:\Users\solomon.adekunle\GIT\SampleCuPom\src\main\java\com\Suite\Runner.java
+C:\Users\solomon.adekunle\GIT\SampleCuPom\src\main\java\Connector\WebConnector.java
+C:\Users\solomon.adekunle\GIT\SampleCuPom\src\main\java\com\Suite\StepDefinition.java
+C:\Users\solomon.adekunle\GIT\SampleCuPom\src\main\java\Util\Constant.java

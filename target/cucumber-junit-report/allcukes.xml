@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" time="0">
-<testcase classname="dummy" name="dummy">
-<skipped message="No features found"/>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="2" time="20.513186">
+<testcase classname="Registration" name="Login" time="9.932266">
+<system-out><![CDATA[Given I navigate to the homepage on Mozilla.................................passed
+When I click on JoinNow Button..............................................passed
+Then I should navigate  to Registration page................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Login" name="Login" time="10.58092">
+<system-out><![CDATA[Given I navigate to the homepage on Mozilla.................................passed
+When I enter Username as "solomon2014"......................................passed
+And I enter Password as "London01"..........................................passed
+And I click on SignIn button................................................passed
+Then I should see username as "SOLOMON2014" present.........................passed
+And I should see AccountBlance present......................................passed
+And I should see Depositbutton present......................................passed
+And I should see AccountMenu_...............................................passed
+]]></system-out>
 </testcase>
 </testsuite>
