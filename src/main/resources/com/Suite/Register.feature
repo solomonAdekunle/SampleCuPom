@@ -4,8 +4,7 @@ Feature: Registration
   @Register
   Scenario Outline: Registration
    Given I navigate to the Registrationpage on <browser>
-    When I click on RegisterButton
-    And I enter regUsername as "<username>"
+    When I enter regUsername as "<username>"
     And I enter RegPassword as "<password>"
     And I enter RegConfirmPassword as "<ConfPass>"
     And I enter a RegScreenName as "<screenName>"
@@ -27,6 +26,6 @@ Feature: Registration
     Then I should navigate "<expectedResult>" to welcome page.
 
     Examples: 
-      | browser | username    | password | ConfPass | screenName | E-mail            | title | firstName | surname | Day | Month | Year | Address        | Town    | county | Postcode | contactNumber | expectedResult	 |
-      | Mozilla | Cucumber105 | Bola123  | Bola123  | huyasig    | test@playtech.com | Ms    | tolu      | lawal   |  06 | OCT   | 1982 | 6 goodhew Road | Croydon | surrey | CR0 6JX  |  020700070100 | failure 	 	 |
-      | Mozilla | {generator} | Bola123  | Bola123  |{generator} | test@playtech.com | Ms    | tolu      | lawal   |  06 | OCT   | 1982 | 6 goodhew Road | Croydon | surrey | CR0 6JX  |  020700070100 | SuccessFully 	 |
+      | browser | username    | password | ConfPass | screenName   | E-mail            | title | firstName | surname | Day | Month | Year | Address        | Town    | county | Postcode | contactNumber   | expectedResult	 |
+      | Mozilla | Cucumber109 | Bola123  | Bola123  | huyasig12qaz | test@playtech.com | Ms    | tolu      | lawal   |  06 | OCT   | 1982 | 6 goodhew Road | Croydon | surrey | CR0 6JX  |  020700070100   |  failure		 |
+      | Mozilla | {generator} |Bola123   | Bola123  |{generator}   | test@playtech.com   | Ms    | tolu      | lawal   |  06 | OCT   | 1982 | 6 goodhew Road | Croydon | surrey | CR0 6JX  |  020700070100 |  Successfully	 |

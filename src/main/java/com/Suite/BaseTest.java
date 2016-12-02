@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,7 +13,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BaseTest {
 	
-	protected WebDriver driver;
+	   public static WebDriver driver;
 	Properties OR = null;
 	Properties CONFIG = null;
 	
@@ -65,4 +66,5 @@ public class BaseTest {
 		
 		//driver.get(CONFIG.getProperty("siteName"));
 	}
+	
 }
