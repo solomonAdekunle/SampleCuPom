@@ -127,8 +127,8 @@ public class StepDefinition extends BaseTest {
 	}
 
 	@When("^I enter a RegScreenName as \"([^\"]*)\"$")
-	public void i_enter_a_RegScreenName_as(String screenName) {
-		registerPage.sendOnscreenName(screenName);
+	public void i_enter_a_RegScreenName_as(String ScreenName) {
+		registerPage.sendOnscreenName(ScreenName);
 
 	}
 
@@ -276,8 +276,8 @@ public class StepDefinition extends BaseTest {
 	 * @param {string} expected Result- this id the Welcome title page
 	 */
 	@Then("^I should navigate \"([^\"]*)\" to welcome page\\.$")
-	public void i_should_navigate_to_welcome_page() {
-		Assert.assertTrue(this.registerPage.getWelcomePage());
+	public void i_should_navigate_to_welcome_page(String expectedResult) {
+		Assert.assertTrue(this.registerPage.getWelcomePage(expectedResult));
 
 	}
 
