@@ -10,9 +10,11 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+import com.Suite.BaseTest;
+
 import Util.Constant;
 
-public class BasePage   {
+public class BasePage extends BaseTest  {
 
 	
 	
@@ -64,6 +66,17 @@ public class BasePage   {
 		
 	}
 	
+	// Creating a dologin function
+	public void  doLogin(String Username, String password){
+	 driver.findElement(By.xpath("//*[@id='username']")).sendKeys(Username);
+		driver.findElement(By.xpath("//*[@id='password']")).sendKeys(password);
+		driver.findElement(By.cssSelector("div.playtech-login-block button.sign-in")).click();
+	}
+		
+	  
+	
+	
+	
 	
 	protected String generateStringWithAllobedSplChars(int length,String allowdSplChrs){
 		  String allowedChars="abcdefghijklmnopqrstuvwxyz" +   //alphabets
@@ -71,7 +84,14 @@ public class BasePage   {
 		    allowdSplChrs;
 		  return RandomStringUtils.random(length, allowedChars);
 		 }
-
+   
+	
+		
+		
+	
+	
+	
+	
 				
 	protected String generateRandomAlphaNumeric(int length){
 		  return RandomStringUtils.randomAlphanumeric(length);
