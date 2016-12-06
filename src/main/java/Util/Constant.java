@@ -31,6 +31,20 @@ public class Constant  {
 	public static String Reg_privacyPolicy="div#terms-description a[data-ajax-url='/get-page/3']";
 	public static String Reg_Compilaance_Message="div.registration-form-legal-footer p";
 	public static String Reg_Submit="button#registration_submit";
+	// locator for ForgottenDetails link
+	public  static String HomePage_ForgottenDetailsLink="div.region-header a#forgotten-details-link";
+	public static String ForgottenDetails_UserName="input#forgotten_username";
+	public static String ForgottenDetails_Email="input#email";
+	public static String ForgottenDetails_DOBDay="select#edit-date-select-day";
+	public static String ForgottenDetails_DOBMonth="select#edit-date-select-month";
+	public static String ForgottenDetails_DOBYEAR="select#edit-date-select-year";
+	public static String ForgottenDetails_Submit="button#forgotten_details_submit";
+	// lactor for Reset password
+	public static String Reset_NewPassword="input#new_password";
+	public static String Resset_ConfirmPassword="input#password_confirm";
+	public static String Reset_Submit="input#personal_details_password_submit";
 	
+	//locator for Title page
+	public static String TitlePage="h1.title";
 }
 

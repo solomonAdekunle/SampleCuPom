@@ -18,6 +18,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pages.BasePage;
+import pages.ForgottenDetails;
 import pages.HomePage;
 import pages.RegisterPage;
 
@@ -26,6 +27,7 @@ public class StepDefinition extends BaseTest {
 	private BasePage basePage;
 	private HomePage homePage;
 	private RegisterPage registerPage;
+	private ForgottenDetails forgottenDetailsPage;
 
 	public StepDefinition() {
 
@@ -35,6 +37,8 @@ public class StepDefinition extends BaseTest {
 		homePage = new HomePage(this.driver);
 		registerPage = new RegisterPage(this.driver);
 		basePage = new BasePage(this.driver);
+		 forgottenDetailsPage=new ForgottenDetails(this.driver);
+				 
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,6 +61,11 @@ public class StepDefinition extends BaseTest {
 		registerPage.get(CONFIG.getProperty("siteName"));
 
 	}
+	@Given("^I navigate to the ForgottenDetails page on \"([^\"]*)\"$")
+	public void i_navigate_to_the_ForgottenDetails_page_on(String arg1)  {
+	   forgottenDetailsPage.get(CONFIG.getProperty("siteName"));
+	}
+
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -218,6 +227,59 @@ public class StepDefinition extends BaseTest {
 		registerPage.clickRegSubmit();
 
 	}
+	@When("^I click on forgottenDetailsLink$")
+	public void i_click_on_forgottenDetailsLink()  {
+		basePage.clickForgottenDetailsLink();
+	    
+	    
+	}
+	@When("^I enter Forgotten Deatils username as \"([^\"]*)\"$")
+	public void i_enter_Forgotten_Deatils_username_as(String username)  {
+		forgottenDetailsPage.sendForgottenUsername(username);
+	    
+	}
+	@When("^I enter  Forgotten Deatils email as \"([^\"]*)\"$")
+	public void i_enter_Forgotten_Deatils_email_as(String Email)  {
+		forgottenDetailsPage.sendForgottenEmail(Email);
+	    
+	}
+	@When("^I enter  Forgotten Deatils  DOBday as \"([^\"]*)\"$")
+	public void i_enter_Forgotten_Deatils_DOBday_as(String day) {
+		forgottenDetailsPage.sendForgottenDOBDay(day);
+	}
+
+	@When("^I enter  Forgotten Deatils DOBmonth as \"([^\"]*)\"$")
+	public void i_enter_Forgotten_Deatils_DOBmonth_as(String month)  {
+		forgottenDetailsPage.sendForgottenMonth(month);
+	}
+
+	@When("^I enter  Forgotten Deatils DOBYear as \"([^\"]*)\"$")
+	public void i_enter_Forgotten_Deatils_DOBYear_as(String year)  {
+		forgottenDetailsPage.sendForgottenYear(year);
+	    
+	}
+	@When("^I click on  Forgotten Deatils Submit Button$")
+	public void i_click_on_Forgotten_Deatils_Submit_Button()  {
+		forgottenDetailsPage.clickForgottenSubmitButton();
+	   
+	}
+
+	@When("^I enter Reset Password as \"([^\"]*)\"$")
+	public void i_enter_Reset_Password_as(String newpassword)  {
+		forgottenDetailsPage.sendResetNewPassword(newpassword);
+	}
+
+	@When("^I enter ResetConFirmPassword as \"([^\"]*)\"$")
+	public void i_enter_ResetConFirmPassword_as(String confirmPassword)  {
+		forgottenDetailsPage.sendResetConfPassword(confirmPassword);
+	   
+	}
+
+	@When("^I click on ResetSubmitt Button$")
+	public void i_click_on_ResetSubmitt_Button()  {
+		forgottenDetailsPage.clickResetSubmitButton();
+	}
+
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -278,7 +340,17 @@ public class StepDefinition extends BaseTest {
 	@Then("^I should navigate \"([^\"]*)\" to welcome page\\.$")
 	public void i_should_navigate_to_welcome_page(String expectedResult) {
 		Assert.assertTrue(this.registerPage.getWelcomePage(expectedResult));
+		String result=null;
 
 	}
-
+	@Then("^I should navigate  to Forgotten Details page$")
+	public void i_should_navigate_to_Forgotten_Details_page() {
+	Assert.assertEquals("is the Url address the same", this.basePage.getCurrentUrl(), driver.getCurrentUrl());
+	  
+	}
+	@Then("^I should reset my password$")
+	public void i_should_reset_my_password()  {
+	Assert.assertTrue(forgottenDetailsPage.isTitlePresent());
+	}
+	
 }

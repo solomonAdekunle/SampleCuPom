@@ -10,6 +10,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+import Util.Constant;
+
 public class BasePage   {
 
 	
@@ -57,7 +59,10 @@ public class BasePage   {
 	}
 
 	
-	
+	public void clickForgottenDetailsLink(){
+		driver.findElement(By.cssSelector(Constant.HomePage_ForgottenDetailsLink)).click();
+		
+	}
 	
 	
 	protected String generateStringWithAllobedSplChars(int length,String allowdSplChrs){

@@ -153,7 +153,12 @@ public class RegisterPage extends BasePage {
 
 	public boolean getWelcomePage( String expectedResult) {
 		return driver.findElement(By.cssSelector("h1.welcome_header")).isDisplayed();
-
-	}
+		
+		
+		}
+		
+		
+		
+	
 
 }
