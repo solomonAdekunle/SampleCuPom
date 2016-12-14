@@ -39,7 +39,7 @@ public class RegisterPage extends BasePage {
 	public void sendConfirmpassword(String ConfPass) {
 		// Constant.Reg_ConfirmPassword.sendKeys(ConfPass);
 		driver.findElement(By.cssSelector(Constant.Reg_ConfirmPassword)).sendKeys(ConfPass);
-		takeScreenshot(Constant.Reg_ConfirmPassword);
+		
 
 	}
 

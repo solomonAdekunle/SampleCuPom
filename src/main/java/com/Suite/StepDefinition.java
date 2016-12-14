@@ -11,7 +11,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.Suite.Cashier.DepositPage;
+
 import Connector.WebConnector;
+import Util.Constant;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -28,6 +31,7 @@ public class StepDefinition extends BaseTest {
 	private HomePage homePage;
 	private RegisterPage registerPage;
 	private ForgottenDetails forgottenDetailsPage;
+	private DepositPage depositPage;
 
 	public StepDefinition() {
 
@@ -37,8 +41,9 @@ public class StepDefinition extends BaseTest {
 		homePage = new HomePage(this.driver);
 		registerPage = new RegisterPage(this.driver);
 		basePage = new BasePage(this.driver);
-		 forgottenDetailsPage=new ForgottenDetails(this.driver);
-				 
+		forgottenDetailsPage = new ForgottenDetails(this.driver);
+		depositPage = new DepositPage(this.driver);
+
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -51,8 +56,8 @@ public class StepDefinition extends BaseTest {
 	 * 
 	 * @param {string} siteName-is the url address od supercasino.com
 	 **/
-	@Given("^I navigate to the homepage on Mozilla$")
-	public void i_navigate_to_on_Mozilla() {
+	@Given("^I navigate to the homepage on \"([^\"]*)\"$")
+	public void i_navigate_to_the_homepage_on(String browser) throws Throwable {
 		homePage.get(CONFIG.getProperty("siteName"));
 	}
 
@@ -61,11 +66,11 @@ public class StepDefinition extends BaseTest {
 		registerPage.get(CONFIG.getProperty("siteName"));
 
 	}
-	@Given("^I navigate to the ForgottenDetails page on \"([^\"]*)\"$")
-	public void i_navigate_to_the_ForgottenDetails_page_on(String arg1)  {
-	   forgottenDetailsPage.get(CONFIG.getProperty("siteName"));
-	}
 
+	@Given("^I navigate to the ForgottenDetails page on \"([^\"]*)\"$")
+	public void i_navigate_to_the_ForgottenDetails_page_on(String browser) {
+		forgottenDetailsPage.get(CONFIG.getProperty("siteName"));
+	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -227,59 +232,72 @@ public class StepDefinition extends BaseTest {
 		registerPage.clickRegSubmit();
 
 	}
+
 	@When("^I click on forgottenDetailsLink$")
-	public void i_click_on_forgottenDetailsLink()  {
+	public void i_click_on_forgottenDetailsLink() {
 		basePage.clickForgottenDetailsLink();
-	    
-	    
+
 	}
+
 	@When("^I enter Forgotten Deatils username as \"([^\"]*)\"$")
-	public void i_enter_Forgotten_Deatils_username_as(String username)  {
+	public void i_enter_Forgotten_Deatils_username_as(String username) {
 		forgottenDetailsPage.sendForgottenUsername(username);
-	    
+
 	}
+
 	@When("^I enter  Forgotten Deatils email as \"([^\"]*)\"$")
-	public void i_enter_Forgotten_Deatils_email_as(String Email)  {
+	public void i_enter_Forgotten_Deatils_email_as(String Email) {
 		forgottenDetailsPage.sendForgottenEmail(Email);
-	    
+
 	}
+
 	@When("^I enter  Forgotten Deatils  DOBday as \"([^\"]*)\"$")
 	public void i_enter_Forgotten_Deatils_DOBday_as(String day) {
 		forgottenDetailsPage.sendForgottenDOBDay(day);
 	}
 
 	@When("^I enter  Forgotten Deatils DOBmonth as \"([^\"]*)\"$")
-	public void i_enter_Forgotten_Deatils_DOBmonth_as(String month)  {
+	public void i_enter_Forgotten_Deatils_DOBmonth_as(String month) {
 		forgottenDetailsPage.sendForgottenMonth(month);
 	}
 
 	@When("^I enter  Forgotten Deatils DOBYear as \"([^\"]*)\"$")
-	public void i_enter_Forgotten_Deatils_DOBYear_as(String year)  {
+	public void i_enter_Forgotten_Deatils_DOBYear_as(String year) {
 		forgottenDetailsPage.sendForgottenYear(year);
-	    
+
 	}
+
 	@When("^I click on  Forgotten Deatils Submit Button$")
-	public void i_click_on_Forgotten_Deatils_Submit_Button()  {
+	public void i_click_on_Forgotten_Deatils_Submit_Button() {
 		forgottenDetailsPage.clickForgottenSubmitButton();
-	   
+
 	}
 
 	@When("^I enter Reset Password as \"([^\"]*)\"$")
-	public void i_enter_Reset_Password_as(String newpassword)  {
+	public void i_enter_Reset_Password_as(String newpassword) {
 		forgottenDetailsPage.sendResetNewPassword(newpassword);
 	}
 
 	@When("^I enter ResetConFirmPassword as \"([^\"]*)\"$")
-	public void i_enter_ResetConFirmPassword_as(String confirmPassword)  {
+	public void i_enter_ResetConFirmPassword_as(String confirmPassword) {
 		forgottenDetailsPage.sendResetConfPassword(confirmPassword);
-	   
+
 	}
 
 	@When("^I click on ResetSubmitt Button$")
-	public void i_click_on_ResetSubmitt_Button()  {
+	public void i_click_on_ResetSubmitt_Button() {
 		forgottenDetailsPage.clickResetSubmitButton();
 	}
 
+	@When("^I have logged in username as \"([^\"]*)\" and password \"([^\"]*)\"$")
+	public void i_have_logged_in_username_as_and_password(String username, String password) {
+		basePage.doLogin(username, password);
+	}
+
+	@When("^I click a Depositbutton$")
+	public void i_click_a_Depositbutton() {
+		basePage.clickHpDepositButton();
+	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -340,17 +358,149 @@ public class StepDefinition extends BaseTest {
 	@Then("^I should navigate \"([^\"]*)\" to welcome page\\.$")
 	public void i_should_navigate_to_welcome_page(String expectedResult) {
 		Assert.assertTrue(this.registerPage.getWelcomePage(expectedResult));
-		String result=null;
+		String result = null;
 
 	}
+
+	// Verifying if user navigated to forgotten page
 	@Then("^I should navigate  to Forgotten Details page$")
 	public void i_should_navigate_to_Forgotten_Details_page() {
-	Assert.assertEquals("is the Url address the same", this.basePage.getCurrentUrl(), driver.getCurrentUrl());
-	  
+		Assert.assertEquals("is the Url address the same", this.basePage.getCurrentUrl(), driver.getCurrentUrl());
+
 	}
+
 	@Then("^I should reset my password$")
-	public void i_should_reset_my_password()  {
-	Assert.assertTrue(forgottenDetailsPage.isTitlePresent());
+	public void i_should_reset_my_password() {
+		Assert.assertTrue(forgottenDetailsPage.isTitlePresent());
 	}
-	
+
+	// Verying if Safe charge Logo is presented
+	@Then("^I should see new cashier$")
+	public void i_should_see_new_cashier() {
+		Assert.assertTrue(depositPage.isCashierSafeChargeLogoPresent());
+	}
+
+	// verying if username is the same as the name displayed within the cashier
+	@Then("^I should see  UsernameInfo as \"([^\"]*)\"$")
+	public void i_should_see_UsernameInfo_as(String username) throws Throwable {
+		String NameDisplayed = depositPage.getCashierUsername();
+		System.out.println(username);
+		Assert.assertEquals(username, NameDisplayed);
+
+	}
+
+	// Verying if My Account Tab link is displayed within the Cashier pop-up box
+	@Then("^I should see  My Account Tab in the cashier pop-up$")
+	public void i_should_see_My_Account_Tab_in_the_cashier_pop_up() {
+		Assert.assertTrue(depositPage.isCashierMyAccountTabPresent());
+
+	}
+
+	// Verying if Deposit Link Tab is displayed within the Cashier pop-up
+	@Then("^I should see Deposit Tab in the cashier pop-up$")
+	public void i_should_see_Deposit_Tab_in_the_cashier_pop_up() {
+		Assert.assertTrue(depositPage.isCashierDepositTabPresent());
+
+	}
+
+	// Verifying if withdraw link tab is displayed within the Cashier pop-up
+	@Then("^I should see Withdraw Tab in the casheir pop-up$")
+	public void i_should_see_Withdraw_Tab_in_the_casheir_pop_up() {
+		Assert.assertTrue(depositPage.isCashierWithdrawTabPresent());
+
+	}
+
+	// Verifying that Balance value is displayed within the pop-up box cashier
+	@Then("^I should see Balance value in the cashier pop-up$")
+	public void i_should_see_Balance_value_in_the_cashier_pop_up() {
+
+	}
+
+	// Verifying that Payment method Text in the cashier
+	@Then("^I should see  My Payments Methods text in the cashier pop$")
+	public void i_should_see_My_Payments_Methods_text_in_the_cashier_pop() {
+		Assert.assertTrue(depositPage.isCashierMyPaymentMethodTextPresent());
+
+	}
+
+	// Verifying that Payment details text is displayed within the scashier
+	// pop-up box
+	@Then("^I should see  Payment Details text in the cashier pop-up$")
+	public void i_should_see_Payment_Details_text_in_the_cashier_pop_up() {
+		Assert.assertTrue(depositPage.isCashierMyPaymentLogoPresent());
+	}
+
+	// Verifying if Payment logo is present for user that has registerd hie car
+	@Then("^I should see payment logo in the cashier pop-up$")
+	public void i_should_see_payment_logo_in_the_cashier_pop_up() {
+
+	}
+
+	// verifying if other payment logo is displayed within the Cashier pop-up
+	// box
+	@Then("^I should see other Payment Methods logo in the cashier pop-up$")
+	public void i_should_see_other_Payment_Methods_logo_in_the_cashier_pop_up() {
+		Assert.assertTrue(depositPage.isCashierOtherPaymentMethodLogo());
+
+	}
+
+	// verifying if card owner name is displayed within the cashier pop-up box
+	@Then("^I should see account creditcard ownername in the cashier pop-up$")
+	public void i_should_see_account_creditcard_ownername_in_the_cashier_pop_up() {
+		Assert.assertTrue(depositPage.isCashierCreditNameOwnerPresent());
+
+	}
+
+	// verifying if the last four card number is diplayed within the Cashier
+	// pop-up box
+	@Then("^I should see last(\\d+) digit card numbers as \"([^\"]*)\"$")
+	public void i_should_see_last_digit_card_numbers_as(int arg1, String arg2) {
+		Assert.assertTrue(depositPage.isCashierLastFourDigitCardNumberPresent());
+	}
+
+	// veriying if card expirary date is displayed within the cashier pop-up box
+	@Then("^I should see card expiray date in the cashier pop-up$")
+	public void i_should_see_card_expiray_date_in_the_cashier_pop_up() {
+		Assert.assertTrue(depositPage.isCashierCreditCardExpiaryDatePresent());
+	}
+
+	// Verifying if CVV input field is displayed within the Cashier Pop-up box
+	@Then("^I should see CVV input field in the cashier pop-up$")
+	public void i_should_see_CVV_input_field_in_the_cashier_pop_up() {
+		Assert.assertTrue(depositPage.isCashierCVVInputfieldPresent());
+
+	}
+
+	// Verifying if Poromotion code input box field is displayed
+	@Then("^I should see Promocode input text in the cashier pop-up$")
+	public void i_should_see_Promocode_input_text_in_the_cashier_pop_up() {
+		Assert.assertTrue(depositPage.isCashierPromocodeInputFieldPresent());
+	}
+
+	// Verifying if Change Billing Address Check box is diplayed with in the
+	// cashier pop-up box
+	@Then("^I should see Bill Address check box in the cashier pop-up$")
+	public void i_should_see_Bill_Address_check_box_in_the_cashier_pop_up() {
+		Assert.assertTrue(depositPage.isCashierChangeBillingAddCheckboxPresent());
+	}
+
+	@Then("^I should Amount To deposit in the cashier pop-up$")
+	public void i_should_Amount_To_deposit_in_the_cashier_pop_up() {
+
+	}
+
+	// verifying if the Enter your amount input field is displayed within the
+	// cashier
+	@Then("^I should see other amount input field in the cashier pop-up$")
+	public void i_should_see_other_amount_input_field_in_the_cashier_pop_up() {
+		Assert.assertTrue(depositPage.isCashierOtherAmountInputfieldPresent());
+
+	}
+
+	// Verifying if Deposit Button is displayed within the Cashier pop-up box.
+	@Then("^I should see Deposit deposit button in the cashier pop-up$")
+	public void i_should_see_Deposit_deposit_button_in_the_cashier_pop_up() {
+		Assert.assertTrue(depositPage.isCashierDepositButtonPresent());
+
+	}
 }

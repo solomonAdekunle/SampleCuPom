@@ -55,7 +55,7 @@ public class BaseTest {
 		if (browserType.equals("Mozilla")) {
 			this.driver = new FirefoxDriver();
 		} else if (browserType.equals("Chrome") ) {
-			File file = new File("C:\\IEDriver\\chromedriver.exe");
+			File file = new File("C:\\QA\\Chrome\\chromedriver.exe");
 			// File file= new File("C:\\Users\\solomon.adekunle\\OneDrive for
 			// Business\\workspace\\BetVernons\\chromedriver.exe");
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
@@ -73,5 +73,13 @@ public class BaseTest {
 		
 		//driver.get(CONFIG.getProperty("siteName"));
 	}
-	
+	public static void takeScreenshot(String fileName) {
+		File scrFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	    try {
+			FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir")+"\\screenshots\\"+fileName+".jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	}

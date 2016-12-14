@@ -2,7 +2,7 @@ Feature: Login
          User should be able to login with a valid username and password
          after logining user should see his usernameInfo, account balance , Deposit button 
          and Account Menu	
-    
+  @ignore  
   @Login 
  Scenario Outline:Login
   Given I navigate to the homepage on <browser>

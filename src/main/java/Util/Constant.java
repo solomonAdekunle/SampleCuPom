@@ -46,5 +46,31 @@ public class Constant  {
 	
 	//locator for Title page
 	public static String TitlePage="h1.title";
+	
+	// locator for all the Header of the page
+	public static String HP_DeopsitButton="div#account_box a.deposit";
+	
+	// locators for all elements in the cashier
+	public static String Cashier_UserNameInfo ="#PH_UserDataBox span#PH_UserName";
+	public static String Cashier_BalanceValue="#PH_UserDataBox span#PH_UserBalanceLabel";
+	public static String SafeCharge_Logo="div.v-bottom .sfc-logo";
+	public static String Cashier_MyAccountTab="#PB_CasinoMyAccount";
+	public static String Cashier_DepositTab="#PB_3rdpExternalDeposit";
+	public static String Cashier_WithrawTab="#PB_3rdpExternalWithdraw";
+	public static String Cashier_MyPaymentMethodtext="div.user_pm .payment_header_label";
+	public static String Cashier_OtherPaymentDetailsText="div.pm span.payment_header_label";
+	public static String Cashier_DepositButton="input#continueButton";
+	public static String  Cashier_MyPaymentMthodLogo="div.list-container li.selected";
+	public static String Cashier_MyOtherPaymentMethodPayPal_logo="div.list-container div[title='PayPal']";
+	public static String Cashier_CardOwnerName="div.PMINFO .cc_name_on_card";
+	public static String Cashier_CardOwnerNumber="div.PMINFO .cc_card_number";
+	public static String Cashier_CardExpirydate="div#_read_only_text";
+	public static String Cashier_lastFourDigitNumber="div#cc_card_number_read_only_text";
+	public static String Cashier_CardCVVTextbox="div.PMINFO .cc_cvv2 input#cc_cvv2";
+	public static String Cashier_promocodeTextbox="input#promoCode";
+	public static String Cashier_ChangeBillingAddresCheckbox="div.user_details";
+	public static String Cashier_EnterAmountInputField="input#item_amount_1";
 }
+
+
 

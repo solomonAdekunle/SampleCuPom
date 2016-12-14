@@ -14,11 +14,11 @@ import com.Suite.BaseTest;
 
 import Util.Constant;
 
-public class BasePage extends BaseTest  {
+public class BasePage  {
 
 	
 	
-	protected static  WebDriver driver;
+	protected  WebDriver driver;
 	
 	
     // Initilising the WebDriver
@@ -65,17 +65,19 @@ public class BasePage extends BaseTest  {
 		driver.findElement(By.cssSelector(Constant.HomePage_ForgottenDetailsLink)).click();
 		
 	}
+	// Click on the deposit button on the home page
+	public void clickHpDepositButton(){
+		driver.findElement(By.cssSelector(Constant.HP_DeopsitButton)).click();
+	}
 	
 	// Creating a dologin function
-	public void  doLogin(String Username, String password){
-	 driver.findElement(By.xpath("//*[@id='username']")).sendKeys(Username);
+	public void  doLogin(String username, String password){
+	 driver.findElement(By.xpath("//*[@id='username']")).sendKeys(username);
 		driver.findElement(By.xpath("//*[@id='password']")).sendKeys(password);
 		driver.findElement(By.cssSelector("div.playtech-login-block button.sign-in")).click();
 	}
 		
 	  
-	
-	
 	
 	
 	protected String generateStringWithAllobedSplChars(int length,String allowdSplChrs){
@@ -98,13 +100,5 @@ public class BasePage extends BaseTest  {
 		 }
 	
 	//store screenshot
-	public static void takeScreenshot(String fileName) {
-	File scrFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-    try {
-		FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir")+"\\screenshots\\"+fileName+".jpg"));
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-}
+	
 }

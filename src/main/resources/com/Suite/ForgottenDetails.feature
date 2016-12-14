@@ -2,7 +2,7 @@ Feature: ForgottenDetails
        user should should be able to reset there password 
        when they for it either their usename or password by clicking 
        forgotten details link on the HomePage
-
+@ignore
   @ForgottenDetails
   Scenario Outline: ForgottenDetails
     Given I navigate to the ForgottenDetails page on "<browser>"
