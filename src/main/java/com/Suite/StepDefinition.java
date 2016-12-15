@@ -1,4 +1,4 @@
-package com.Suite;
+package com.suite;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import com.Suite.Cashier.DepositPage;
+import com.suite.Cashier.DepositPage;
 
 import Connector.WebConnector;
 import Util.Constant;
@@ -31,7 +31,7 @@ public class StepDefinition extends BaseTest {
 	private HomePage homePage;
 	private RegisterPage registerPage;
 	private ForgottenDetails forgottenDetailsPage;
-	private DepositPage depositPage;
+	private com.suite.Cashier.DepositPage depositPage;
 
 	public StepDefinition() {
 
@@ -42,7 +42,7 @@ public class StepDefinition extends BaseTest {
 		registerPage = new RegisterPage(this.driver);
 		basePage = new BasePage(this.driver);
 		forgottenDetailsPage = new ForgottenDetails(this.driver);
-		depositPage = new DepositPage(this.driver);
+		depositPage = new com.suite.Cashier.DepositPage(this.driver);
 
 	}
 

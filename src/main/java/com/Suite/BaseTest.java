@@ -1,4 +1,4 @@
-package com.Suite;
+package com.suite;
 
 import java.io.File;
 import java.io.FileInputStream;

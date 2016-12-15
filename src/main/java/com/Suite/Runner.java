@@ -1,4 +1,4 @@
- package com.Suite;
+ package com.suite;
 
 
 	import org.junit.runner.RunWith;

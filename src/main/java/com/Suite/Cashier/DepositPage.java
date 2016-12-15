@@ -1,4 +1,4 @@
-package com.Suite.Cashier;
+package com.suite.Cashier;
 
 import java.util.List;
 
