@@ -201,18 +201,30 @@ public class DepositPage extends BasePage {
 	}
 
 	public void sendCashierCardNumber(String cardNumber) {
-
+		this.switchFrameTo("ThirdPartyPage");
+		driver.findElement(By.cssSelector(Constant.Cashier_CardInputField)).sendKeys(cardNumber);
 	}
 
 	public void sendCashierMonthExpiryDate(String Month) {
+		this.switchFrameTo("ThirdPartyPage");
+		driver.findElement(By.cssSelector(Constant.Cashier_cardExpiryDateMonth)).sendKeys(Month);
 
 	}
 
 	public void sendCashierYearExpiryDate(String Year) {
+		this.switchFrameTo("ThirdPartyPage");
+		driver.findElement(By.cssSelector(Constant.Cashier_cardExpiryDateYear)).sendKeys(Year);
 
 	}
 
+	public void sendCashierCVVNumber(String cvvNumber) {
+		this.switchFrameTo("ThirdPartyPage");
+		driver.findElement(By.cssSelector(Constant.Cashier_CardCVVTextbox)).sendKeys(cvvNumber);
+	}
+
 	public void sendCashierPromocodeInputField() {
+		this.switchFrameTo("ThirdPartyPage");
+		driver.findElement(By.cssSelector(Constant.Cashier_promocodeTextbox));
 
 	}
 
@@ -230,6 +242,59 @@ public class DepositPage extends BasePage {
 
 	public void sendCashierChangeBillingAddressNumberInput(String AddressNum) {
 
+	}
+
+	public boolean isErrorCardInputTextPresent(boolean expectedResult) {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_CardInputtextErroMessage)).isDisplayed();
+
+	}
+
+	public boolean isInvalidExpDateError() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_cardExpiryErroText)).isDisplayed();
+	}
+
+	public boolean isCardCVVNumberErrorMessagePresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_cardCVVErrorText)).isDisplayed();
+
+	}
+
+	public boolean isEnterAmountToDepositErrorMessagePresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_EnterAmountInputFieldErroMessageText)).isDisplayed();
+	}
+
+	public boolean isGreenTickCardOwnerNamesPresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_CardOwnerNameInputGreenTick)).isDisplayed();
+
+	}
+
+	public boolean isGreenTickCardNumberPresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_CardNumberInputFieldGreenTick)).isDisplayed();
+	}
+
+	public boolean isGreenTickCardCVVNumberPresent() {
+		return driver.findElement(By.cssSelector(Constant.Cashier_ExpirydateAndCvvInputFieldGreenTick)).isDisplayed();
+	}
+
+	public boolean isGreenTickPromoCodePresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_PromCodeInputFieldGreenTick)).isDisplayed();
+	}
+
+	public boolean isGreenTickEnterAmountPresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_EnterAmountInputFieldGreenTick)).isDisplayed();
+
+	}
+
+	public void clickCashierDepositButton() {
+		this.switchFrameTo("ThirdPartyPage");
+		driver.findElement(By.cssSelector(Constant.Cashier_DepositButton)).click();
 	}
 
 }

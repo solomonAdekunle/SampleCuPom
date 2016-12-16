@@ -70,6 +70,19 @@ public class Constant  {
 	public static String Cashier_promocodeTextbox="input#promoCode";
 	public static String Cashier_ChangeBillingAddresCheckbox="div.user_details";
 	public static String Cashier_EnterAmountInputField="input#item_amount_1";
+	public static String Cashier_CardInputtextErroMessage="div#cc_card_number_validation label.error";
+	public static String Cashier_CardInputField="input#cc_card_number";
+	public static String Cashier_cardExpiryDateMonth="select#cc_exp_month";
+	public static String Cashier_cardExpiryDateYear="select#cc_exp_year";
+	public static String Cashier_cardCardOwnerNameInputBox="input#cc_name_on_card";
+	public static String Cashier_cardExpiryErroText="div#expiration_period_validation label[for='expiration_period']";
+	public static String Cashier_cardCVVErrorText="label[for='cc_cvv2']";
+	public static String Cashier_CardOwnerNameInputGreenTick="div#cc_name_on_card_validation";
+	public static String Cashier_CardNumberInputFieldGreenTick="div#cc_card_number_validation";
+	public static String Cashier_ExpirydateAndCvvInputFieldGreenTick="div#cc_cvv2_validation";
+	public static String Cashier_PromCodeInputFieldGreenTick="div#promoCode_validation";
+	public static String Cashier_EnterAmountInputFieldErroMessageText="label[for='item_amount_1']";
+	public static String Cashier_EnterAmountInputFieldGreenTick="div#item_amount_1_validation";
 }
 
 

@@ -298,7 +298,34 @@ public class StepDefinition extends BaseTest {
 	public void i_click_a_Depositbutton() {
 		basePage.clickHpDepositButton();
 	}
-
+		
+	@When("^I enter CardVisa Number as \"([^\"]*)\"$")
+	public void i_enter_CardVisa_Number_as(String cardNumber)  {
+		depositPage.sendCashierCardNumber(cardNumber);
+	    
+	}
+	@When("^I entry Expiry card month as \"([^\"]*)\"$")
+	public void i_entry_Expiry_card_month_as(String Month) {
+		depositPage.sendCashierMonthExpiryDate(Month);
+	    
+	}
+	@When("^I enter Expiry card year as \"([^\"]*)\"$")
+	public void i_enter_Expiry_card_year_as(String Year)  {
+		depositPage.sendCashierYearExpiryDate(Year);
+		
+	   
+	}
+	@When("^I enter CVV as \"([^\"]*)\"$")
+	public void i_enter_CVV_as(String cvvNumber)  {
+		depositPage.sendCashierCVVNumber(cvvNumber);
+	    
+	}
+	@When("^I click on the Cashier Deposit Button$")
+	public void i_click_on_the_Cashier_Deposit_Button()  {
+		depositPage.clickCashierDepositButton();
+	    
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	/* This Are only for @Then Methods */
@@ -501,6 +528,12 @@ public class StepDefinition extends BaseTest {
 	@Then("^I should see Deposit deposit button in the cashier pop-up$")
 	public void i_should_see_Deposit_deposit_button_in_the_cashier_pop_up() {
 		Assert.assertTrue(depositPage.isCashierDepositButtonPresent());
-
 	}
+	
+	@Then("^I should see \"([^\"]*)\" displayed$")
+	public void i_should_see_displayed(boolean expectedResult)  {
+		 Assert.assertTrue(depositPage.isErrorCardInputTextPresent(expectedResult));
+		
+	}
+	
 }

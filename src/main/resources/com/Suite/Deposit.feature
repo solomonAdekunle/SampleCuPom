@@ -5,7 +5,7 @@ Feature: Deposit
 
   
  
- # @ignore
+  @ignore
  @Deposit
  Scenario Outline:Deposit
 Given I navigate to the homepage on "<browser>"
