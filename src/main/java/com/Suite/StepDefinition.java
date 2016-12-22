@@ -298,34 +298,54 @@ public class StepDefinition extends BaseTest {
 	public void i_click_a_Depositbutton() {
 		basePage.clickHpDepositButton();
 	}
-		
+
 	@When("^I enter CardVisa Number as \"([^\"]*)\"$")
-	public void i_enter_CardVisa_Number_as(String cardNumber)  {
+	public void i_enter_CardVisa_Number_as(String cardNumber) {
 		depositPage.sendCashierCardNumber(cardNumber);
-	    
+
 	}
+
 	@When("^I entry Expiry card month as \"([^\"]*)\"$")
 	public void i_entry_Expiry_card_month_as(String Month) {
 		depositPage.sendCashierMonthExpiryDate(Month);
-	    
+
 	}
+
 	@When("^I enter Expiry card year as \"([^\"]*)\"$")
-	public void i_enter_Expiry_card_year_as(String Year)  {
+	public void i_enter_Expiry_card_year_as(String Year) {
 		depositPage.sendCashierYearExpiryDate(Year);
-		
-	   
+
 	}
+
 	@When("^I enter CVV as \"([^\"]*)\"$")
-	public void i_enter_CVV_as(String cvvNumber)  {
+	public void i_enter_CVV_as(String cvvNumber) {
 		depositPage.sendCashierCVVNumber(cvvNumber);
-	    
+
 	}
-	@When("^I click on the Cashier Deposit Button$")
-	public void i_click_on_the_Cashier_Deposit_Button()  {
+
+	// Input the value amount to deposit in the Enter amount text box.
+	@When("^I enter Amount To Deposit as \"([^\"]*)\"$")
+	public void i_enter_Amount_To_Deposit_as(String Amount) {
+		depositPage.sendCashierEnterAmountInputField(Amount);
+	}
+
+	//click on deposit Button within the Safe Charge Cashier
+	@When("^I click a SafeChargeDepositbutton$")
+	public void i_click_a_SafeChargeDepositbutton() {
 		depositPage.clickCashierDepositButton();
+
+	}
+	// clicking on the Close button within the Success deposit approved deposit  pop-up box
+	@When("^I click on CloseButton within the Success Cashier Pop-up box$")
+	public void i_click_on_CloseButton_within_the_Success_Cashier_Pop_up_box()  {
+	    depositPage.clickCashierDepositButton();
+	}
+
+	@When("^I click on decline close icon$")
+	public void i_click_on_decline_close_icon() {
+		depositPage.clickDeclinedCloseIcon();
 	    
 	}
-	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	/* This Are only for @Then Methods */
@@ -529,11 +549,125 @@ public class StepDefinition extends BaseTest {
 	public void i_should_see_Deposit_deposit_button_in_the_cashier_pop_up() {
 		Assert.assertTrue(depositPage.isCashierDepositButtonPresent());
 	}
-	
-	@Then("^I should see \"([^\"]*)\" displayed$")
-	public void i_should_see_displayed(boolean expectedResult)  {
-		 Assert.assertTrue(depositPage.isErrorCardInputTextPresent(expectedResult));
-		
+
+	// Verifying if Card input error messsage will be displayed when invalid
+	// card and Incomplete numbers a used
+	@Then("^I should see InaValidCardErrorMessage displayed$")
+	public void i_should_see_InaValidCardErrorMessage_displayed() {
+		Assert.assertTrue(depositPage.isErrorCardInputTextPresent());
+
+	}
+
+	// Verifying if Card input error messsage will be displayed when invalid
+	// card and Incomplete numbers a used
+	@Then("^I should see In Valid Expeiratin ErrorMessage displayed$")
+	public void i_should_see_In_Valid_Expeiratin_ErrorMessage_displayed() {
+		Assert.assertTrue(depositPage.isInvalidExpDateError());
+
+	}
+
+	// Verifying if CVV error message is displayed
+	@Then("^I should see The field must be exactly (\\d+) digits ErrorMessage Text displayed$")
+	public void i_should_see_The_field_must_be_exactly_digits_ErrorMessage_Text_displayed(int arg1) {
+		Assert.assertTrue(depositPage.isCardCVVNumberErrorMessagePresent());
+
+	}
+
+	// Checking if user can make a deposit less than required.
+	@Then("^I should  Please Enter Valid ammount errorText displayed$")
+	public void i_should_Please_Enter_Valid_ammount_errorText_displayed() {
+		Assert.assertTrue(depositPage.isEnterAmountToDepositErrorMessagePresent());
+
+	}
+
+	// Checking if Green tick mark is displayed when user input name is correct
+	@Then("^I should see Green tick mark next to CardOwnerNametext box$")
+	public void i_should_see_Green_tick_mark_next_to_CardOwnerNametext_box() {
+		Assert.assertTrue(depositPage.isGreenTickCardNumberPresent());
+	}
+
+	// Check if Green tick mark is displayed when user correct card number
+	@Then("^I should see Green tick mark next to CardNumberbox box$")
+	public void i_should_see_Green_tick_mark_next_to_CardNumberbox_box() {
+		Assert.assertTrue(depositPage.isGreenTickCardNumberPresent());
+
+	}
+
+	// Check if Green tick Mark is displayed when user input Correct CVV Number
+	@Then("^I should see Green tick mark next to CardCVVtext box$")
+	public void i_should_see_Green_tick_mark_next_to_CardCVVtext_box() {
+		Assert.assertTrue(depositPage.isGreenTickCardCVVNumberPresent());
+	}
+
+	// Checking IF green tick will be displayed when user input required amount.
+	@Then("^I should see a Green tick Mark next to EnterAmounttext box$")
+	public void i_should_see_a_Green_tick_Mark_next_to_EnterAmounttext_box() {
+		Assert.assertTrue(depositPage.isGreenTickEnterAmountPresent());
+
+	}
+
+	// verifying if Success test is displayed within the Apporovedd Deposit
+	// pop-up box
+	@Then("^I should see Deposit Success Cashier Pop-up box displayed$")
+	public void i_should_see_Deposit_Success_Cashier_Pop_up_box_displayed() {
+		Assert.assertTrue(depositPage.isApprovedDepositHeaderPopBoxPresent());
+	}
+
+	// Verifying if your Trancastion was approved Text is displayed within the
+	// Approved Deposit pop-up box
+	@Then("^I should see Your transaction was approved Text displayed$")
+	public void i_should_see_Your_transaction_was_approved_Text_displayed() {
+		Assert.assertTrue(depositPage.isApporvedDepositTextPresent());
+	}
+
+	// Verifying if the Close button is displayed within the Pop-up box for
+	// deposit approved
+	@Then("^I should see CloseButton within the Success Cashier Pop-up box displayed$")
+	public void i_should_see_CloseButton_within_the_Success_Cashier_Pop_up_box_displayed() {
+		Assert.assertTrue(depositPage.isApprovedDepositCloseButtonPopUpBox());
+	}
+
+	// Checking if previous balance plus new Bet value will equal New Balance
+	// displayed
+	@Then("^I should see my new Account Balance increase by \"([^\"]*)\"$")
+	public void i_should_see_my_new_Account_Balance_increase_by(String Amount) {
+		int Amountfigure = Integer.parseInt(Amount);
+		float NewBalance = depositPage.getCurrentBalance() + Amountfigure;
+		// int NewBalanceFiqure=Integer.parseInt(Amount);
+		System.out.print(Amountfigure);
+		Assert.assertTrue(NewBalance - depositPage.getCashierBalancePresent() == Amountfigure);
+
 	}
 	
+	// Verifying that Success Cashier pop-up box is closed when the Close button within itt is clicked
+	@Then("^I should see no Deposit Success Cashier Pop-up box displayed\\.$")
+	public void i_should_see_no_Deposit_Success_Cashier_Pop_up_box_displayed() {
+	    Assert.assertFalse(depositPage.isApprovedDepositCloseButtonPopUpBox());
+	}
+	@Then("^I should see Decline Pop-up box displayed$")
+	public void i_should_see_Decline_Pop_up_box_displayed()  {
+		Assert.assertTrue(depositPage.isDeclinedDepositHeaderPopUpBoxPresent());
+	   
+	}
+	
+	// Checking if correct declined texts is diplayed.
+	@Then("^I should see Your Transaction decline text displayed$")
+	public void i_should_see_Your_Transaction_decline_text_displayed()  {
+		Assert.assertTrue(depositPage.isYourTransactionHasBeenDeclineTextPresent());
+	}
+    // Checking if Contact Suport Number is displayed within the declined pop-up box
+	@Then("^I should see Contact Support Number displayed$")
+	public void i_should_see_Contact_Support_Number_displayed()  {
+		Assert.assertTrue(depositPage.isDeclinedDepositContactSurpotNumberPresent());
+	}
+    // Check if  pop-up is display after closing the close icon on the declined pop-up box
+	@Then("^I should see a close icon displayed$")
+	public void i_should_see_a_close_icon_displayed()  {
+		Assert.assertTrue(depositPage.isDeclinedDepositCloseIconPresent());
+	}
+	
+	@Then("^I should see no decline pop-up box$")
+	public void i_should_see_no_decline_pop_up_box() {
+		Assert.assertFalse(depositPage.isDeclinedDepositCloseIconPresent());
+	}
 }

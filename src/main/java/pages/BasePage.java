@@ -9,6 +9,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Util.Constant;
 
@@ -33,10 +36,14 @@ public class BasePage  {
     // entering the Password into the Password login field.
 	public void sendPassword(String password) {
 		driver.findElement(By.xpath("//*[@id='password']")).sendKeys(password);
+		 
+		 
 	}
      
 	public void clickSigin() {
 		driver.findElement(By.cssSelector("div.playtech-login-block button.sign-in")).click();
+		WebDriverWait wait=  new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.HP_DeopsitButton)));
 
 	}
 

@@ -52,14 +52,15 @@ public class Constant  {
 	
 	// locators for all elements in the cashier
 	public static String Cashier_UserNameInfo ="#PH_UserDataBox span#PH_UserName";
-	public static String Cashier_BalanceValue="#PH_UserDataBox span#PH_UserBalanceLabel";
+	public static String Cashier_BalanceValve="#PH_UserDataBox span#PH_UserBalanceLabel";
+	public static String Cashier_BalanceFigure="span#PH_UserBalance";
 	public static String SafeCharge_Logo="div.v-bottom .sfc-logo";
 	public static String Cashier_MyAccountTab="#PB_CasinoMyAccount";
 	public static String Cashier_DepositTab="#PB_3rdpExternalDeposit";
 	public static String Cashier_WithrawTab="#PB_3rdpExternalWithdraw";
 	public static String Cashier_MyPaymentMethodtext="div.user_pm .payment_header_label";
 	public static String Cashier_OtherPaymentDetailsText="div.pm span.payment_header_label";
-	public static String Cashier_DepositButton="input#continueButton";
+	public static String Cashier_DepositButton="div.amount-deposit-footer input#continueButton";
 	public static String  Cashier_MyPaymentMthodLogo="div.list-container li.selected";
 	public static String Cashier_MyOtherPaymentMethodPayPal_logo="div.list-container div[title='PayPal']";
 	public static String Cashier_CardOwnerName="div.PMINFO .cc_name_on_card";
@@ -83,6 +84,15 @@ public class Constant  {
 	public static String Cashier_PromCodeInputFieldGreenTick="div#promoCode_validation";
 	public static String Cashier_EnterAmountInputFieldErroMessageText="label[for='item_amount_1']";
 	public static String Cashier_EnterAmountInputFieldGreenTick="div#item_amount_1_validation";
+	public static String Cashier_SuccessDepositPop_upBox ="div.lightbox-header";
+	public static String Cashier_DepositApporovedText="div.lightbox-content .h3";
+	public static String Cashier_SuccessDepositPop_boxCloseButton="button.modal_close";
+	public static String Cashier_DeclinedDepositPop_upBox="div.lightbox-header h2";
+	public static String Cashier_DeclineDepositTransactionText="div.lightbox-content .h3";
+	public static String Cashier_DeclinedDepositConatctSuportNumber="122233323232";
+	public static String Cashier_DeclineDepositCloseIcon="span.modal_close.on_cancel";
+	
+	
 }
 
 

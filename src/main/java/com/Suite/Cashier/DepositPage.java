@@ -1,20 +1,28 @@
 package com.suite.Cashier;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Util.Constant;
+import bsh.org.objectweb.asm.Constants;
 import pages.BasePage;
 
 public class DepositPage extends BasePage {
 
 	private String currentFrameId = "";
+	private float CurrentBalance;
 
 	public DepositPage(WebDriver driver) {
 		super(driver);
@@ -40,7 +48,11 @@ public class DepositPage extends BasePage {
 
 	}
 
-	public void isCashierBalancePresent() {
+	public float getCashierBalancePresent() {
+		String Showbal = driver.findElement(By.cssSelector(Constant.Cashier_BalanceFigure)).getText();
+		String ShowBalance = Showbal.replace(",", "").replace("£", "");
+		float ShowbalFiqure = Float.valueOf(ShowBalance);
+		return ShowbalFiqure;
 
 	}
 
@@ -145,6 +157,20 @@ public class DepositPage extends BasePage {
 
 	}
 
+	public float getCurrentBalance() {
+		this.switchFrameTo("icashier");
+		String bal = driver.findElement(By.cssSelector(Constant.Cashier_BalanceFigure)).getText();
+		System.out.println(bal);
+		String Balance = bal.replace(",", "").replace("£", "");
+		// System.out.println(bal);
+
+		// convert the current to in
+		CurrentBalance = Float.valueOf(Balance);
+		System.out.println(CurrentBalance);
+		return CurrentBalance;
+
+	}
+
 	/**
 	 * Conditon for frame switch
 	 * 
@@ -200,6 +226,27 @@ public class DepositPage extends BasePage {
 
 	}
 
+	// Functtion for Cashier deposit approve Pop-up box
+	public boolean isApporvedDepositTextPresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_DepositApporovedText)).isDisplayed();
+
+	}
+
+	
+	  public boolean isApprovedDepositHeaderPopBoxPresent() {
+	  this.switchFrameTo("ThirdPartyPage"); 
+	   WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.lightbox-header h2")));
+	  return driver.findElement(By.cssSelector(Constant. Cashier_SuccessDepositPop_upBox)).isDisplayed();
+	  }
+	 
+	public boolean isApprovedDepositCloseButtonPopUpBox() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_SuccessDepositPop_boxCloseButton)).isDisplayed();
+
+	}
+
 	public void sendCashierCardNumber(String cardNumber) {
 		this.switchFrameTo("ThirdPartyPage");
 		driver.findElement(By.cssSelector(Constant.Cashier_CardInputField)).sendKeys(cardNumber);
@@ -208,7 +255,6 @@ public class DepositPage extends BasePage {
 	public void sendCashierMonthExpiryDate(String Month) {
 		this.switchFrameTo("ThirdPartyPage");
 		driver.findElement(By.cssSelector(Constant.Cashier_cardExpiryDateMonth)).sendKeys(Month);
-
 	}
 
 	public void sendCashierYearExpiryDate(String Year) {
@@ -228,23 +274,19 @@ public class DepositPage extends BasePage {
 
 	}
 
-	public void sendCashierChangeBillingAddressCountryInput(String country) {
-
+	/*
+	 * Input the amount to deposit in the Enter amount input box
+	 * 
+	 * @param {string} Amount- this is the Amount in value that user is willing
+	 * to deposit
+	 **/
+	public void sendCashierEnterAmountInputField(String Amount) {
+		this.switchFrameTo("ThirdPartyPage");
+		driver.findElement(By.cssSelector(Constant.Cashier_EnterAmountInputField)).clear();
+		driver.findElement(By.cssSelector(Constant.Cashier_EnterAmountInputField)).sendKeys(Amount);
 	}
 
-	public void sendCashierChangeBillingAddressCityInput(String city) {
-
-	}
-
-	public void sendCashierChangeBillingAddressPostCodeInput(String postcode) {
-
-	}
-
-	public void sendCashierChangeBillingAddressNumberInput(String AddressNum) {
-
-	}
-
-	public boolean isErrorCardInputTextPresent(boolean expectedResult) {
+	public boolean isErrorCardInputTextPresent() {
 		this.switchFrameTo("ThirdPartyPage");
 		return driver.findElement(By.cssSelector(Constant.Cashier_CardInputtextErroMessage)).isDisplayed();
 
@@ -292,9 +334,70 @@ public class DepositPage extends BasePage {
 
 	}
 
+	public boolean isDeclinedDepositHeaderPopUpBoxPresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.lightbox-header h2")));
+		return driver.findElement(By.cssSelector(Constant.Cashier_DeclinedDepositPop_upBox)).isDisplayed();
+	}
+
+	public boolean isYourTransactionHasBeenDeclineTextPresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_DeclineDepositTransactionText)).isDisplayed();
+	}
+
+	public boolean isDeclinedDepositContactSurpotNumberPresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_DeclinedDepositConatctSuportNumber)).isDisplayed();
+	}
+
+	public boolean isDeclinedDepositCloseIconPresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		return driver.findElement(By.cssSelector(Constant.Cashier_DeclineDepositCloseIcon)).isDisplayed();
+	}
+
+	public void sendCashierChangeBillingAddressCountryInput(String country) {
+
+	}
+
+	public void sendCashierChangeBillingAddressCityInput(String city) {
+
+	}
+
+	public void sendCashierChangeBillingAddressPostCodeInput(String postcode) {
+
+	}
+
+	public void sendCashierChangeBillingAddressNumberInput(String AddressNum) {
+
+	}
+
 	public void clickCashierDepositButton() {
 		this.switchFrameTo("ThirdPartyPage");
 		driver.findElement(By.cssSelector(Constant.Cashier_DepositButton)).click();
+		// WebDriverWait wait = new WebDriverWait(driver,45);
+		// wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input#continueButton")));
 	}
 
+	public void clickSuccessCloseApprovedButton() {
+		this.switchFrameTo("ThirdPartyPage");
+		WebDriverWait wait = new WebDriverWait(driver, 80);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.modal_close")));
+		// WebElement chromeclick=
+		// driver.findElement(By.cssSelector(Constant.Cashier_SuccessDepositPop_boxCloseButton));
+		WebElement chromeclick = driver.findElement(By.cssSelector("button.modal_close"));
+		chromeclick.click();
+
+	}
+
+	public void clickDeclinedCloseIcon() {
+		this.switchFrameTo("ThirdPartyPage");
+		WebDriverWait wait = new WebDriverWait(driver,80);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.modal_close.on_cancel")));
+		System.out.println(driver.findElement(By.cssSelector(Constant.Cashier_DeclineDepositCloseIcon)).isDisplayed());
+		driver.findElement(By.cssSelector(Constant.Cashier_DeclineDepositCloseIcon)).click();
+
+	}
 }

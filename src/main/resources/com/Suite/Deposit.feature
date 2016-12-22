@@ -5,7 +5,7 @@ Feature: Deposit
 
   
  
-  @ignore
+  #@ignore
  @Deposit
  Scenario Outline:Deposit
 Given I navigate to the homepage on "<browser>"
@@ -23,7 +23,7 @@ Given I navigate to the homepage on "<browser>"
    And I should see other Payment Methods logo in the cashier pop-up
    And I should see account creditcard ownername in the cashier pop-up
    And I should see last4 digit card numbers as "6614"
-   And I should see card expiray date in the cashier pop-up
+   And I should see card expiry date in the cashier pop-up
    And I should see CVV input field in the cashier pop-up
    And I should see Promocode input text in the cashier pop-up
    And I should see Bill Address check box in the cashier pop-up
@@ -35,22 +35,35 @@ Given I navigate to the homepage on "<browser>"
  	|browser	| 
  	| Chrome	|
   
+ 
+  @DepositAppoved
+  Scenario: Checking if Success Cashier deposit pop-up 
+Given I navigate to the homepage on "<browser>"
+When I have logged in username as "safecharge1" and password "Bola123"
+ And  I click a Depositbutton
+ And I enter CVV as "123"
+ And I enter Amount To Deposit as "10"
+ And  I click a SafeChargeDepositbutton
+Then I should see Deposit Success Cashier Pop-up box displayed
+ And I should see Your transaction was approved Text displayed
+ And I should see CloseButton within the Success Cashier Pop-up box displayed
+ And I should see my new Account Balance increase by "10"
+  
+ @DepositAppoved
+ Scenario: Closing the Success Cashier Pop-up box
+Given I navigate to the homepage on "<browser>"
+When I have logged in username as "safecharge1" and password "Bola123"
+ And  I click a Depositbutton
+ And I enter CVV as "123"
+ And I enter Amount To Deposit as "10"
+ And  I click a SafeChargeDepositbutton
+ And I click on CloseButton within the Success Cashier Pop-up box
+ Then I should see no Deposit Success Cashier Pop-up box displayed.
   
   
-#  @Deposit
-# Scenario Outline: Deposit
-#  When I click  a  "Depositbutton"
-# 	And I input "AmtDeposit" as "<amount>"
-# 	And I enter "Cvv" as "<CvvNumber>"
-# 	And I click "Deposit"
-# Then deposit text should be displyed
-# 
-# Examples:
-#   |amount	|CvvNumber	|
-#   |  2		| 123		|
-#   | 10000	|	123		|
-#   |  10	| 		 	|
-#   |  0		| 	123		|
-#   | 10		|	123		|
-# 
+  @DepositAppoved
+ Scenario: Checking if Success Cashier deposit pop-up 
+ Given I navigate to the homepage on "<browser>"
+ When I have logged in username as "safecharge1" and password "Bola123"
+  And I click a Depositbutton
     
