@@ -329,23 +329,59 @@ public class StepDefinition extends BaseTest {
 		depositPage.sendCashierEnterAmountInputField(Amount);
 	}
 
-	//click on deposit Button within the Safe Charge Cashier
+	// click on deposit Button within the Safe Charge Cashier
 	@When("^I click a SafeChargeDepositbutton$")
 	public void i_click_a_SafeChargeDepositbutton() {
 		depositPage.clickCashierDepositButton();
 
 	}
-	// clicking on the Close button within the Success deposit approved deposit  pop-up box
+
+	// clicking on the Close button within the Success deposit approved deposit
+	// pop-up box
 	@When("^I click on CloseButton within the Success Cashier Pop-up box$")
-	public void i_click_on_CloseButton_within_the_Success_Cashier_Pop_up_box()  {
-	    depositPage.clickCashierDepositButton();
+	public void i_click_on_CloseButton_within_the_Success_Cashier_Pop_up_box() {
+		depositPage.clickSuccessCloseApprovedButton();
 	}
 
+	// clicking on the decline close Icon
 	@When("^I click on decline close icon$")
 	public void i_click_on_decline_close_icon() {
 		depositPage.clickDeclinedCloseIcon();
-	    
+
 	}
+
+	// Clicking on the other payment method to register a new card
+	@When("^I click on Other Payment Methods Card Logo$")
+	public void i_click_on_Other_Payment_Methods_Card_Logo() {
+		depositPage.clickRegisterNewCreditCard();
+
+	}
+
+	// clicking on the Change Billing address check box
+	@When("^I click on Change Billing Address Check Box$")
+	public void i_click_on_Change_Billing_Address_Check_Box() {
+      depositPage.clickCashierChangeBillAddresCheckBox();
+	}
+
+	// enter a post code address
+	@When("^I enter Post code as \"([^\"]*)\"$")
+	public void i_enter_Post_code_as(String postcode) {
+     depositPage.sendCashierChangeBillingAddressPostCodeInput(postcode);
+	}
+
+	// Enter a new house addresss
+	@When("^I enter House address as \"([^\"]*)\"$")
+	public void i_enter_House_address_as(String AddressNum) {
+		depositPage.sendCashierChangeBillingAddressNumberInput(AddressNum);
+
+	}
+
+	// Click on the Close Icon of th Cashier frame pop-up box
+	@When("^I click on close Icon of the Cashier$")
+	public void i_click_on_close_Icon_of_the_Cashier() {
+
+	}
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	/* This Are only for @Then Methods */
@@ -506,8 +542,8 @@ public class StepDefinition extends BaseTest {
 	}
 
 	// veriying if card expirary date is displayed within the cashier pop-up box
-	@Then("^I should see card expiray date in the cashier pop-up$")
-	public void i_should_see_card_expiray_date_in_the_cashier_pop_up() {
+	@Then("^I should see card expiry date in the cashier pop-up$")
+	public void i_should_see_card_expiry_date_in_the_cashier_pop_up() {
 		Assert.assertTrue(depositPage.isCashierCreditCardExpiaryDatePresent());
 	}
 
@@ -624,7 +660,7 @@ public class StepDefinition extends BaseTest {
 	// deposit approved
 	@Then("^I should see CloseButton within the Success Cashier Pop-up box displayed$")
 	public void i_should_see_CloseButton_within_the_Success_Cashier_Pop_up_box_displayed() {
-		Assert.assertTrue(depositPage.isApprovedDepositCloseButtonPopUpBox());
+		Assert.assertTrue(depositPage.isApprovedDepositCloseButtonPopUpBoxPresent());
 	}
 
 	// Checking if previous balance plus new Bet value will equal New Balance
@@ -633,41 +669,60 @@ public class StepDefinition extends BaseTest {
 	public void i_should_see_my_new_Account_Balance_increase_by(String Amount) {
 		int Amountfigure = Integer.parseInt(Amount);
 		float NewBalance = depositPage.getCurrentBalance() + Amountfigure;
-		// int NewBalanceFiqure=Integer.parseInt(Amount);
 		System.out.print(Amountfigure);
 		Assert.assertTrue(NewBalance - depositPage.getCashierBalancePresent() == Amountfigure);
 
 	}
-	
-	// Verifying that Success Cashier pop-up box is closed when the Close button within itt is clicked
+
+	// Verifying that Success Cashier pop-up box is closed when the Close button
+	// within it is clicked
 	@Then("^I should see no Deposit Success Cashier Pop-up box displayed\\.$")
 	public void i_should_see_no_Deposit_Success_Cashier_Pop_up_box_displayed() {
-	    Assert.assertFalse(depositPage.isApprovedDepositCloseButtonPopUpBox());
+		Assert.assertTrue(depositPage.isCashierDepositButtonPresent());
 	}
+
 	@Then("^I should see Decline Pop-up box displayed$")
-	public void i_should_see_Decline_Pop_up_box_displayed()  {
+	public void i_should_see_Decline_Pop_up_box_displayed() {
 		Assert.assertTrue(depositPage.isDeclinedDepositHeaderPopUpBoxPresent());
-	   
+
 	}
-	
-	// Checking if correct declined texts is diplayed.
+
+	// Checking if correct declined texts is displayed.
 	@Then("^I should see Your Transaction decline text displayed$")
-	public void i_should_see_Your_Transaction_decline_text_displayed()  {
+	public void i_should_see_Your_Transaction_decline_text_displayed() {
 		Assert.assertTrue(depositPage.isYourTransactionHasBeenDeclineTextPresent());
 	}
-    // Checking if Contact Suport Number is displayed within the declined pop-up box
+
+	// Checking if Contact Support Number is displayed within the declined
+	// pop-up box
 	@Then("^I should see Contact Support Number displayed$")
-	public void i_should_see_Contact_Support_Number_displayed()  {
+	public void i_should_see_Contact_Support_Number_displayed() {
 		Assert.assertTrue(depositPage.isDeclinedDepositContactSurpotNumberPresent());
 	}
-    // Check if  pop-up is display after closing the close icon on the declined pop-up box
+
+	// Check if pop-up is display after closing the close icon on the declined
+	// pop-up box
 	@Then("^I should see a close icon displayed$")
-	public void i_should_see_a_close_icon_displayed()  {
+	public void i_should_see_a_close_icon_displayed() {
 		Assert.assertTrue(depositPage.isDeclinedDepositCloseIconPresent());
 	}
-	
+
 	@Then("^I should see no decline pop-up box$")
 	public void i_should_see_no_decline_pop_up_box() {
 		Assert.assertFalse(depositPage.isDeclinedDepositCloseIconPresent());
 	}
+
+	// Verifying if new Post Code Address Change is saved within the cashier
+	@Then("^I should  see new Post code as \"([^\"]*)\" displayed$")
+	public void i_should_see_new_Post_code_as_displayed(String postcode) {
+		
+	}
+
+	// Verifying if new Home Address Change is saved within the cashier
+	@Then("^I should see  House address as \"([^\"]*)\"$")
+	public void i_should_see_House_address_as(String AddressNum) {
+		depositPage.getNewBillingAddresss();
+
+	}
+
 }

@@ -85,12 +85,19 @@ public class Constant  {
 	public static String Cashier_EnterAmountInputFieldErroMessageText="label[for='item_amount_1']";
 	public static String Cashier_EnterAmountInputFieldGreenTick="div#item_amount_1_validation";
 	public static String Cashier_SuccessDepositPop_upBox ="div.lightbox-header";
+	public static String Cashier_RegisterNewCardLogo="div.list-container li[data-value='cc_card']";
 	public static String Cashier_DepositApporovedText="div.lightbox-content .h3";
-	public static String Cashier_SuccessDepositPop_boxCloseButton="button.modal_close";
+	public static String Cashier_SuccessDepositPop_boxCloseButton="button.modal_close.btn.on_confirm";
 	public static String Cashier_DeclinedDepositPop_upBox="div.lightbox-header h2";
 	public static String Cashier_DeclineDepositTransactionText="div.lightbox-content .h3";
 	public static String Cashier_DeclinedDepositConatctSuportNumber="122233323232";
 	public static String Cashier_DeclineDepositCloseIcon="span.modal_close.on_cancel";
+	public static String Cashier_ChangeBillingAddressPostCodeInputField="input#zip";
+	public static String Cashier_ChangeBillingAddressHouseNumber="input#address1";
+	public static String Cashier_NewBillinaddresText="input[placeholder='Address']";
+	
+	
+	
 	
 	
 }

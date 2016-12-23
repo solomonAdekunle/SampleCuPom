@@ -232,16 +232,16 @@ public class DepositPage extends BasePage {
 		return driver.findElement(By.cssSelector(Constant.Cashier_DepositApporovedText)).isDisplayed();
 
 	}
-
 	
 	  public boolean isApprovedDepositHeaderPopBoxPresent() {
 	  this.switchFrameTo("ThirdPartyPage"); 
 	   WebDriverWait wait = new WebDriverWait(driver, 60);
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.lightbox-header h2")));
 	  return driver.findElement(By.cssSelector(Constant. Cashier_SuccessDepositPop_upBox)).isDisplayed();
 	  }
 	 
-	public boolean isApprovedDepositCloseButtonPopUpBox() {
+	public boolean isApprovedDepositCloseButtonPopUpBoxPresent() {
 		this.switchFrameTo("ThirdPartyPage");
 		return driver.findElement(By.cssSelector(Constant.Cashier_SuccessDepositPop_boxCloseButton)).isDisplayed();
 
@@ -337,6 +337,7 @@ public class DepositPage extends BasePage {
 	public boolean isDeclinedDepositHeaderPopUpBoxPresent() {
 		this.switchFrameTo("ThirdPartyPage");
 		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.lightbox-header h2")));
 		return driver.findElement(By.cssSelector(Constant.Cashier_DeclinedDepositPop_upBox)).isDisplayed();
 	}
@@ -355,7 +356,14 @@ public class DepositPage extends BasePage {
 		this.switchFrameTo("ThirdPartyPage");
 		return driver.findElement(By.cssSelector(Constant.Cashier_DeclineDepositCloseIcon)).isDisplayed();
 	}
-
+  
+	public String getNewBillingAddresss(){
+	String Text1=driver.findElement(By.cssSelector(Constant.Cashier_NewBillinaddresText)).getText();
+	System.out.println(Text1);
+	return Text1;
+	}
+	
+	
 	public void sendCashierChangeBillingAddressCountryInput(String country) {
 
 	}
@@ -365,11 +373,15 @@ public class DepositPage extends BasePage {
 	}
 
 	public void sendCashierChangeBillingAddressPostCodeInput(String postcode) {
+		this.switchFrameTo("ThirdPartyPage");
+		driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressPostCodeInputField)).sendKeys(postcode);
 
 	}
 
 	public void sendCashierChangeBillingAddressNumberInput(String AddressNum) {
-
+		this.switchFrameTo("ThirdPartyPage");
+	 driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressHouseNumber)).sendKeys(AddressNum);
+	 
 	}
 
 	public void clickCashierDepositButton() {
@@ -381,16 +393,21 @@ public class DepositPage extends BasePage {
 
 	public void clickSuccessCloseApprovedButton() {
 		this.switchFrameTo("ThirdPartyPage");
-		WebDriverWait wait = new WebDriverWait(driver, 80);
+		WebDriverWait wait = new WebDriverWait(driver,120);
+		System.out.println(1);
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.modal_close.btn.on_confirm")));
+		System.out.println(2);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.modal_close")));
-		// WebElement chromeclick=
+		System.out.println(3);
+		//wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.modal_close.btn.on_confirm")));
+		 //WebElement chromeclick=
 		// driver.findElement(By.cssSelector(Constant.Cashier_SuccessDepositPop_boxCloseButton));
-		WebElement chromeclick = driver.findElement(By.cssSelector("button.modal_close"));
+		WebElement chromeclick = driver.findElement(By.cssSelector("button.modal_close.btn.on_confirm"));
+		System.out.println(4);
 		chromeclick.click();
 
 	}
-
+// Click on Declined close Icon on the Decline pop-up
 	public void clickDeclinedCloseIcon() {
 		this.switchFrameTo("ThirdPartyPage");
 		WebDriverWait wait = new WebDriverWait(driver,80);
@@ -400,4 +417,12 @@ public class DepositPage extends BasePage {
 		driver.findElement(By.cssSelector(Constant.Cashier_DeclineDepositCloseIcon)).click();
 
 	}
+	 public void clickRegisterNewCreditCard(){
+		 this.switchFrameTo("ThirdPartyPage");
+		 driver.findElement(By.cssSelector(Constant.Cashier_RegisterNewCardLogo)).click();
+	 }
+     public void clickCashierChangeBillAddresCheckBox(){
+    	 this.switchFrameTo("ThirdPartyPage");
+    	 driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddresCheckbox)).click();
+     }
 }
