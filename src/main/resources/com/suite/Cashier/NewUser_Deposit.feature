@@ -1,7 +1,7 @@
-#Feature: As a new user i should be able to register  valid my card in other to make deposit.
-#
-#
-#
+Feature: As a new user i should be able to register  valid my card in other to make deposit.
+
+
+
 #@RegisterNewCard
 #Scenario: Register an incomplete  credit card number will displayed error message 
 #Given I navigate to the homepage on "<browser>"
@@ -121,7 +121,7 @@
 #  And  I click a SafeChargeDepositbutton
 # And I click on decline close icon 
 # Then I should see no decline pop-up box
-#
+#@ignore
 # @RegisterNewCard   
 #Scenario: Deposit with a new Register card
 #Given I navigate to the homepage on "<browser>"
@@ -131,13 +131,13 @@
 #  And I entry Expiry card month as "06"
 #  And I enter Expiry card year as "2020"
 #  And I enter CVV as "123"
-#  And I enter Amount To Deposit as "10"
+#  And I enter Amount To Deposit as "10.12"
 #  And  I click a SafeChargeDepositbutton
 # Then  I should see Deposit Success Cashier Pop-up box displayed
 # And I should see Your transaction was approved Text displayed
 # And I should see CloseButton within the Success Cashier Pop-up box displayed
 # 
-# 
-# 
-# 
-#  
+ 
+ 
+ 
+  

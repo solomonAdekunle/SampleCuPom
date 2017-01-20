@@ -154,20 +154,35 @@ Feature: Deposit
 #  
 #  
   
+#  
+#  @DepositAppoved
+# Scenario: Checking if  user can change his or her billing address
+# Given I navigate to the homepage on "<browser>"
+# When I have logged in username as "safecharge1" and password "Bola123"
+#  And I click a Depositbutton
+#  And I click on Change Billing Address Check Box
+#  And I enter Post code as "Cr0 6jx"
+#  And I enter House address as "6 Goodhew Road"
+#  And I click on Change Billing Address Check Box
+#  And I click on close Icon of the Cashier
+#  And I click a Depositbutton
+#  And I click on Change Billing Address Check Box
+#  Then I should  see new Post code as "Cr0 6jx" displayed
+#  And I should see  House address as "6 Goodhew Road"
+#  
   
-  @DepositAppoved
- Scenario: Checking if  user can change his or aher billing address
- Given I navigate to the homepage on "<browser>"
- When I have logged in username as "safecharge1" and password "Bola123"
-  And I click a Depositbutton
-  And I click on Change Billing Address Check Box
-  And I enter Post code as "Cr0 6jx"
-  And I enter House address as "6 Goodhew Road"
-  And I click on Change Billing Address Check Box
-  And I click on close Icon of the Cashier
-  And I click a Depositbutton
-  And I click on Change Billing Address Check Box
-  Then I should  see new Post code as "Cr0 6jx" displayed
-  And I should see  House address as "6 Goodhew Road"
-  
-  
+#   @DepositAppoved
+# Scenario: Checking if Decline Recovery lightbox is displayed when user deposit unsucessful
+#Given I navigate to the homepage on "<browser>"
+#When I have logged in username as "safecharge2" and password "Bola123"
+# And  I click a Depositbutton
+# And I enter CardVisa Number as "5333 3043 4466 4217"
+#  And I entry Expiry card month as "06"
+#  And I enter Expiry card year as "2020"
+#  And I enter CVV as "123"
+#  And I enter Amount To Deposit as "10"
+#  And I click a SafeChargeDepositbutton
+#  Then I should see Decline Pop-up box displayed
+#  And I should see Your Transaction decline text displayed
+#  And I should see Contact Support Number displayed 
+#  And I should see a close icon displayed

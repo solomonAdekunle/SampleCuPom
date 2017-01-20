@@ -66,6 +66,10 @@ public class StepDefinition extends BaseTest {
 		registerPage.get(CONFIG.getProperty("siteName"));
 
 	}
+	@Given("^I navigate to the Registrationpage on \"([^\"]*)\"$")
+	public void i_navigate_to_the_Registrationpage_on(String browser) {
+		registerPage.get(CONFIG.getProperty("siteName"));
+	}
 
 	@Given("^I navigate to the ForgottenDetails page on \"([^\"]*)\"$")
 	public void i_navigate_to_the_ForgottenDetails_page_on(String browser) {
@@ -381,7 +385,49 @@ public class StepDefinition extends BaseTest {
 	public void i_click_on_close_Icon_of_the_Cashier() {
 
 	}
+	
+	// Click on Deposit Limit link on the Registration Page
+	@When("^I click on deposit limit click here link$")
+	public void i_click_on_deposit_limit_click_here_link()  {
+		registerPage.clickDepositLimit();
+	}
+     // Amount of depos
+	@When("^I enter Choose Type as \"([^\"]*)\"$")
+	public void i_enter_Choose_Type_as(String Type)  {
+		registerPage.sendChooseType(Type);
+	    
+	}
+    // 
+	@When("^I enter Choose limit as \"([^\"]*)\"$")
+	public void i_enter_Choose_limit_as(String Limit) throws Throwable {
+	    registerPage.sendChooseLimitWeekly(Limit);
+	}
+		 
+	
+	@When("^I enter Other Amount as \"([^\"]*)\"$")
+	public void i_enter_Other_Amount_as(String Other) {
+		registerPage.sendChooseLimitOther(Other);
+	    
+	}
+		
+	@When("^I click on deposit limit close link$")
+	public void i_click_on_deposit_limit_close_link()  {
+	    
+	}
 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	/* This Are only for @Then Methods */
@@ -440,8 +486,7 @@ public class StepDefinition extends BaseTest {
 	 */
 	@Then("^I should navigate \"([^\"]*)\" to welcome page\\.$")
 	public void i_should_navigate_to_welcome_page(String expectedResult) {
-		Assert.assertTrue(this.registerPage.getWelcomePage(expectedResult));
-		String result = null;
+			Assert.assertTrue(this.registerPage.getWelcomePage(expectedResult));
 
 	}
 
@@ -724,5 +769,56 @@ public class StepDefinition extends BaseTest {
 		depositPage.getNewBillingAddresss();
 
 	}
+	// Verifying if Deposit Limit link is displayed
+	@Then("^I should see Deposit Limit Link$")
+	public void i_should_see_Deposit_Limit_Link()  {
+		Assert.assertTrue(registerPage.isDepositLimitLinkPresent());
+	    
+	}
+	// Verifying if Choose Type Drop down is Displayed on Registration Page
+	@Then("^I should see Choose Type dropdown box$")
+	public void i_should_see_Choose_Type_dropdown_box() {
+		Assert.assertTrue(registerPage.isDepositLimitChooseTypePresent());
+	    
+	}
+	// Verifying That Choose Limit Drop down Box is displayed
+	@Then("^I should  see Choose Limit  dropdown box$")
+	public void i_should_see_Choose_Limit_dropdown_box()  {
+		Assert.assertTrue(registerPage.isDepositLimitChooseLimitPresent());
+	}
+	
+	@Then("^I should see Choose Type as \"([^\"]*)\"$")
+	public void i_should_see_Choose_Type_as(String Value)  {
+		System.out.println(Value);
+		Assert.assertTrue(registerPage.isDepositLimitDailyPresent(Value));
+		Assert.assertTrue(registerPage.isDepositLimitMonthlyPresent(Value));
+		Assert.assertTrue(registerPage.isDepositLimitWeeklyPresent(Value));
+	}
+	// 
+	@Then("^I should  see Choose Limit  as \"([^\"]*)\"$")
+	public void i_should_see_Choose_Limit_as(String Limit) {
+		System.out.println(Limit);
+		Assert.assertTrue(registerPage.isDepositLimitThousandPoundsPresent(Limit));
+		Assert.assertTrue(registerPage.isDepositLimitTenThousandPoundsPresent(Limit));
+		Assert.assertTrue(registerPage.isDepositLimitFiftyThousandPoundsPresent(Limit));
+		
+	}
+	
+	@Then("^I should see Othe Amount Input box$")
+	public void i_should_see_Othe_Amount_Input_box()  {
+	    
+	}
+	@Then("^I should see Other Amount  as \"([^\"]*)\"$")
+	public void i_should_see_Other_Amount_as(String arg1)  {
+	   
+	}
+	@Then("^I should  see no Choose Limit  as \"([^\"]*)\"$")
+	public void i_should_see_no_Choose_Limit_as(String arg1)  {
+	    
+	}
 
+	@Then("^I should see no  Other Amount  as \"([^\"]*)\"$")
+	public void i_should_see_no_Other_Amount_as(String arg1)  {
+	    
+	}
 }

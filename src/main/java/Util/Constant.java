@@ -31,6 +31,21 @@ public class Constant  {
 	public static String Reg_privacyPolicy="div#terms-description a[data-ajax-url='/get-page/3']";
 	public static String Reg_Compilaance_Message="div.registration-form-legal-footer p";
 	public static String Reg_Submit="button#registration_submit";
+	public static String  Reg_DepositLimitLink="a.off";
+	public static String Reg_DepositLimit_ChooseType="div.form-item-deposit-limits select#edit-deposit-limits";
+	public static String Reg_DepositLimit_ChooseLimit="div.form-item-deposit-amount select#edit-deposit-amount";
+	public static String Reg_DepositLimit_ChooseLimitOther="input#edit-input-amount";
+	public static String Reg_DepositLimit_ChooseTypeNolimit="div.form-item-deposit-limits option[value='0']";
+	public static String Reg_DepositLimit_ChooseTypeDaily="div.form-item-deposit-limits option[value='Daily']";
+	public static String Reg_DepositLimit_ChooseTypeWeekLy="div.form-item-deposit-limits option[value='Weekly']";
+	public static String Reg_DepositLimit_ChooseTypeMonthly="div.form-item-deposit-limits option[value='Monthly']";
+	public static String Reg_DepositLimitValueBox="//select[@id='edit-deposit-amount']";
+	public static String Reg_DepositLimit_ChooseLimitValue1="select#edit-deposit-amount option[value='1000']";
+	public static String Reg_DepositLimit_ChooseLimitValue2="select#edit-deposit-amount option[value='10000']";
+	public static String Reg_DepositLimit_ChooseLimitValue3="select#edit-deposit-amount option[value='50000']";
+	public static String Reg_DepositLimit_ChooseLimitValue4="select#edit-deposit-amount option[value='Other']";
+	public static String Reg_DepositLimit_close="a.on";
+	
 	// locator for ForgottenDetails link
 	public  static String HomePage_ForgottenDetailsLink="div.region-header a#forgotten-details-link";
 	public static String ForgottenDetails_UserName="input#forgotten_username";
