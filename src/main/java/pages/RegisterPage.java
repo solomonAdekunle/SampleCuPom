@@ -207,7 +207,11 @@ public class RegisterPage extends BasePage {
 	public boolean isDepositLimitChooseLimitPresent() {
 		return driver.findElement(By.cssSelector(Constant.Reg_DepositLimit_ChooseLimit)).isDisplayed();
 	}
-
+     
+	
+	 public boolean isDepositLimitOtherInputBoxPresent(){
+		return  driver.findElement(By.cssSelector(Constant.Reg_DepositLimit_ChooseLimitOther)).isDisplayed();
+	 }
 	public boolean isDepositLimitDailyPresent(String Value) {
 		return driver.findElement(By.cssSelector(Constant.Reg_DepositLimit_ChooseTypeDaily)).isDisplayed();
 

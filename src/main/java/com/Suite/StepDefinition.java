@@ -806,10 +806,12 @@ public class StepDefinition extends BaseTest {
 	
 	@Then("^I should see Othe Amount Input box$")
 	public void i_should_see_Othe_Amount_Input_box()  {
+		Assert.assertTrue(registerPage.isDepositLimitOtherInputBoxPresent());
 	    
 	}
 	@Then("^I should see Other Amount  as \"([^\"]*)\"$")
-	public void i_should_see_Other_Amount_as(String arg1)  {
+	public void i_should_see_Other_Amount_as(String Value)  {
+	Assert.assertTrue(registerPage.isDepositLimitOtherValuePresent(Value));
 	   
 	}
 	@Then("^I should  see no Choose Limit  as \"([^\"]*)\"$")

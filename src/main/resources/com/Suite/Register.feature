@@ -53,37 +53,29 @@ Feature: Registration and Deposit limit
 #   And I should  see Choose Limit  as "£1000"
    
    
-      @Register
-  Scenario Outline: setting a Weekly   deposit limit  on Registration page
+#      @Register
+#  Scenario Outline: setting a Weekly   deposit limit  on Registration page
+#   Given I navigate to the Registrationpage on "<browser>"
+#   When I click on deposit limit click here link
+#   And I enter Choose Type as "<ChooseType>"
+#   And I enter Choose limit as "<WeeklyLimit>"
+#   Then I should see Choose Type as "<ExpectResultChooseType>"
+#   And I should  see Choose Limit  as "<ExpectResultChooseLimit>"
+#     
+#   Examples:
+#    		|ChooseType | WeeklyLimit| ExpectResultChooseType	|ExpectResultChooseLimit|
+#    		|Weekly		|10000		 |Weekly					|10000					|
+#    		| Daily		| 1000		 | Daily					|1000					|
+#
+#   
+    @Register
+  Scenario: setting a Monthly deposit limit  on Registration page
    Given I navigate to the Registrationpage on "<browser>"
    When I click on deposit limit click here link
-   And I enter Choose Type as "<ChooseType>"
-   And I enter Choose limit as "<WeeklyLimit>"
-   Then I should see Choose Type as "<ExpectResultChooseType>"
-   And I should  see Choose Limit  as "<ExpectResultChooseLimit>"
-     
-   Examples:
-    		|ChooseType | WeeklyLimit| ExpectResultChooseType	|ExpectResultChooseLimit|
-    		|Weekly		|1000		 |Weekly					|1000					|
-    		
-#     @Register
-#  Scenario: setting a Monthly deposit limit  on Registration page
-#   Given I navigate to the Registrationpage on "<browser>"
-#   When I click on deposit limit click here link
-#   And I enter Choose Type as "Monthly"
-#   And I enter Choose limit as "£50,000"
-#   Then I should see Choose Type as "Monthly"
-#   And I should  see Choose Limit  as "£50,000"
-   
-   
-#    @Register
-#  Scenario: setting a Monthly deposit limit  on Registration page
-#   Given I navigate to the Registrationpage on "<browser>"
-#   When I click on deposit limit click here link
-#   And  I enter Choose Type as "Monthly"
-#   And I click on RegSubmitButton
-#   Then I should see Choose Type as "Monthly"
-#   And I should  see Choose Limit  as "£50,000"
+   And  I enter Choose Type as "Monthly"
+   And I click on RegSubmitButton
+  Then I should see Choose Type as "Monthly"
+   #And I should  see Choose Limit  as "£50,000"
    
 #      @Register
 #  Scenario: setting a Other deposit limit  on Registration page
@@ -94,7 +86,7 @@ Feature: Registration and Deposit limit
 #   Then I should see Choose Type as "Monthly"
 #   And I should  see Choose Limit  as "Other"
 #   And I should see Othe Amount Input box
- 
+# 
 #      @Register
 #  Scenario: setting a Other deposit limit  on Registration page
 #   Given I navigate to the Registrationpage on "<browser>"
@@ -105,7 +97,7 @@ Feature: Registration and Deposit limit
 #   Then I should see Choose Type as "Monthly"
 #   And I should  see Choose Limit  as "Other"
 #   And I should see Other Amount  as "£10,000"
-#   
+   
 #    @Register
 #  Scenario: Closing Deposit limit  on Registration page
 #   Given I navigate to the Registrationpage on "<browser>"
