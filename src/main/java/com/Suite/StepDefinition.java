@@ -13,16 +13,21 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import Connector.WebConnector;
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pages.BasePage;
+import pages.ForgottenDetails;
 import pages.HomePage;
 import pages.RegisterPage;
 
 public class StepDefinition extends BaseTest {
 
+	private BasePage basePage;
 	private HomePage homePage;
 	private RegisterPage registerPage;
+	private ForgottenDetails forgottenDetailsPage;
 
 	public StepDefinition() {
 
@@ -31,7 +36,15 @@ public class StepDefinition extends BaseTest {
 		// all pages
 		homePage = new HomePage(this.driver);
 		registerPage = new RegisterPage(this.driver);
+		basePage = new BasePage(this.driver);
+		 forgottenDetailsPage=new ForgottenDetails(this.driver);
+				 
 	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/* This below are Only For @Given Methods */
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 	 * Navigating to the home page
@@ -42,11 +55,23 @@ public class StepDefinition extends BaseTest {
 	public void i_navigate_to_on_Mozilla() {
 		homePage.get(CONFIG.getProperty("siteName"));
 	}
+
 	@Given("^I navigate to the Registrationpage on Mozilla$")
-	public void i_navigate_to_the_Registrationpage_on_Mozilla() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_navigate_to_the_Registrationpage_on_Mozilla() {
+		registerPage.get(CONFIG.getProperty("siteName"));
+
 	}
+	@Given("^I navigate to the ForgottenDetails page on \"([^\"]*)\"$")
+	public void i_navigate_to_the_ForgottenDetails_page_on(String arg1)  {
+	   forgottenDetailsPage.get(CONFIG.getProperty("siteName"));
+	}
+
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	/* This Below are only for @When Methods */
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	/**
 	 * Entering the username into the Loging username input box
 	 * 
@@ -56,7 +81,7 @@ public class StepDefinition extends BaseTest {
 	 */
 	@When("^I enter Username as \"([^\"]*)\"$")
 	public void i_enter_Username_as(String username) {
-		homePage.sendUsername(username);
+		basePage.sendUsername(username);
 	}
 
 	/**
@@ -68,7 +93,7 @@ public class StepDefinition extends BaseTest {
 	 */
 	@When("^I enter Password as \"([^\"]*)\"$")
 	public void i_enter_Password_as(String password) {
-		homePage.sendPassword(password);
+		basePage.sendPassword(password);
 
 	}
 
@@ -77,7 +102,7 @@ public class StepDefinition extends BaseTest {
 	 */
 	@When("^I click on SignIn button$")
 	public void i_click_on_SignIn_button() {
-		homePage.clickSigin();
+		basePage.clickSigin();
 	}
 
 	/*
@@ -85,118 +110,181 @@ public class StepDefinition extends BaseTest {
 	 **/
 	@When("^I click on JoinNow Button$")
 	public void i_click_on_JoinNow_Button() {
-		this.homePage.clickJoinNow();
+		basePage.clickJoinNow();
 	}
-	
+
 	@When("^I click on RegisterButton$")
-	public void i_click_on_RegisterButton() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_click_on_RegisterButton() {
+
 	}
+
+	@When("^I enter regUsername as \"([^\"]*)\"$")
+	public void i_enter_regUsername_as(String UserName) {
+		registerPage.sendRegUsername(UserName);
+
+	}
+
 	@When("^I enter RegPassword as \"([^\"]*)\"$")
-	public void i_enter_RegPassword_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegPassword_as(String password) {
+		registerPage.sendRegPassword(password);
+
 	}
+
 	@When("^I enter RegConfirmPassword as \"([^\"]*)\"$")
-	public void i_enter_RegConfirmPassword_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegConfirmPassword_as(String ConfPass) {
+		registerPage.sendConfirmpassword(ConfPass);
 	}
+
 	@When("^I enter a RegScreenName as \"([^\"]*)\"$")
-	public void i_enter_a_RegScreenName_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_a_RegScreenName_as(String ScreenName) {
+		registerPage.sendOnscreenName(ScreenName);
+
 	}
+
 	@When("^I enter RegEmail as \"([^\"]*)\"$")
-	public void i_enter_RegEmail_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegEmail_as(String Email) {
+		registerPage.sendEmail(Email);
+
 	}
 
 	@When("^I enter RegTitle as \"([^\"]*)\"$")
-	public void i_enter_RegTitle_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegTitle_as(String title) {
+		registerPage.sendTitle(title);
 	}
 
 	@When("^I enter RegFirstName as \"([^\"]*)\"$")
-	public void i_enter_RegFirstName_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegFirstName_as(String firstName) {
+		registerPage.sendFirstName(firstName);
+
 	}
 
 	@When("^I enter RegSurName as \"([^\"]*)\"$")
-	public void i_enter_RegSurName_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegSurName_as(String surname) {
+		registerPage.sendSurName(surname);
+
 	}
 
 	@When("^I enter RegDOBDay as \"([^\"]*)\"$")
-	public void i_enter_RegDOBDay_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegDOBDay_as(String Day) {
+		registerPage.sendDOBday(Day);
+
 	}
 
 	@When("^I enter RegDOBMonth as \"([^\"]*)\"$")
-	public void i_enter_RegDOBMonth_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegDOBMonth_as(String Month) {
+		registerPage.sendDOBmonth(Month);
 	}
 
 	@When("^I enter RegDOBYear as \"([^\"]*)\"$")
-	public void i_enter_RegDOBYear_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegDOBYear_as(String Year) {
+		registerPage.sendDOByear(Year);
+
 	}
 
 	@When("^I click on RegClickHere$")
-	public void i_click_on_RegClickHere() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_click_on_RegClickHere() {
+		registerPage.clickEnterManually();
+
 	}
 
 	@When("^I enter RegAddress as \"([^\"]*)\"$")
-	public void i_enter_RegAddress_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegAddress_as(String Address) {
+		registerPage.sendAddress(Address);
+
 	}
 
 	@When("^I enter RegTown as \"([^\"]*)\"$")
-	public void i_enter_RegTown_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegTown_as(String Town) {
+		registerPage.sendCity(Town);
+
 	}
 
 	@When("^I enter RegCounty as \"([^\"]*)\"$")
-	public void i_enter_RegCounty_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegCounty_as(String county) {
+		registerPage.sendCounty(county);
+
 	}
 
 	@When("^I enter RegPostCode as \"([^\"]*)\"$")
-	public void i_enter_RegPostCode_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegPostCode_as(String Postcode) {
+		registerPage.sendPostCode(Postcode);
 	}
 
 	@When("^I enter RegContactNum as \"([^\"]*)\"$")
-	public void i_enter_RegContactNum_as(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_enter_RegContactNum_as(String contactNumber) {
+		registerPage.sendContactNumber(contactNumber);
+
 	}
 
 	@When("^I click on RegT\\$CCheckBox$")
-	public void i_click_on_RegT$CCheckBox() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_click_on_RegT$CCheckBox() {
+		registerPage.checkOver18();
+
 	}
 
 	@When("^I click on RegSubmitButton$")
-	public void i_click_on_RegSubmitButton() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_click_on_RegSubmitButton() {
+		registerPage.clickRegSubmit();
+
 	}
+	@When("^I click on forgottenDetailsLink$")
+	public void i_click_on_forgottenDetailsLink()  {
+		basePage.clickForgottenDetailsLink();
+	    
+	    
+	}
+	@When("^I enter Forgotten Deatils username as \"([^\"]*)\"$")
+	public void i_enter_Forgotten_Deatils_username_as(String username)  {
+		forgottenDetailsPage.sendForgottenUsername(username);
+	    
+	}
+	@When("^I enter  Forgotten Deatils email as \"([^\"]*)\"$")
+	public void i_enter_Forgotten_Deatils_email_as(String Email)  {
+		forgottenDetailsPage.sendForgottenEmail(Email);
+	    
+	}
+	@When("^I enter  Forgotten Deatils  DOBday as \"([^\"]*)\"$")
+	public void i_enter_Forgotten_Deatils_DOBday_as(String day) {
+		forgottenDetailsPage.sendForgottenDOBDay(day);
+	}
+
+	@When("^I enter  Forgotten Deatils DOBmonth as \"([^\"]*)\"$")
+	public void i_enter_Forgotten_Deatils_DOBmonth_as(String month)  {
+		forgottenDetailsPage.sendForgottenMonth(month);
+	}
+
+	@When("^I enter  Forgotten Deatils DOBYear as \"([^\"]*)\"$")
+	public void i_enter_Forgotten_Deatils_DOBYear_as(String year)  {
+		forgottenDetailsPage.sendForgottenYear(year);
+	    
+	}
+	@When("^I click on  Forgotten Deatils Submit Button$")
+	public void i_click_on_Forgotten_Deatils_Submit_Button()  {
+		forgottenDetailsPage.clickForgottenSubmitButton();
+	   
+	}
+
+	@When("^I enter Reset Password as \"([^\"]*)\"$")
+	public void i_enter_Reset_Password_as(String newpassword)  {
+		forgottenDetailsPage.sendResetNewPassword(newpassword);
+	}
+
+	@When("^I enter ResetConFirmPassword as \"([^\"]*)\"$")
+	public void i_enter_ResetConFirmPassword_as(String confirmPassword)  {
+		forgottenDetailsPage.sendResetConfPassword(confirmPassword);
+	   
+	}
+
+	@When("^I click on ResetSubmitt Button$")
+	public void i_click_on_ResetSubmitt_Button()  {
+		forgottenDetailsPage.clickResetSubmitButton();
+	}
+
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+	/* This Are only for @Then Methods */
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 	 * Verifying if username displayed is the same as the username entered to
@@ -206,7 +294,7 @@ public class StepDefinition extends BaseTest {
 	 * account loggin page
 	 **/
 	@Then("^I should see username as \"([^\"]*)\" present$")
-	public void i_should_see_username_as_present(String username) throws Throwable {
+	public void i_should_see_username_as_present(String username) {
 		Assert.assertEquals(username, homePage.getUserName());
 	}
 
@@ -223,7 +311,7 @@ public class StepDefinition extends BaseTest {
 	 **/
 	@Then("^I should see Depositbutton present$")
 	public void i_should_see_Depositbutton_present() {
-		Assert.assertTrue(homePage.isDepositButtonPresent());
+		Assert.assertTrue(basePage.isDepositButtonPresent());
 	}
 
 	/*
@@ -240,14 +328,29 @@ public class StepDefinition extends BaseTest {
 	 **/
 	@Then("^I should navigate  to Registration page$")
 	public void i_should_navigate_to_Registration_page() {
-		Assert.assertEquals("is the Url address the same", this.homePage.getCurrentUrl(), driver.getCurrentUrl());
+		Assert.assertEquals("is the Url address the same", this.basePage.getCurrentUrl(), driver.getCurrentUrl());
 
 	}
+
+	/*
+	 * Verifying if user able to register successfully
+	 * 
+	 * @param {string} expected Result- this id the Welcome title page
+	 */
 	@Then("^I should navigate \"([^\"]*)\" to welcome page\\.$")
-	public void i_should_navigate_to_welcome_page(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_should_navigate_to_welcome_page(String expectedResult) {
+		Assert.assertTrue(this.registerPage.getWelcomePage(expectedResult));
+		String result=null;
+
 	}
-
-
+	@Then("^I should navigate  to Forgotten Details page$")
+	public void i_should_navigate_to_Forgotten_Details_page() {
+	Assert.assertEquals("is the Url address the same", this.basePage.getCurrentUrl(), driver.getCurrentUrl());
+	  
+	}
+	@Then("^I should reset my password$")
+	public void i_should_reset_my_password()  {
+	Assert.assertTrue(forgottenDetailsPage.isTitlePresent());
+	}
+	
 }
