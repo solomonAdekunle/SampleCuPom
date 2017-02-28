@@ -9,16 +9,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-
-import com.Suite.BaseTest;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Util.Constant;
 
-public class BasePage extends BaseTest  {
+public class BasePage  {
 
 	
 	
-	protected static  WebDriver driver;
+	protected  WebDriver driver;
 	
 	
     // Initilising the WebDriver
@@ -35,11 +37,13 @@ public class BasePage extends BaseTest  {
     // entering the Password into the Password login field.
 	public void sendPassword(String password) {
 		driver.findElement(By.xpath("//*[@id='password']")).sendKeys(password);
+		 
+		 
 	}
      
 	public void clickSigin() {
 		driver.findElement(By.cssSelector("div.playtech-login-block button.sign-in")).click();
-
+		
 	}
 
 	public void clickJoinNow() {
@@ -53,6 +57,8 @@ public class BasePage extends BaseTest  {
 	 }
 
 	public boolean isDepositButtonPresent() {
+		WebDriverWait wait=  new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.HP_DeopsitButton)));
 		return driver.findElement(By.xpath("//*[@id='account_box']/a")).isDisplayed();
 	}
 
@@ -65,17 +71,78 @@ public class BasePage extends BaseTest  {
 		driver.findElement(By.cssSelector(Constant.HomePage_ForgottenDetailsLink)).click();
 		
 	}
-	
+	 public boolean isLoginErrorMessPoxBoxPresent(){
+		 WebDriverWait wait=  new WebDriverWait(driver,30);
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.Login_ErrorPopBox)));
+		return driver.findElement(By.cssSelector(Constant.Login_ErrorPopBox)).isDisplayed();
+		 
+	 }
+	// Click on the deposit button on the home page
+	public void clickHpDepositButton(){
+		 WebDriverWait wait=  new WebDriverWait(driver,30);
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.HP_DeopsitButton)));
+		driver.findElement(By.cssSelector(Constant.HP_DeopsitButton)).click();
+	}
+	 public void moveAccountMenu(){
+		 WebElement AccounMenu= driver.findElement(By.xpath(Constant.AccountMenuDropdown));
+		 Actions move=new Actions(driver);
+		 move.moveToElement(AccounMenu).build().perform();
+		 //
+	 }
+	 public void clickChangePasswordLink(){
+		 driver.findElement(By.xpath(Constant.AccountMenu_ChangePassword)).click();
+	 }
+	 public void clickWithdrawLink(){
+		 WebDriverWait wait=  new WebDriverWait(driver,15);
+		 wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.AccountMenu_Withdrawl)));
+		driver.findElement(By.cssSelector(Constant.AccountMenu_Withdrawl)).click();
+		 
+	 }
+	 
+	 public void clickChatIcon(){
+		 
+	 }
+	 
+	 
+	 
+	 public void clickHelpIcon(){
+		 
+	 }
+	 
+	 public void clickCasinoTab(){
+		 driver.findElement(By.cssSelector(Constant.VerticalTab_Casino)).click();
+		 
+	 }
+	 
+	  public void clickVegasTab(){
+		  WebDriverWait wait=  new WebDriverWait(driver,10);
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.VerticalTab_Vegas)));
+		  driver.findElement(By.cssSelector(Constant.VerticalTab_Vegas)).click();
+		  
+	  }
+	  public void clickLiveTab(){
+		  driver.findElement(By.cssSelector(Constant.VerticalTab_Live)).click();
+		  
+	  }
+	  public void clickPromotionsTab(){
+		  driver.findElement(By.cssSelector(Constant.VerticalTab_Promotions)).click();
+		  
+	  }
+	  
+	  
+	  
 	// Creating a dologin function
-	public void  doLogin(String Username, String password){
-	 driver.findElement(By.xpath("//*[@id='username']")).sendKeys(Username);
+	public void  doLogin(String baseURL,String username, String password){
+		driver.get(baseURL);
+	 driver.findElement(By.xpath("//*[@id='username']")).sendKeys(username);
 		driver.findElement(By.xpath("//*[@id='password']")).sendKeys(password);
 		driver.findElement(By.cssSelector("div.playtech-login-block button.sign-in")).click();
+		WebDriverWait wait=  new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.HP_DeopsitButton)));
+		
 	}
 		
 	  
-	
-	
 	
 	
 	protected String generateStringWithAllobedSplChars(int length,String allowdSplChrs){
@@ -98,13 +165,5 @@ public class BasePage extends BaseTest  {
 		 }
 	
 	//store screenshot
-	public static void takeScreenshot(String fileName) {
-	File scrFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-    try {
-		FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir")+"\\screenshots\\"+fileName+".jpg"));
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-}
+	
 }

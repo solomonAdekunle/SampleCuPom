@@ -1,4 +1,4 @@
- package com.Suite;
+ package com.suite;
 
 
 	import org.junit.runner.RunWith;
@@ -11,8 +11,8 @@ import cucumber.api.java.it.Date;
 	
 
 @RunWith(Cucumber.class)
-@cucumber.api.CucumberOptions(features = {"src\\main\\resources\\com\\Suite\\"},
-tags = {})
+@cucumber.api.CucumberOptions(features = {"src\\main\\resources\\com\\suite\\"},
+tags = {"~@ignore"})
 //@Cucumber.Options(format={"html:output"}
 	
 	public class Runner {

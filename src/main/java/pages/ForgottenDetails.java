@@ -1,7 +1,9 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import Util.Constant;
 
@@ -38,12 +40,19 @@ public class ForgottenDetails extends BasePage {
 		driver.findElement(By.cssSelector(Constant.ForgottenDetails_DOBYEAR)).sendKeys(year);
 	}
 
-	public void clickForgottenSubmitButton() {
-		driver.findElement(By.cssSelector(Constant.ForgottenDetails_Submit)).click();
+	public void clickForgottenSubmitButton() throws InterruptedException {
+	    driver.findElement(By.cssSelector(Constant.ForgottenDetails_Submit)).click();
+		Thread.sleep(2000);
+		//WebElement ErrorText=driver.findElement(By.xpath("//div[@class='messages error']"));
+			//if(ErrorText.isDisplayed())	
+				//return;
+		
 	}
 
-	public void sendResetNewPassword(String newpassword) {
+	public void sendResetNewPassword(String newpassword ) {		
+		
 		driver.findElement(By.cssSelector(Constant.Reset_NewPassword)).sendKeys(newpassword);
+		
 	}
 
 	public void sendResetConfPassword(String confirmPassword) {
@@ -57,4 +66,7 @@ public class ForgottenDetails extends BasePage {
 	public boolean isTitlePresent() {
 		return driver.findElement(By.cssSelector(Constant.TitlePage)).isDisplayed();
 	}
+	 public boolean isErrorMessageTextPresent(){
+	return driver.findElement(By.cssSelector(Constant.ForgottenDetails_ErrorText)).isDisplayed();
+	 }
 }
