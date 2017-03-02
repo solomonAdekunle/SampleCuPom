@@ -388,8 +388,8 @@ public class StepDefinition extends BaseTest {
 
 	// Input the value amount to deposit in the Enter amount text box.
 	@When("^I enter Amount To Deposit as \"([^\"]*)\"$")
-	public void i_enter_Amount_To_Deposit_as(String Amount) {
-		depositPage.sendCashierEnterAmountInputField(Amount);
+	public void i_enter_Amount_To_Deposit_as(String amount) {
+		depositPage.sendCashierEnterAmountInputField(amount);
 	}
 
 	// click on deposit Button within the Safe Charge Cashier
@@ -442,6 +442,7 @@ public class StepDefinition extends BaseTest {
 	// Click on the Close Icon of th Cashier frame pop-up box
 	@When("^I click on close Icon of the Cashier$")
 	public void i_click_on_close_Icon_of_the_Cashier() {
+		depositPage.clickChashierCloseIcon();
 
 	}
 
@@ -674,6 +675,11 @@ public class StepDefinition extends BaseTest {
 	public void i_click_on_OK_button_on_Confirmation_success_Pending_Cancellation_Pop_up_Box() {
 		withdrawPage.clickOKConfirmationWithdrawPendingSuccessButton();
 	}
+	@When("^I check My account Balance$")
+	public void i_check_My_account_Balance() {
+	    depositPage.getCashierBalancePresent();
+	}
+
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -977,16 +983,27 @@ public class StepDefinition extends BaseTest {
 	public void i_should_see_CloseButton_within_the_Success_Cashier_Pop_up_box_displayed() {
 		Assert.assertTrue(depositPage.isApprovedDepositCloseButtonPopUpBoxPresent());
 	}
+	/*
+	 * @Then("^I should see my new Account Balance increase by (\\d+)\\.(\\d+)$"
+	 * ) public void i_should_see_my_new_Account_Balance_increase_by(int
+	 * AmountFigure,int arg2) { float NewBalance =
+	 * depositPage.getCurrentBalance() + AmountFigure;
+	 * System.out.print(AmountFigure); Assert.assertTrue(NewBalance -
+	 * depositPage.getCashierBalancePresent() == AmountFigure); }
+	 */
 
 	// Checking if previous balance plus new Bet value will equal New Balance
 	// displayed
+	
 	@Then("^I should see my new Account Balance increase by \"([^\"]*)\"$")
-	public void i_should_see_my_new_Account_Balance_increase_by(String Amount) {
-		int Amountfigure = Integer.parseInt(Amount);
-		float NewBalance = depositPage.getCurrentBalance() + Amountfigure;
-		System.out.print(Amountfigure);
-		Assert.assertTrue(NewBalance - depositPage.getCashierBalancePresent() == Amountfigure);
-
+	public void i_should_see_my_new_Account_Balance_increase_by(String amount) {
+		// String Amountfigure = amount.replace(",", "").replace("£", "");
+		double AmountDeposit = Double.parseDouble(amount);
+		double Prev=depositPage.getCashierBalancePresent()+AmountDeposit;
+		System.out.println(Prev);
+		System.out.println(depositPage.getCurrentBalance());
+		Assert.assertTrue(Prev-(depositPage.getCurrentBalance()) == AmountDeposit);
+		
 	}
 
 	// Deposit Limit pop-up box for new user first deposit
@@ -1145,12 +1162,15 @@ public class StepDefinition extends BaseTest {
 		Assert.assertTrue(changepasswordPage.isErrorTextPresent());
 	}
 
+	// Verify if Password successfully reset is displayed after Resetting
+	// password
 	@Then("^I should see Your Password Have successfully Rest$")
 	public void i_should_see_Your_Password_Have_successfully_Rest() throws InterruptedException {
 		changepasswordPage.isYourPasswordHasSuccessfullyChangeTextPresent();
 
 	}
 
+	// Verifying if
 	@Then("^I should see a game Launching in another window$")
 	public void i_should_see_a_game_Launching_in_another_window() {
 
@@ -1163,22 +1183,26 @@ public class StepDefinition extends BaseTest {
 
 	}
 
+	// Verify if Support us email link is within the Contact us page
 	@Then("^I should see Customer support care link$")
 	public void i_should_see_Customer_support_care_link() {
 		Assert.assertTrue(contactPage.isCustomerCareLinkPresent());
 
 	}
 
+	// Verify if Forgotten password link is within the contact-us content page
 	@Then("^I should see Forgotten Your Password link$")
 	public void i_should_see_Forgotten_Your_Password_link() {
 		Assert.assertTrue(contactPage.isForgotYourPasswordLinkPresent());
 	}
 
+	// Verify if Free Phone Contact numbre is displayed on the Phone
 	@Then("^I should see free Phone Contact Number$")
 	public void i_should_see_free_Phone_Contact_Number() {
 
 	}
 
+	// Verify if Uk Contact number is displayed on Contact-us Page
 	@Then("^I should see Uk Contact Number$")
 	public void i_should_see_Uk_Contact_Number() {
 		Assert.assertTrue(contactPage.isUKContactNumberPresent());
@@ -1534,10 +1558,9 @@ public class StepDefinition extends BaseTest {
 		Assert.assertTrue(withdrawPage.isPendingWithdrawalCancellButtonPresent());
 
 	}
-   
+
 	@Then("^I should see Amount Withdrawal cancell Comfirmation box$")
 	public void i_should_see_Amount_Withdrawal_cancell_Comfirmation_box() {
-		
 
 	}
 
@@ -1554,7 +1577,7 @@ public class StepDefinition extends BaseTest {
 	// Verify if Withdrawl Pending Cancel button is not Displayed
 	@Then("^I should see no Pending withdrwal Cancel Button$")
 	public void i_should_see_no_Pending_withdrwal_Cancel_Button() {
-	Assert.assertTrue(!withdrawPage.isPendingWithdrawCancelButtonNotPresent());
+		Assert.assertTrue(!withdrawPage.isPendingWithdrawCancelButtonNotPresent());
 
 	}
 

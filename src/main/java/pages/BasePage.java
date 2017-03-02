@@ -80,7 +80,7 @@ public class BasePage  {
 	// Click on the deposit button on the home page
 	public void clickHpDepositButton(){
 		 WebDriverWait wait=  new WebDriverWait(driver,30);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.HP_DeopsitButton)));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div#authcache-block-account-FLEX_account_block a.deposit")));
 		driver.findElement(By.cssSelector(Constant.HP_DeopsitButton)).click();
 	}
 	 public void moveAccountMenu(){

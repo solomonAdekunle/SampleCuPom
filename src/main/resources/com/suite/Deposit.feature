@@ -5,7 +5,7 @@ Feature: Deposit
 
   
  
-  #@ignore
+  @ignore
  @Deposit
  Scenario Outline:Deposit
 Given I navigate to the homepage on "<browser>"
@@ -35,21 +35,22 @@ Given I navigate to the homepage on "<browser>"
  	|browser	| 
  	| Chrome	|
  
-# @ignore
+ @ignore
   @DepositAppoved
   Scenario: Checking if Success Cashier deposit pop-up will be displayed
 Given I navigate to the homepage on "<browser>"
-When I have logged in username as "SafeCharge13" and password "Bola123"
+When I have logged in username as "Safecharge7" and password "Bola123"
  And  I click a Depositbutton
+ And I check My account Balance
  And I enter CVV as "275"
  And I enter Amount To Deposit as "200.12"
  And  I click a SafeChargeDepositbutton
 Then I should see Deposit Success Cashier Pop-up box displayed
  And I should see Your transaction was approved Text displayed
  And I should see CloseButton within the Success Cashier Pop-up box displayed
- #And I should see my new Account Balance increase by "200.12"
- 
- # @ignore
+ And I should see my new Account Balance increase by "200.12"
+# 
+  @ignore
  @DepositAppoved
  Scenario: Closing the Success Cashier Pop-up box
 Given I navigate to the homepage on "<browser>"
@@ -64,7 +65,7 @@ When I have logged in username as "SafeCharge13" and password "Bola123"
   
   
   
-  #@ignore
+  @ignore
   @RegisterNewCard
  Scenario: Verifying if expiration date will displayed error message when not  date month selected.
 Given I navigate to the homepage on "<browser>"
@@ -77,7 +78,7 @@ When I have logged in username as "safecharge13" and password "Bola123"
  And  I click a SafeChargeDepositbutton
  Then I should see In Valid Expeiratin ErrorMessage displayed
  
-# @ignore
+@ignore
  @RegisterNewCard
  Scenario: Verifying if expiration date  will displayed error message when not  date year selected.
 Given I navigate to the homepage on "<browser>"
@@ -90,7 +91,7 @@ When I have logged in username as "safecharge7" and password "Bola123"
  And  I click a SafeChargeDepositbutton
  Then I should see In Valid Expeiratin ErrorMessage displayed
  
- #@ignore
+ @ignore
   @RegisterNewCard
 Scenario: Checking if CVV error message will be displayed when cvv text box is ommited or incompeleted
 Given I navigate to the homepage on "<browser>"
@@ -104,9 +105,9 @@ Given I navigate to the homepage on "<browser>"
  And  I click a SafeChargeDepositbutton
  Then I should see The field must be exactly 3 digits ErrorMessage Text displayed
  
- #@ignore
+ @ignore
 @RegisterNewCard
- Scenario: Checking if Enetr amout to deposit  will display error text if user enter amount less than 5
+ Scenario: Checking if Enter amount to deposit  will display error text if user enter amount less than 5
 Given I navigate to the homepage on "<browser>"
 When I have logged in username as "safecharge13" and password "Bola123"
  And  I click a Depositbutton
@@ -119,7 +120,7 @@ When I have logged in username as "safecharge13" and password "Bola123"
   And  I click a SafeChargeDepositbutton
   Then I should  Please Enter Valid ammount errorText displayed
 
- #@ignore 
+ @ignore 
   @RegisterNewCard   
 Scenario: Checking the Green thick Validation mark
 Given I navigate to the homepage on "<browser>"
@@ -137,25 +138,26 @@ And  I should see Green tick mark next to CardCVVtext box
 And  I should see Green tick mark next to CardCVVtext box
 And I should see a Green tick Mark next to EnterAmounttext box
  
- #@ignore
+ @ignore
    @RegisterNewCard   
 Scenario: Existing User should be able to register a new card
 Given I navigate to the homepage on "<browser>"
-When I have logged in username as "safecharge8" and password "Bola123"
+When I have logged in username as "safecharge7" and password "Bola123"
  And  I click a Depositbutton
  And I click on Other Payment Methods Card Logo
- And I enter CardVisa Number as "42650376 5786 6897"
+ And I enter CardVisa Number as "42650365 3784 6897"
  And I entry Expiry card month as "06"
- And I enter Expiry card year as "2019"
- And I enter CVV as "472"
+ And I enter Expiry card year as "2020"
+ And I enter CVV as "572"
  And I enter Amount To Deposit as "200.12"  
  And  I click a SafeChargeDepositbutton
  Then  I should see Deposit Success Cashier Pop-up box displayed
  And I should see Your transaction was approved Text displayed
  And I should see CloseButton within the Success Cashier Pop-up box displayed
+ And I should see my new Account Balance increase by "200.12"
 
   
- #@ignore
+ @ignore
   @DepositAppoved
  Scenario: Checking if  user can change his or her billing address
  Given I navigate to the homepage on "<browser>"
@@ -171,7 +173,7 @@ When I have logged in username as "safecharge8" and password "Bola123"
   Then I should  see new Post code as "Cr0 6jx" displayed
   And I should see  House address as "6 Goodhew Road"
   
-#@ignore
+@ignore
    @DepositAppoved
  Scenario: Checking if Decline Recovery lightbox is displayed when user deposit unsucessful
 Given I navigate to the homepage on "<browser>"

@@ -22,7 +22,8 @@ import pages.BasePage;
 public class DepositPage extends BasePage {
 
 	private String currentFrameId = "";
-	private float CurrentBalance;
+	private double CurrentBalance;
+	//private double ShowbalFiqure;
 
 	public DepositPage(WebDriver driver) {
 		super(driver);
@@ -48,12 +49,18 @@ public class DepositPage extends BasePage {
 
 	}
 
-	public float getCashierBalancePresent() {
+	public double getCashierBalancePresent() {
+		this.switchFrameTo("icashier");
 		String Showbal = driver.findElement(By.cssSelector(Constant.Cashier_BalanceFigure)).getText();
-		String ShowBalance = Showbal.replace(",", "").replace("£", "");
-		float ShowbalFiqure = Float.valueOf(ShowBalance);
-		return ShowbalFiqure;
-
+		String ShowBalance = Showbal.replace(",", "").substring(1);
+		//System.out.println(ShowBalance);
+		 //String NewCurr=Double.toString(ShowbalFiqure);
+		// System.out.println(NewCurr);
+		 double ShowbalFiqure = Double.parseDouble(ShowBalance);
+		 //System.out.println(ShowbalFiqure);
+			return ShowbalFiqure;
+		
+		
 	}
 
 	public boolean isCashierMyAccountTabPresent() {
@@ -83,19 +90,21 @@ public class DepositPage extends BasePage {
 
 	public boolean isCashierPaymentDetailsTextPresent() {
 		this.switchFrameTo("ThirdPartyPage");
+		System.out.println(driver.findElement(By.cssSelector(Constant.Cashier_MyPaymentMethodtext)).isDisplayed());
 		return driver.findElement(By.cssSelector(Constant.Cashier_MyPaymentMethodtext)).isDisplayed();
 
 	}
 
 	public boolean isCashierMyPaymentLogoPresent() {
 		this.switchFrameTo("ThirdPartyPage");
+		
 		return driver.findElement(By.cssSelector(Constant.Cashier_MyPaymentMthodLogo)).isDisplayed();
 
 	}
 
 	public boolean isCashierOtherPaymentMethodLogo() {
 		this.switchFrameTo("ThirdPartyPage");
-		return driver.findElement(By.cssSelector(Constant.Cashier_MyOtherPaymentMethodPayPal_logo)).isDisplayed();
+		return driver.findElement(By.cssSelector(Constant.Cashier_MyPaymentMthodLogo)).isDisplayed();
 
 	}
 
@@ -157,15 +166,17 @@ public class DepositPage extends BasePage {
 
 	}
 
-	public float getCurrentBalance() {
+	public double getCurrentBalance() {
 		this.switchFrameTo("icashier");
 		String bal = driver.findElement(By.cssSelector(Constant.Cashier_BalanceFigure)).getText();
-		System.out.println(bal);
-		String Balance = bal.replace(",", "").replace("£", "");
+		//System.out.println(bal);
+		String Balance = bal.replace(",", "").substring(1);
 		// System.out.println(bal);
 
 		// convert the current to in
-		CurrentBalance = Float.valueOf(Balance);
+		//String NewCurr=Double.toString(CurrentBalance);
+		CurrentBalance= Double.parseDouble(Balance);
+		//CurrentBalance = Float.valueOf(Balance);
 		System.out.println(CurrentBalance);
 		return CurrentBalance;
 
@@ -280,10 +291,10 @@ public class DepositPage extends BasePage {
 	 * @param {string} Amount- this is the Amount in value that user is willing
 	 * to deposit
 	 **/
-	public void sendCashierEnterAmountInputField(String Amount) {
+	public void sendCashierEnterAmountInputField(String amount) {
 		this.switchFrameTo("ThirdPartyPage");
 		driver.findElement(By.cssSelector(Constant.Cashier_EnterAmountInputField)).clear();
-		driver.findElement(By.cssSelector(Constant.Cashier_EnterAmountInputField)).sendKeys(Amount);
+		driver.findElement(By.cssSelector(Constant.Cashier_EnterAmountInputField)).sendKeys(amount);
 	}
 
 	public boolean isErrorCardInputTextPresent() {
@@ -374,12 +385,14 @@ public class DepositPage extends BasePage {
 
 	public void sendCashierChangeBillingAddressPostCodeInput(String postcode) {
 		this.switchFrameTo("ThirdPartyPage");
+		//driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressPostCodeInputField)).clear();
 		driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressPostCodeInputField)).sendKeys(postcode);
 
 	}
 
 	public void sendCashierChangeBillingAddressNumberInput(String AddressNum) {
 		this.switchFrameTo("ThirdPartyPage");
+	//driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressHouseNumber)).clear();
 	 driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressHouseNumber)).sendKeys(AddressNum);
 	 
 	}
@@ -423,6 +436,21 @@ public class DepositPage extends BasePage {
 	 }
      public void clickCashierChangeBillAddresCheckBox(){
     	 this.switchFrameTo("ThirdPartyPage");
+    	WebDriverWait wait = new WebDriverWait(driver,30);
+     	 wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("label[for='user_details'] span")));
     	 driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddresCheckbox)).click();
      }
+     public void clickChashierCloseIcon(){
+    	 this.switchFrameTo("cashier-iframe");
+    	 driver.switchTo().defaultContent();
+    	 driver.findElement(By.cssSelector(Constant.Cashier_closeIcon)).click();
+    	// driver.switchTo().defaultContent();
+    	 //WebDriverWait wait = new WebDriverWait(driver,30);
+    	 //wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div#authcache-block-account-FLEX_account_block a.deposit")));
+    	 
+    	 
+    	 
+     }
+
+	
 }

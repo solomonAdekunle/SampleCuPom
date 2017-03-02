@@ -13,7 +13,7 @@ When I have logged in username as "safecharge2" and password "Bola123"
  And I click on Withdrawal link 
  Then I should navigate to Withdrawl page.
    
-# @ignore
+ @ignore
   @Withdrawal      
  Scenario: WithDrawal
 Given I navigate to the homepage on "<browser>"
@@ -23,7 +23,7 @@ Given I navigate to the homepage on "<browser>"
   And I enter withdraw amount as "10"
   And I click Withdrawal Button
   Then I should see Withdrawal success Pop-up box
- #@ignore
+ @ignore
   @Withdrawal
   Scenario: Clicking on Withdrawal Pop-up success Ok button
 Given I navigate to the homepage on "<browser>"
@@ -94,7 +94,7 @@ Given I navigate to the homepage on "<browser>"
 #  Then I should see a see Confirmation Pop-up box.
 
 
-#@ignore
+@ignore
  @Withdrawal
 Scenario: Check if clicking NO button on Confirmation box will close the box and pending will still be displayed
 Given I navigate to the homepage on "<browser>"
@@ -119,7 +119,7 @@ Then I should see Pending withdrwal Cancel Button
 
 
 
-#@ignore
+@ignore
  @Withdrawal
  Scenario: Check if clicking Yes button on Confirmation box will close the box and Another Confirmation box will be displayed
 Given I navigate to the homepage on "<browser>"
@@ -130,7 +130,7 @@ Given I navigate to the homepage on "<browser>"
  And I click on Yes Button on Pending Confirmation box
 Then I should see Amount Withdrawal cancell Comfirmation box
 
-#@ignore
+@ignore
  @Withdrawal
 Scenario: Check if clicking Ok button on Confirmation box will close the box 
 Given I navigate to the homepage on "<browser>"

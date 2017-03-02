@@ -1,6 +1,6 @@
 Feature: Registration and Deposit limit
   	 I want to register in order to play roulette games
-  @ignore
+  #@ignore
  @Register
   Scenario Outline: Registration with Invalid Data
    Given I navigate to the Registrationpage on "<browser>"
@@ -44,7 +44,7 @@ Feature: Registration and Deposit limit
 #	|Chrome |{generator}             |Bola123$%^            |Bola123$%^             |{generator}            |test@playtech.com    |MR    |mark       |bolabo    |3    |OCT   |1980 |80                  |LONDON                                            |LONDON                                            |SW8 3HE  |02071006020      |             |                   |FAILURE         |
 	     
 	
-	 @ignore
+	 #@ignore
 	@Register
   Scenario Outline: Registration with valid Data
    Given I navigate to the Registrationpage on "<browser>"

@@ -26,7 +26,6 @@ public class RegisterPage extends BasePage {
 		String UserName = username;
 		if (UserName.equals("{generator}")) {
 			UserName = generateStringWithAllobedSplChars(20, "");
-
 		}
 
 		driver.findElement(By.cssSelector("input#account_username")).sendKeys(UserName);
@@ -34,7 +33,6 @@ public class RegisterPage extends BasePage {
 	}
 
 	public void sendRegPassword(String password) {
-
 		driver.findElement(By.cssSelector("input#account_password")).sendKeys(password);
 
 	}
@@ -71,7 +69,6 @@ public class RegisterPage extends BasePage {
 	}
 
 	public void sendSurName(String surname) {
-
 		driver.findElement(By.cssSelector(Constant.Reg_SurName)).sendKeys(surname);
 
 	}
@@ -104,7 +101,6 @@ public class RegisterPage extends BasePage {
 	}
 
 	public void sendCity(String Town) {
-		// Constant.Town.sendKeys(Town);
 		driver.findElement(By.cssSelector(Constant.Reg_Town)).sendKeys(Town);
 
 	}
@@ -176,6 +172,7 @@ public class RegisterPage extends BasePage {
 	}
 
 	public void clickRegSubmit() {
+	
 		driver.findElement(By.cssSelector(Constant.Reg_Submit)).click();
 
 	}
@@ -254,7 +251,7 @@ public class RegisterPage extends BasePage {
 		boolean result = driver.findElement(By.cssSelector("h1.welcome_header")).isDisplayed();
 		String actualResult = null;
 		if (result)
-			actualResult = "SuccessFully";
+			actualResult = "Successfully";
 		else
 			actualResult = "FAILURE";
 		Assert.assertEquals(expectedResult, actualResult);
