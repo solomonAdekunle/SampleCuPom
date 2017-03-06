@@ -373,6 +373,15 @@ public class DepositPage extends BasePage {
 	System.out.println(Text1);
 	return Text1;
 	}
+	public boolean isWitdrawPendingNotificationPresent(){
+		this.switchFrameTo("ThirdPartyPage");
+		WebDriverWait wait = new WebDriverWait(driver,80);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.modal_close.on_cancel")));
+		System.out.println(driver.findElement(By.cssSelector(Constant.Cashier_DeclineDepositCloseIcon)).isDisplayed());
+		 return driver.findElement(By.cssSelector(Constant.Cashier_WithdrawPendingNotification_PopupBox)).isDisplayed();
+
+	}
 	
 	
 	public void sendCashierChangeBillingAddressCountryInput(String country) {
@@ -444,13 +453,11 @@ public class DepositPage extends BasePage {
     	 this.switchFrameTo("cashier-iframe");
     	 driver.switchTo().defaultContent();
     	 driver.findElement(By.cssSelector(Constant.Cashier_closeIcon)).click();
-    	// driver.switchTo().defaultContent();
-    	 //WebDriverWait wait = new WebDriverWait(driver,30);
-    	 //wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div#authcache-block-account-FLEX_account_block a.deposit")));
-    	 
-    	 
-    	 
+    	    	    	 
      }
-
+     public void clickCashierDepositTablink(){
+    	 this.switchFrameTo("icashier");
+ 		driver.findElement(By.cssSelector(Constant.Cashier_DepositTab)).click();
+     }
 	
 }

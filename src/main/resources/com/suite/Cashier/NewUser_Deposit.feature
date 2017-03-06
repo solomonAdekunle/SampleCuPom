@@ -138,15 +138,14 @@ When I have logged in username as "safecharge2" and password "Bola123"
 # And I should see deposit limit pop-up box 
  And I should see CloseButton within the Success Cashier Pop-up box displayed
 
-
-
+ @ignore
 @Register
-  Scenario Outline: Registration with valid Data and clicking Deposit Button on Welcome 
+  Scenario: Registration with valid Data and clicking Deposit Button on Welcome 
    Given I navigate to the Registrationpage on "<browser>"
-    When I enter regUsername as "Safecharge01"
+    When I enter regUsername as "Safecharge05"
     And I enter RegPassword as "Bola123"
     And I enter RegConfirmPassword as "Bola123"
-    And I enter a RegScreenName as "weraq253"
+    And I enter a RegScreenName as "weraq257"
     And I enter RegEmail as "test@playtech.com"
     And I enter RegTitle as "Ms"
     And I enter RegFirstName as "first"
@@ -175,4 +174,4 @@ When I have logged in username as "safecharge2" and password "Bola123"
 # 4539219590667240
  
  
-  
+ 

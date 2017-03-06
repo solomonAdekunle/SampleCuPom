@@ -91,7 +91,18 @@ public class WithdarwalPage extends BasePage {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.lightbox-header h2")));
 		return driver.findElement(By.cssSelector(Constant.Cashier_WithdrawPendingCancel_SuccessPopUpBox)).isDisplayed();
 	}
-
+     
+	public boolean isWitdrawTransactionFailedPop_UpboxPresent(){
+		this.switchFrameTo("ThirdPartyPage");
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.lightbox-header h2")));
+		return driver.findElement(By.cssSelector(Constant.Cashier_WithdrawPendingCancel_SuccessPopUpBox)).isDisplayed();
+		
+	}
+	
+	
+	
 	public void clickWithDrawConirmSuccessOKButton() {
 		this.switchFrameTo("ThirdPartyPage");
 		driver.findElement(By.cssSelector(Constant.Cashier_Withdraw_SuccessPopUpBox_okButton)).click();
@@ -148,5 +159,12 @@ public class WithdarwalPage extends BasePage {
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(Constant.Cashier_WithdrawPendingCancel_SuccessPopUpBox_OKButton)));
 		driver.findElement(By.cssSelector(Constant.Cashier_WithdrawPendingCancel_SuccessPopUpBox_OKButton)).click();
 
+	}
+	public void clickWithdrawTransactionFailedOKButton(){
+		this.switchFrameTo("ThirdPartyPage");
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.lightbox-header h2")));
+		driver.findElement(By.cssSelector(Constant.Cashier_WithdrawTransaction_FailedPopUpBox_OK)).click();
 	}
 }

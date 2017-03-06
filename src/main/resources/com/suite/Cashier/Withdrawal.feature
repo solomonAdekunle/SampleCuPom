@@ -145,6 +145,20 @@ Given I navigate to the homepage on "<browser>"
  And I click on OK button on Confirmation success Pending Cancellation Pop up Box
  Then I should navigate to Withdrawl page.
  
+ #@ignore
+  @Withdrawal
+ Scenario: Check if Withdrawal Pending Confirmation Box will pop when user Navigate to deposit page. 
+Given I navigate to the homepage on "<browser>"
+ When I have logged in username as "safacharge4" and password "Bola123"
+ And I click on Account Menu dropDown box
+ And I click on Withdrawal link 
+ And I enter withdraw amount as "10"
+ And I click Withdrawal Button
+ And I click success pop-up box Ok Button
+ And I click on Deposit tab link
+Then I should see Pending Notification Pop-up box displayed
+
+ 
 @ignore
  @Withdrawal
  Scenario: Check if clicking Yes button on Confirmation box will close the box and Another Confirmation box will be displayed
@@ -156,4 +170,28 @@ Given I navigate to the homepage on "<browser>"
   And I click on Yes Button on Pending Confirmation box
   Then I should see Amount Withdrawal cancell Comfirmation box
   And  My balance should increase by amount withdrawn
+  
+  
 
+@ignore
+ @Withdrawal
+Scenario: Check if user can withdraw with a newly register card 
+Given I navigate to the homepage on "<browser>"
+ When I have logged in username as "solomon2014" and password "London01"
+ And I click on Account Menu dropDown box
+ And I click on Withdrawal link 
+ And I enter withdraw amount as "10"
+ And I click Withdrawal Button
+Then I should see Decline Pop-up box displayed
+
+@ignore
+ @Withdrawal
+Scenario: Check if user can close the Transaction failed POP-up box
+Given I navigate to the homepage on "<browser>"
+ When I have logged in username as "solomon2014" and password "London01"
+ And I click on Account Menu dropDown box
+ And I click on Withdrawal link 
+ And I enter withdraw amount as "10"
+ And I click Withdrawal Button
+ And I click Transaction Failed Ok Button
+ Then I should see My Balance as the same

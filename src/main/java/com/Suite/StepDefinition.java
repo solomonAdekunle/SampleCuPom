@@ -38,6 +38,7 @@ import pages.TVPresentersPage;
 import pages.TermsPage;
 import pages.VIPPage;
 import pages.VideosPage;
+import pages.WelcomePage;
 import pages.WinnersPage;
 
 public class StepDefinition extends BaseTest {
@@ -60,6 +61,7 @@ public class StepDefinition extends BaseTest {
 	private ResposibleGamblingPage RespGambPage;
 	private TermsPage termsPage;
 	private WithdarwalPage withdrawPage;
+	private   WelcomePage welcomePage;
 
 	public StepDefinition() {
 
@@ -85,6 +87,7 @@ public class StepDefinition extends BaseTest {
 		RespGambPage = new ResposibleGamblingPage(BaseTest.driver);
 		termsPage = new TermsPage(BaseTest.driver);
 		withdrawPage = new WithdarwalPage(BaseTest.driver);
+		welcomePage = new WelcomePage(BaseTest.driver);
 
 	}
 
@@ -679,7 +682,24 @@ public class StepDefinition extends BaseTest {
 	public void i_check_My_account_Balance() {
 	    depositPage.getCashierBalancePresent();
 	}
-
+    // Click on Deposit button on the Welcome Page.
+	@When("^I click on deposit Button on Welcome page$")
+	public void i_click_on_deposit_Button_on_Welcome_page()  {
+		welcomePage.clickDepositWelcomeButton();
+	   
+	}
+	//click on OK button on withdraw transaction failed pop-up box
+	@When("^I click Transaction Failed Ok Button$")
+	public void i_click_Transaction_Failed_Ok_Button() {
+		withdrawPage.clickWithdrawTransactionFailedOKButton();
+	    
+	}
+	// Click on cashier deposit tab link within the safecharge
+	@When("^I click on Deposit tab link$")
+	public void i_click_on_Deposit_tab_link()  {
+		depositPage.clickCashierDepositTablink();
+	   
+	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1579,6 +1599,17 @@ public class StepDefinition extends BaseTest {
 	public void i_should_see_no_Pending_withdrwal_Cancel_Button() {
 		Assert.assertTrue(!withdrawPage.isPendingWithdrawCancelButtonNotPresent());
 
+	}
+	@Then("^I should see My Balance as the same$")
+	public void i_should_see_My_Balance_as_the_same() {
+		Assert.assertTrue((depositPage.getCurrentBalance()== depositPage.getCashierBalancePresent()));
+	    
+	}
+	@Then("^I should see Pending Notification Pop-up box displayed$")
+	public void i_should_see_Pending_Notification_Pop_up_box_displayed()  {
+		Assert.assertTrue(depositPage.isWitdrawPendingNotificationPresent());
+		
+	    
 	}
 
 	@After()

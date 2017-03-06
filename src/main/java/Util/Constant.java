@@ -129,6 +129,8 @@ public class Constant  {
 	public static String Cashier_WithdrawConfirmationPopBox_NoButton="button.no";
 	public static String Cashier_WithdrawPendingCancel_SuccessPopUpBox="div.wd_canceled";
 	public static String Cashier_WithdrawPendingCancel_SuccessPopUpBox_OKButton="button.modal_close";
+	public static String Cashier_WithdrawTransaction_FailedPopUpBox_OK="button.modal_close";
+	public static String Cashier_WithdrawPendingNotification_PopupBox="div#lightbox";
 	
 	
 	// Locator for all Elements on Account Menu Dropdown box
@@ -227,7 +229,8 @@ public class Constant  {
 		  public static String Terms_TitlePage="h1.title";
 	  
 	 
-	 
+	 // Locators for all Element on Welcome Page
+		  public static String Welcome_DepositButton="ul.welcome_panels a.cashier";
 	 
 	 
 	 
