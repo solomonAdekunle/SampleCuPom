@@ -2,6 +2,8 @@ package pages;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -152,17 +154,17 @@ public class BasePage  {
 		  return RandomStringUtils.random(length, allowedChars);
 		 }
    
-	
-		
-		
-	
-	
-	
-	
 				
 	protected String generateRandomAlphaNumeric(int length){
 		  return RandomStringUtils.randomAlphanumeric(length);
 		 }
+
+	public static String getRelativeUrl(String absoluteURL) throws MalformedURLException{
+		URL url = new URL(absoluteURL);
+		return url.getPath();
+	}
+	
+	
 	
 	//store screenshot
 	

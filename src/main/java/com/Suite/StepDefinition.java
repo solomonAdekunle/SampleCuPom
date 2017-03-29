@@ -37,6 +37,7 @@ import pages.ResposibleGamblingPage;
 import pages.TVPresentersPage;
 import pages.TermsPage;
 import pages.VIPPage;
+import pages.VegasPage;
 import pages.VideosPage;
 import pages.WelcomePage;
 import pages.WinnersPage;
@@ -61,7 +62,8 @@ public class StepDefinition extends BaseTest {
 	private ResposibleGamblingPage RespGambPage;
 	private TermsPage termsPage;
 	private WithdarwalPage withdrawPage;
-	private   WelcomePage welcomePage;
+	private  WelcomePage welcomePage;
+	private VegasPage vegasPage;
 
 	public StepDefinition() {
 
@@ -88,6 +90,7 @@ public class StepDefinition extends BaseTest {
 		termsPage = new TermsPage(BaseTest.driver);
 		withdrawPage = new WithdarwalPage(BaseTest.driver);
 		welcomePage = new WelcomePage(BaseTest.driver);
+		vegasPage= new VegasPage(BaseTest.driver);
 
 	}
 
@@ -700,6 +703,13 @@ public class StepDefinition extends BaseTest {
 		depositPage.clickCashierDepositTablink();
 	   
 	}
+	// Click on a game on Vegas home game	   
+	@When("^I click one Virtue Fusion Game$")
+	public void i_click_one_Virtue_Fusion_Game()  {
+		vegasPage.clickVegasGamesLaunch();
+	    
+	}
+
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1600,16 +1610,29 @@ public class StepDefinition extends BaseTest {
 		Assert.assertTrue(!withdrawPage.isPendingWithdrawCancelButtonNotPresent());
 
 	}
+	// Verify if Balance is the same
 	@Then("^I should see My Balance as the same$")
 	public void i_should_see_My_Balance_as_the_same() {
 		Assert.assertTrue((depositPage.getCurrentBalance()== depositPage.getCashierBalancePresent()));
 	    
 	}
+	// Verify if Pending Notification Pop-up box is displayed
 	@Then("^I should see Pending Notification Pop-up box displayed$")
 	public void i_should_see_Pending_Notification_Pop_up_box_displayed()  {
 		Assert.assertTrue(depositPage.isWitdrawPendingNotificationPresent());
 		
 	    
+	}
+	// Verify if user navigated to Vegas home page
+	@Then("^I should navigated to Vegas Home page$")
+	public void i_should_navigated_to_Vegas_Home_page() {
+	  Assert.assertEquals(vegasPage.VerifyVegasURLaddress(), "https://vegas.supercasino.com/"); 
+	}
+	// Verify if one of the Vegas games launched
+	@Then("^i should see the Game launching$")
+	public void i_should_see_the_Game_launching() {
+		// Verifying if new game launch
+		 vegasPage.isWindowTabTheSame();
 	}
 
 	@After()

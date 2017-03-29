@@ -145,7 +145,7 @@ Given I navigate to the homepage on "<browser>"
  And I click on OK button on Confirmation success Pending Cancellation Pop up Box
  Then I should navigate to Withdrawl page.
  
- #@ignore
+ @ignore
   @Withdrawal
  Scenario: Check if Withdrawal Pending Confirmation Box will pop when user Navigate to deposit page. 
 Given I navigate to the homepage on "<browser>"
