@@ -28,6 +28,8 @@ public class FooterPage extends BasePage {
 	}
 
 	public boolean isVIPLinkPresent() {
+		WebDriverWait wait = new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.Footer_VIPLink)));
 		return driver.findElement(By.cssSelector(Constant.Footer_VIPLink)).isDisplayed();
 
 	}
@@ -88,6 +90,8 @@ public class FooterPage extends BasePage {
 	}
 
 	public boolean isGAMCAREPresent() {
+		WebDriverWait wait = new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(Constant.Footer_GamCareIcon)));
 		return driver.findElement(By.cssSelector(Constant.Footer_GamCareIcon)).isDisplayed();
 
 	}

@@ -4,10 +4,8 @@ Feature: Login
          and Account Menu	
  
   
-  
-  
-  
-  @ignore
+    
+  #@ignore
    @Login 
  Scenario Outline:Login with Invalid data
   Given I navigate to the homepage on "<browser>"
@@ -22,7 +20,7 @@ Feature: Login
     |Chrome	|Noblebug229	        |Bola123        |
   
   
-  @ignore
+ #@ignore
   @Login 
  Scenario Outline:Login
   Given I navigate to the homepage on "<browser>"
@@ -36,6 +34,6 @@ Feature: Login
  
  Examples:  
  	|browser|username               | password     |
- 	|Mozilla|NOBLEBUG228	        |bola123$%^    |
+ 	|Mozilla|NOBLEBUG228	        |Bola123$%^    |
        
        

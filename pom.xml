@@ -1,21 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>Suite</groupId>
-  <artifactId>SampleCuPom</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>Suite</groupId>
+	<artifactId>SampleCuPom</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>SampleCuPom</name>
-  <url>http://maven.apache.org</url>
+	<name>SampleCuPom</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
+
+	<properties>
 		<cucumber-jvm.version>1.2.7</cucumber-jvm.version>
-		<selenium.version>2.53.0</selenium.version>
+		<selenium.version>3.4.0</selenium.version>
 		<junit.version>4.12</junit.version>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
-
 
 	<build>
 
@@ -32,15 +34,26 @@
 			<!--plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-site-plugin</artifactId> 
 				<version>3.0-beta-3</version> </plugin> <plugin> <groupId>org.codehaus.mojo</groupId> 
 				<artifactId>surefire-report-maven-plugin</artifactId> </plugin -->
-	<plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>2.5</version>
- 	</plugin>
-		<plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<includes>
+						<exclude>**/*Runner.java</exclude>
+					</includes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.5.0</version>
+				<version>1.6.0</version>
 				<executions>
 					<execution>
 						<phase>integration-test</phase>
@@ -64,23 +77,52 @@
 						<argument>--plugin</argument>
 						<argument>html:target/cucumber-html-report</argument>
 						<argument>--tags</argument>
-						<argument>@Login,@RegisterButton,@Register, @RegisterButton,@ChangePassword,@ContactUs,@footer,@ForgottenDetails,@GameLaunch </argument>
+						<argument>@Login,@RegisterButton,@Register,
+							@RegisterButton,@ContactUs,@footer,@ForgottenDetails,@GameLaunch,@VegasGames,@Promotion,@RegisterNewCard,@DepositAppoved,@Withdrawal,@GameSearch</argument>
 						<argument>--glue</argument>
 						<argument>com/</argument>
 						<argument>src/</argument>
 					</arguments>
 				</configuration>
 				<dependencies>
-					<dependency>
+				   <dependency>
+      <groupId>com.github.mkolisnyk</groupId>
+      <artifactId>cucumber-report-generator</artifactId>
+      <version>1.0.11-SNAPSHOT</version>
+    </dependency>
+    			<dependency>
 						<groupId>info.cukes</groupId>
 						<artifactId>cucumber-core</artifactId>
 						<version>1.2.5</version>
 					</dependency>
 				</dependencies>
 			</plugin>
-			
-		</plugins>
-
+ <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>(check version above)</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>cucumber-jvm-example</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-html-reports</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+                            <parallelTesting>false</parallelTesting>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+		
 	</build>
 
 	<dependencies>
@@ -95,10 +137,23 @@
 			<version>1.2.5</version>
 		</dependency>
 		<dependency>
+    <groupId>info.cukes</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>1.2.5</version>
+</dependency>
+		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-testng</artifactId>
 			<version>1.2.4</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+    <scope>test</scope>
+</dependency>
+		
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
@@ -129,14 +184,14 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
 		</dependency>
- <!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
-<dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-lang3</artifactId>
-    <version>3.0</version>
-</dependency>
-	</dependencies>
-	
+		<!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
+		</dependency>
+		</dependencies>
+
 </project>
  
   

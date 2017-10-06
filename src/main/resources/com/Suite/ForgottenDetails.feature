@@ -2,8 +2,8 @@ Feature: ForgottenDetails
        user should should be able to reset there password 
        when they for it either their usename or password by clicking 
        forgotten details link on the HomePage
- 
- @ignore
+
+#@ignore
   @ForgottenDetails
   Scenario: ForgottenDetails with invalid data
     Given I navigate to the ForgottenDetails page on "<browser>"
@@ -14,8 +14,8 @@ Feature: ForgottenDetails
     And I enter  Forgotten Deatils DOBYear as "1980"
     And I click on  Forgotten Deatils Submit Button
    Then I should see an error Messeage on Forgotten Details Page
-   
-  @ignore
+
+ #ignore
   @ForgottenDetails
  Scenario: ForgottenDetails with invalid data
     Given I navigate to the ForgottenDetails page on "<browser>"
@@ -26,7 +26,8 @@ Feature: ForgottenDetails
     And I enter  Forgotten Deatils DOBYear as "1980"
     And I click on  Forgotten Deatils Submit Button
    Then I should see an error Messeage on Forgotten Details Page
-  @ignore
+  
+ #@ignore
   @ForgottenDetails
   Scenario: ForgottenDetails with invalid data
     Given I navigate to the ForgottenDetails page on "<browser>"
@@ -37,7 +38,8 @@ Feature: ForgottenDetails
     And I enter  Forgotten Deatils DOBYear as "1980"
     And I click on  Forgotten Deatils Submit Button
    Then I should see an error Messeage on Forgotten Details Page
-  @ignore
+ 
+#@ignore
   @ForgottenDetails
   Scenario: ForgottenDetails with invalid data
     Given I navigate to the ForgottenDetails page on "<browser>"
@@ -48,7 +50,8 @@ Feature: ForgottenDetails
     And I enter  Forgotten Deatils DOBYear as "1980"
     And I click on  Forgotten Deatils Submit Button
    Then I should see an error Messeage on Forgotten Details Page
-  @ignore
+   
+  #@ignore
   @ForgottenDetails
   Scenario: ForgottenDetails with valid data
     Given I navigate to the ForgottenDetails page on "<browser>"
@@ -58,8 +61,8 @@ Feature: ForgottenDetails
     And I enter  Forgotten Deatils DOBmonth as "Oct"
     And I enter  Forgotten Deatils DOBYear as "1980"
     And I click on  Forgotten Deatils Submit Button
-    And I enter Reset Password as "bola123$%^"
-    And I enter ResetConFirmPassword as "bola123$%^"
+    And I enter Reset Password as "Bola123$%^"
+    And I enter ResetConFirmPassword as "Bola123$%^"
     And I click on ResetSubmitt Button
     Then I should reset my password 
 

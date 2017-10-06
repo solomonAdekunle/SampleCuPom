@@ -8,32 +8,30 @@ public class Constant  {
 	
 
 	// Locators for Registtration Page
-	public static  String  Reg_UserName= "input#account_username";
-	public static String Reg_PassWord="input#account_password";
-	public static String Reg_ConfirmPassword="input#account_password_confirm";
-	public static String Reg_OnScreeName="input#screen_name";
-	public static String Reg_Email="input#email";
-	public static String Reg_Title="div.form-item-title .form-select";
-	public static String Reg_FirstName="input#fname";
-	public static String Reg_SurName="input#surname";
-	public static  String Reg_DOB_Day="select#edit-date-select-day";
-	public static String  Reg_DOB_Month="select#edit-date-select-month";
-	public static String Reg_DOB_Year="select#edit-date-select-year";
-	public static String Reg_Enter_Manually="span#enter_manually a";
-	public static String  Reg_Address="input#address";
-	public static String Reg_Town="input#city";
-	public static String Reg_County="input#county";
-	public static String Reg_PostCode="input#postcode";
-	public static String  Reg_Contact_Number="input#mobile_phone";
-	public static String  Reg_Terms_Wagering="div#bonus-description a";
-	public static String Reg_Over18="input#agree_terms";
-	public static String Reg_terms="div#terms-description a[data-ajax-url='/get-page/2']";
-	public static String Reg_privacyPolicy="div#terms-description a[data-ajax-url='/get-page/3']";
+	public static  String  Reg_UserName= "username";
+	public static String Reg_PassWord="password";
+	public static String Reg_OnScreeName="screen_name";
+	public static String Reg_Email="email";
+	public static String Reg_FirstName="fname";
+	public static String Reg_SurName="surname";
+	public static  String Reg_DOB_Day="dob_day";
+	public static String  Reg_DOB_Month="dob_month";
+	public static String Reg_DOB_Year="dob_year";
+	public static String Reg_Enter_Manually="";
+	public static String  Reg_Address="address";
+	public static String Reg_Town="city";
+	public static String Reg_County="county";
+	public static String Reg_PostCode="postcode";
+	public static String  Reg_Contact_Number="mobile_phone";
+	public static String  Reg_Terms_Wagering="nobonus";
+	public static String Reg_Over18="agree_terms";
+	public static String Reg_terms="a[href='/terms']";
+	public static String Reg_privacyPolicy="a[href='/privacy']";
 	public static String Reg_Compilaance_Message="div.registration-form-legal-footer p";
-	public static String Reg_Submit="button#registration_submit";
+	public static String Reg_Submit="registration-submit";
 	public static String  Reg_DepositLimitLink="a.off .click-button";
-	public static String Reg_DepositLimit_ChooseType="div.form-item-deposit-limits select#edit-deposit-limits";
-	public static String Reg_DepositLimit_ChooseLimit="div.form-item-deposit-amount select#edit-deposit-amount";
+	public static String Reg_DepositLimit_ChooseType="deposit_limits";
+	public static String Reg_DepositLimit_ChooseLimit="deposit_amount";
 	public static String Reg_DepositLimit_ChooseLimitOther="input#edit-input-amount";
 	public static String Reg_DepositLimit_ChooseTypeNolimit="div.form-item-deposit-limits option[value='0']";
 	public static String Reg_DepositLimit_ChooseTypeDaily="div.form-item-deposit-limits option[value='Daily']";
@@ -46,7 +44,20 @@ public class Constant  {
 	public static String Reg_DepositLimit_ChooseLimitValue4="select#edit-deposit-amount option[value='Other']";
 	public static String Reg_DepositLimit_close="a.on";
 	public static String Reg_ErrorText="body.page-register .basic-page .error";
-	
+	public static String Reg_GenderTypeFemale="Female";
+	public static String Reg_GenderTypeMale="Male";
+	public static String Reg_Country="country";
+	public static String Reg_Currency="currency";
+	public static String Reg_CountryDialingCode="phone_prefix";
+	public static String Reg_FindAddressButton="";
+	public static String Reg_WelToSuperCasinoText="section[class^=' registrationPage__info'] h2";
+	public static String Reg_JackpotSliderBlock="div[class^='jackpots__jackpotsWrapper'] h2";
+	public static String Reg_PromoBanner="";
+	public static String Reg_RegisterTitle="h2[class^='registrationPage__registrationTitle']";
+	public static String Reg_HelpIconlink="div[class^='header__help'] a";
+	public static String Reg_ChatIconlink="div[class^='header__chat'] a";
+	public static String Reg_InvalidDataErrorMessage="div[class^='tooltip__error']";
+	public static String Reg_DisabledRegisterNowButton="button[class*='form__buttonDisabled']";
 	
 	// Locators for all Elements On Login 
 	public static String Login_ErrorPopBox="div.login-modal .login-error .error_message";
@@ -58,6 +69,7 @@ public class Constant  {
 	public static String ForgottenDetails_DOBDay="select#edit-date-select-day";
 	public static String ForgottenDetails_DOBMonth="select#edit-date-select-month";
 	public static String ForgottenDetails_DOBYEAR="select#edit-date-select-year";
+	public static String ForgottenDetails_DOBYEAR_Select="//select[@id='edit-date-select-year']//option[@value='{0}']";
 	public static String ForgottenDetails_Submit="button#forgotten_details_submit";
 	public static String ForgottenDetails_ErrorText="body.page-forgotten-details .basic-page .error";
 	// lactor for Reset password
@@ -77,9 +89,9 @@ public class Constant  {
 	public static String Cashier_BalanceFigure="span#PH_UserBalance";
 	public static String SafeCharge_Logo="div.v-bottom .sfc-logo";
 	public static String Cashier_closeIcon="div.cashier-modal a i.icon-close";
-	public static String Cashier_MyAccountTab="#PB_CasinoMyAccount";
-	public static String Cashier_DepositTab="table#PB_Deposit";
-	public static String Cashier_WithrawTab="#PB_Withdraw";
+	public static String Cashier_MyAccountTab="table#PB_CasinoMyAccount";
+	public static String Cashier_DepositTab="table#PB_3rdpExternalDeposit";
+	public static String Cashier_WithrawTab="table#PB_3rdpExternalWithdraw";
 	public static String Cashier_MyPaymentMethodtext="div.user_pm .payment_header_label";
 	public static String Cashier_OtherPaymentDetailsText="div.pm span.payment_header_label";
 	public static String Cashier_DepositButton="div.amount-deposit-footer input#continueButton";
@@ -97,7 +109,9 @@ public class Constant  {
 	public static String Cashier_CardInputtextErroMessage="div#cc_card_number_validation label.error";
 	public static String Cashier_CardInputField="input#cc_card_number";
 	public static String Cashier_cardExpiryDateMonth="select#cc_exp_month";
+	public static String Cashier_cardExpiryDateMonth_Select="//select[@id='cc_exp_month']//option[@value='{0}']";
 	public static String Cashier_cardExpiryDateYear="select#cc_exp_year";
+	public static String Cashier_cardExpiryDateYear_Select="//select[@id='cc_exp_year']//option[@value='{0}']";
 	public static String Cashier_cardCardOwnerNameInputBox="input#cc_name_on_card";
 	public static String Cashier_cardExpiryErroText="div#expiration_period_validation label[for='expiration_period']";
 	public static String Cashier_cardCVVErrorText="label[for='cc_cvv2']";
@@ -135,7 +149,7 @@ public class Constant  {
 	
 	// Locator for all Elements on Account Menu Dropdown box
 	public static String AccountMenuDropdown="//ul[@class='account_menu']";
-	public static String AccountMenu_ChangePassword="//ul[@class='account_menu']//li[@class='change_password']";
+	public static String AccountMenu_ChangePassword="li.change_password a";
 	public static String AccountMenu_Withdrawl="ul.account_menu .withdraw_funds a";
 	
 	// Locators for all elements on Changepassword page
@@ -232,6 +246,40 @@ public class Constant  {
 	 // Locators for all Element on Welcome Page
 		  public static String Welcome_DepositButton="ul.welcome_panels a.cashier";
 	 
+		  // Locators for all Elements on Promotions Page
+		  public static String PromoMoreInfo_Buttons="a.promo-more-info";
+		  public static String PromoJoinToPlay_Button="a.promo-register";
+		  public static String PromotionSubMenu_Tablink="div.menu-promotions-submenu .promotions a";
+		  public static String CompetitionsSubMenu_Tablink="div.menu-promotions-submenu .competitions a";
+		  
+		  
+		  // Elements on Games Categories for Casino, Vegas and Live vertiical
+		  public static String RepGameInfoButton="div.netplay-games.rep .game_overlay a.more_info";
+		  public static String PlaytechGameInfoButton="div.playtech-games .game_overlay a.more_info";
+		  public static String SearchGameInputbox="input.search_field";
+		  public static String SearchGameReturnRoulette="div.netplay-games.rep.NetplayRoulette_TEST";
+		  public static String  SearchGameVirtureFusionReturn="div.playtech-games.Cleopatra.PLUS";
+		 
+		  // Elements on Games Info Page
+		  public static String GameInfoPagePlayForReal="a.js-game-launch.play-for-real";
+		  public static String GameInfoPagePlayForFun="a.play-for-fun";
+		  public static String GameInfoGameBanner="div.game-info-image";
+		  public static String GamesDetails="div.game-info-details";
+		  public static String GamesInfoGameDeviceImg="div.device-available-container";
+		  public static String GameInfoPageAirStatus="div.on-air";
+		  public static String GameInfoPageJackpotSlider="div.jackpots-slider";
+		  public static String GameInfoPageWinnersSlider="div.winners-scroller-3";
+		  public static String GameInfoPageAppLogo="div#mobile_app_store_badges .app-store-logo";
+		  public static String GameInfoPageAndroidLogo="div#mobile_app_store_badges .android-logo";
+		  
+		  // Element for Login Modal
+		  public static String  LoginPopUpBox="div.login-modal .modal-content .login-overlay-header h2";
+		  
+		  // Element for Roulette Express Premium
+		  public static String RouletteExpressPremium=".NetplayRoulette_TEST.rep";
+		  public static String RouletteExpressPremiumPLayForReal=".NetplayRoulette_TEST.rep .action-button.register.play_for_real.button";
+		  
+		  
 	 
 	 
 	 

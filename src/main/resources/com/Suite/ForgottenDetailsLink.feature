@@ -1,6 +1,6 @@
-Feature: Registration
+Feature: ForgottenDetailsLink 
   	 I want to register in order to play roulette games
-@ignore
+#@ignore
  @ForgottenDetailsLink      
  Scenario Outline:Login
   Given I navigate to the homepage on "<browser>"
@@ -10,3 +10,4 @@ Feature: Registration
   Examples:
         |browser|
         |Mozilla|
+        

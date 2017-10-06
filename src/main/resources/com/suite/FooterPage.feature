@@ -1,7 +1,8 @@
 Feature: Footer links and icon
         User should see footer links and icon on all pages when they navigate 
         through the each pages on the site.
-    @ignore  
+        
+  # @ignore  
     @footer   
    Scenario: Footer link
     Given I navigate to the homepage on "<browser>"
@@ -26,7 +27,7 @@ Feature: Footer links and icon
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
      
-      @ignore  
+    #@ignore  
      @footer   
   Scenario: Navigating to Vegas Home Page
      Given I navigate to the homepage on "<browser>"
@@ -51,7 +52,8 @@ Feature: Footer links and icon
      And  I should see GamCareIcon link within the footer
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
-     @ignore  
+     
+    #@ignore  
      @footer   
     Scenario: Navigating to Getting Started Page on the Vegas Tab
       Given I navigate to the homepage on "<browser>"
@@ -83,7 +85,7 @@ Feature: Footer links and icon
      And  I should see GamCareIcon link within the footer
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
-     @ignore  
+  #@ignore  
      @footer   
     Scenario: Naviagting to Getting Started Page on Casino tab
     Given I navigate to the homepage on "<browser>"
@@ -115,7 +117,7 @@ Feature: Footer links and icon
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
      
-     @ignore  
+    #@ignore  
      @footer   
   Scenario: Naviagting to TV Presenters Page on Casino tab
     Given I navigate to the homepage on "<browser>"
@@ -142,7 +144,8 @@ Feature: Footer links and icon
      And  I should see GamCareIcon link within the footer
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
-     @ignore  
+     
+  # @ignore  
      @footer   
    Scenario: Naviagting to Videso Page on Casino tab
     Given I navigate to the homepage on "<browser>"
@@ -170,7 +173,8 @@ Feature: Footer links and icon
      And  I should see GamCareIcon link within the footer
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
-   @ignore  
+     
+ #@ignore  
      @footer   
    Scenario: Naviagting to Vip Page on Casino tab
     Given I navigate to the homepage on "<browser>"
@@ -201,9 +205,10 @@ Feature: Footer links and icon
      And  I should see GamCareIcon link within the footer
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
-    @ignore  
+     
+  #@ignore  
      @footer 
-    Scenario: Naviagting to Vip Page on Casino tab
+    Scenario: Naviagting to Vip Page on Vegas tab
     Given I navigate to the homepage on "<browser>"
     When I click on Vegas Tab
     And I click on VIP link within the footer
@@ -233,7 +238,8 @@ Feature: Footer links and icon
      And  I should see GamCareIcon link within the footer
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
-     @ignore  
+     
+    # @ignore  
      @footer 
     Scenario: Naviagting to Winners Page on Casino tab
     Given I navigate to the homepage on "<browser>"
@@ -261,7 +267,7 @@ Feature: Footer links and icon
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
      
-     @ignore  
+    #@ignore  
      @footer    
      Scenario: Naviagting to AboutUs Page on Casino tab
     Given I navigate to the homepage on "<browser>"
@@ -288,7 +294,7 @@ Feature: Footer links and icon
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
      
-     @ignore  
+   #@ignore  
      @footer 
     Scenario: Naviagting to ContactUs Page on Casino tab
     Given I navigate to the homepage on "<browser>"
@@ -319,7 +325,7 @@ Feature: Footer links and icon
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
      
-     @ignore  
+  #@ignore  
       @footer 
     Scenario: Naviagting to FAQS Page on Casino tab
     Given I navigate to the homepage on "<browser>"
@@ -346,20 +352,21 @@ Feature: Footer links and icon
      And  I should see GamblingCommissionIcon link within the footer
      And  I should see legalText within the footer
      
-      @ignore  
+    #@ignore  
      @footer 
     Scenario: Naviagting to Privacy Pollicy Page on Casino tab
     Given I navigate to the homepage on "<browser>"
     When I click on PrivacyPolicy link within the footer
     Then I should see Privcy Polcy Uk displayed as Title Page
      
-      @ignore 
+   # @ignore 
       @footer 
     Scenario: Naviagting to Responsible Gambling Page on Casino tab
     Given I navigate to the homepage on "<browser>"
     When I click on Responsible Gambling link within the footer
-    Then I should see  Responsible Gambling displayed as Title Page
-    @ignore 
+    Then I should see Responsible Gambling displayed as Title Page
+    
+   # @ignore 
      @footer 
     Scenario: Naviagting to Terms  Page on Casino tab
     Given I navigate to the homepage on "<browser>"

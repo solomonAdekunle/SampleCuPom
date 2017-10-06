@@ -23,7 +23,7 @@ public class DepositPage extends BasePage {
 
 	private String currentFrameId = "";
 	private double CurrentBalance;
-	//private double ShowbalFiqure;
+	// private double ShowbalFiqure;
 
 	public DepositPage(WebDriver driver) {
 		super(driver);
@@ -53,14 +53,13 @@ public class DepositPage extends BasePage {
 		this.switchFrameTo("icashier");
 		String Showbal = driver.findElement(By.cssSelector(Constant.Cashier_BalanceFigure)).getText();
 		String ShowBalance = Showbal.replace(",", "").substring(1);
-		//System.out.println(ShowBalance);
-		 //String NewCurr=Double.toString(ShowbalFiqure);
+		// System.out.println(ShowBalance);
+		// String NewCurr=Double.toString(ShowbalFiqure);
 		// System.out.println(NewCurr);
-		 double ShowbalFiqure = Double.parseDouble(ShowBalance);
-		 //System.out.println(ShowbalFiqure);
-			return ShowbalFiqure;
-		
-		
+		double ShowbalFiqure = Double.parseDouble(ShowBalance);
+		// System.out.println(ShowbalFiqure);
+		return ShowbalFiqure;
+
 	}
 
 	public boolean isCashierMyAccountTabPresent() {
@@ -72,6 +71,8 @@ public class DepositPage extends BasePage {
 	public boolean isCashierDepositTabPresent() {
 		// driver.switchTo().frame("cashier-iframe");
 		this.switchFrameTo("icashier");
+		WebDriverWait wait =new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.Cashier_DepositTab)));
 		return driver.findElement(By.cssSelector(Constant.Cashier_DepositTab)).isDisplayed();
 
 	}
@@ -79,6 +80,8 @@ public class DepositPage extends BasePage {
 	public boolean isCashierWithdrawTabPresent() {
 		// driver.switchTo().frame("cashier-iframe");
 		this.switchFrameTo("icashier");
+		WebDriverWait wait =new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.Cashier_WithrawTab)));
 		return driver.findElement(By.cssSelector(Constant.Cashier_WithrawTab)).isDisplayed();
 	}
 
@@ -97,7 +100,7 @@ public class DepositPage extends BasePage {
 
 	public boolean isCashierMyPaymentLogoPresent() {
 		this.switchFrameTo("ThirdPartyPage");
-		
+
 		return driver.findElement(By.cssSelector(Constant.Cashier_MyPaymentMthodLogo)).isDisplayed();
 
 	}
@@ -169,14 +172,14 @@ public class DepositPage extends BasePage {
 	public double getCurrentBalance() {
 		this.switchFrameTo("icashier");
 		String bal = driver.findElement(By.cssSelector(Constant.Cashier_BalanceFigure)).getText();
-		//System.out.println(bal);
+		// System.out.println(bal);
 		String Balance = bal.replace(",", "").substring(1);
 		// System.out.println(bal);
 
 		// convert the current to in
-		//String NewCurr=Double.toString(CurrentBalance);
-		CurrentBalance= Double.parseDouble(Balance);
-		//CurrentBalance = Float.valueOf(Balance);
+		// String NewCurr=Double.toString(CurrentBalance);
+		CurrentBalance = Double.parseDouble(Balance);
+		// CurrentBalance = Float.valueOf(Balance);
 		System.out.println(CurrentBalance);
 		return CurrentBalance;
 
@@ -194,7 +197,9 @@ public class DepositPage extends BasePage {
 			if (this.currentFrameId == "") {
 				driver.switchTo().defaultContent();
 				driver.switchTo().frame("cashier-iframe");
-				this.currentFrameId = "cashier-iframe";
+				 this.currentFrameId = "cashier-iframe";
+				
+				
 			}
 
 			switch (frameId) {
@@ -203,6 +208,7 @@ public class DepositPage extends BasePage {
 				driver.switchTo().defaultContent().switchTo().frame("cashier-iframe").switchTo().frame("icashier");
 				this.currentFrameId = "icashier";
 				break;
+			
 
 			case "ThirdPartyPage":
 				driver.switchTo().defaultContent().switchTo().frame("cashier-iframe").switchTo().frame("icashier")
@@ -243,15 +249,15 @@ public class DepositPage extends BasePage {
 		return driver.findElement(By.cssSelector(Constant.Cashier_DepositApporovedText)).isDisplayed();
 
 	}
-	
-	  public boolean isApprovedDepositHeaderPopBoxPresent() {
-	  this.switchFrameTo("ThirdPartyPage"); 
-	   WebDriverWait wait = new WebDriverWait(driver, 60);
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
+
+	public boolean isApprovedDepositHeaderPopBoxPresent() {
+		this.switchFrameTo("ThirdPartyPage");
+		WebDriverWait wait = new WebDriverWait(driver,65);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.lightbox-header h2")));
-	  return driver.findElement(By.cssSelector(Constant. Cashier_SuccessDepositPop_upBox)).isDisplayed();
-	  }
-	 
+		return driver.findElement(By.cssSelector(Constant.Cashier_SuccessDepositPop_upBox)).isDisplayed();
+	}
+
 	public boolean isApprovedDepositCloseButtonPopUpBoxPresent() {
 		this.switchFrameTo("ThirdPartyPage");
 		return driver.findElement(By.cssSelector(Constant.Cashier_SuccessDepositPop_boxCloseButton)).isDisplayed();
@@ -265,17 +271,38 @@ public class DepositPage extends BasePage {
 
 	public void sendCashierMonthExpiryDate(String Month) {
 		this.switchFrameTo("ThirdPartyPage");
-		driver.findElement(By.cssSelector(Constant.Cashier_cardExpiryDateMonth)).sendKeys(Month);
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.Cashier_cardExpiryDateMonth)));
+		driver.findElement(By.cssSelector(Constant.Cashier_cardExpiryDateMonth)).click();
+		String Xpath_Menu = Constant.Cashier_cardExpiryDateMonth_Select;
+		//int ExpriyMonth= Integer.parseInt(Month);
+		Xpath_Menu = Xpath_Menu.replace("{0}", String.valueOf(Month));
+		WebElement clickDate=driver.findElement(By.xpath(Xpath_Menu));
+		wait.until(ExpectedConditions.visibilityOf(clickDate));
+		clickDate.click();
+		//((JavascriptExecutor) driver).executeScript("arguments[0].click();", clickDate);
+		//driver.findElement(By.xpath(Xpath_Menu)).click();
 	}
 
 	public void sendCashierYearExpiryDate(String Year) {
 		this.switchFrameTo("ThirdPartyPage");
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.Cashier_cardExpiryDateYear)));
 		driver.findElement(By.cssSelector(Constant.Cashier_cardExpiryDateYear)).sendKeys(Year);
+//		String Xpath_Menu = Constant.Cashier_cardExpiryDateYear_Select;
+//          int ExpiryYear= Integer.parseInt(Year);
+//		Xpath_Menu = Xpath_Menu.replace("{0}", String.valueOf(ExpiryYear));
+//		WebElement clickYear=driver.findElement(By.xpath(Xpath_Menu));
+//		wait.until(ExpectedConditions.visibilityOf(clickYear));
+//		clickYear.click();
+		//driver.findElement(By.xpath(Xpath_Menu)).click();
 
 	}
 
 	public void sendCashierCVVNumber(String cvvNumber) {
 		this.switchFrameTo("ThirdPartyPage");
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.Cashier_CardCVVTextbox)));
 		driver.findElement(By.cssSelector(Constant.Cashier_CardCVVTextbox)).sendKeys(cvvNumber);
 	}
 
@@ -367,23 +394,23 @@ public class DepositPage extends BasePage {
 		this.switchFrameTo("ThirdPartyPage");
 		return driver.findElement(By.cssSelector(Constant.Cashier_DeclineDepositCloseIcon)).isDisplayed();
 	}
-  
-	public String getNewBillingAddresss(){
-	String Text1=driver.findElement(By.cssSelector(Constant.Cashier_NewBillinaddresText)).getText();
-	System.out.println(Text1);
-	return Text1;
+
+	public String getNewBillingAddresss() {
+		String Text1 = driver.findElement(By.cssSelector(Constant.Cashier_NewBillinaddresText)).getText();
+		System.out.println(Text1);
+		return Text1;
 	}
-	public boolean isWitdrawPendingNotificationPresent(){
+
+	public boolean isWitdrawPendingNotificationPresent() {
 		this.switchFrameTo("ThirdPartyPage");
-		WebDriverWait wait = new WebDriverWait(driver,80);
+		WebDriverWait wait = new WebDriverWait(driver, 80);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.modal_close.on_cancel")));
 		System.out.println(driver.findElement(By.cssSelector(Constant.Cashier_DeclineDepositCloseIcon)).isDisplayed());
-		 return driver.findElement(By.cssSelector(Constant.Cashier_WithdrawPendingNotification_PopupBox)).isDisplayed();
+		return driver.findElement(By.cssSelector(Constant.Cashier_WithdrawPendingNotification_PopupBox)).isDisplayed();
 
 	}
-	
-	
+
 	public void sendCashierChangeBillingAddressCountryInput(String country) {
 
 	}
@@ -394,16 +421,16 @@ public class DepositPage extends BasePage {
 
 	public void sendCashierChangeBillingAddressPostCodeInput(String postcode) {
 		this.switchFrameTo("ThirdPartyPage");
-		//driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressPostCodeInputField)).clear();
+		// driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressPostCodeInputField)).clear();
 		driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressPostCodeInputField)).sendKeys(postcode);
 
 	}
 
 	public void sendCashierChangeBillingAddressNumberInput(String AddressNum) {
 		this.switchFrameTo("ThirdPartyPage");
-	//driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressHouseNumber)).clear();
-	 driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressHouseNumber)).sendKeys(AddressNum);
-	 
+		// driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressHouseNumber)).clear();
+		driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddressHouseNumber)).sendKeys(AddressNum);
+
 	}
 
 	public void clickCashierDepositButton() {
@@ -415,49 +442,47 @@ public class DepositPage extends BasePage {
 
 	public void clickSuccessCloseApprovedButton() {
 		this.switchFrameTo("ThirdPartyPage");
-		WebDriverWait wait = new WebDriverWait(driver,120);
-		System.out.println(1);
+		WebDriverWait wait = new WebDriverWait(driver, 120);
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.modal_close.btn.on_confirm")));
-		System.out.println(2);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
-		System.out.println(3);
-		//wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.modal_close.btn.on_confirm")));
-		 //WebElement chromeclick=
-		// driver.findElement(By.cssSelector(Constant.Cashier_SuccessDepositPop_boxCloseButton));
 		WebElement chromeclick = driver.findElement(By.cssSelector("button.modal_close.btn.on_confirm"));
-		System.out.println(4);
 		chromeclick.click();
 
 	}
-// Click on Declined close Icon on the Decline pop-up
+
+	// Click on Declined close Icon on the Decline pop-up
 	public void clickDeclinedCloseIcon() {
 		this.switchFrameTo("ThirdPartyPage");
-		WebDriverWait wait = new WebDriverWait(driver,80);
+		WebDriverWait wait = new WebDriverWait(driver, 80);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.blockOverlay")));
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.modal_close.on_cancel")));
 		System.out.println(driver.findElement(By.cssSelector(Constant.Cashier_DeclineDepositCloseIcon)).isDisplayed());
 		driver.findElement(By.cssSelector(Constant.Cashier_DeclineDepositCloseIcon)).click();
 
 	}
-	 public void clickRegisterNewCreditCard(){
-		 this.switchFrameTo("ThirdPartyPage");
-		 driver.findElement(By.cssSelector(Constant.Cashier_RegisterNewCardLogo)).click();
-	 }
-     public void clickCashierChangeBillAddresCheckBox(){
-    	 this.switchFrameTo("ThirdPartyPage");
-    	WebDriverWait wait = new WebDriverWait(driver,30);
-     	 wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("label[for='user_details'] span")));
-    	 driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddresCheckbox)).click();
-     }
-     public void clickChashierCloseIcon(){
-    	 this.switchFrameTo("cashier-iframe");
-    	 driver.switchTo().defaultContent();
-    	 driver.findElement(By.cssSelector(Constant.Cashier_closeIcon)).click();
-    	    	    	 
-     }
-     public void clickCashierDepositTablink(){
-    	 this.switchFrameTo("icashier");
- 		driver.findElement(By.cssSelector(Constant.Cashier_DepositTab)).click();
-     }
-	
+
+	public void clickRegisterNewCreditCard() {
+		this.switchFrameTo("ThirdPartyPage");
+		driver.findElement(By.cssSelector(Constant.Cashier_RegisterNewCardLogo)).click();
+	}
+
+	public void clickCashierChangeBillAddresCheckBox() {
+		this.switchFrameTo("ThirdPartyPage");
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("label[for='user_details'] span")));
+		driver.findElement(By.cssSelector(Constant.Cashier_ChangeBillingAddresCheckbox)).click();
+	}
+
+	public void clickChashierCloseIcon() {
+		this.switchFrameTo("cashier-iframe");
+		driver.switchTo().defaultContent();
+		driver.findElement(By.cssSelector(Constant.Cashier_closeIcon)).click();
+
+	}
+
+	public void clickCashierDepositTablink() {
+		this.switchFrameTo("icashier");
+		driver.findElement(By.cssSelector(Constant.Cashier_DepositTab)).click();
+	}
+
 }

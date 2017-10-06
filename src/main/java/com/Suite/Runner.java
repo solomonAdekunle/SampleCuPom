@@ -1,25 +1,19 @@
  package com.suite;
 
 
-	import org.junit.runner.RunWith;
-import org.junit.runners.Suite.SuiteClasses;
-
-import cucumber.api.java.it.Date;
-	import cucumber.api.junit.Cucumber;
+import org.junit.runner.RunWith;
+import cucumber.api.junit.Cucumber;
 
 	// runner class
 	
-
 @RunWith(Cucumber.class)
-@cucumber.api.CucumberOptions(features = {"src\\main\\resources\\com\\suite\\"},
-tags = {"~@ignore"})
-//@Cucumber.Options(format={"html:output"}
-	
+@cucumber.api.CucumberOptions(features = {"src\\main\\resources\\com\\suite\\"},format={"pretty","html:target/site/cucumber-pretty",
+		"json:target/cucumber.jason"},tags = {"~@ignore"})
 	public class Runner {
 	
 		
 		
-		
+	
 		
 	
 }

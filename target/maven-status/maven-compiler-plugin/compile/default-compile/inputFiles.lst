@@ -3,8 +3,10 @@ D:\GIT\supercasinonewcupom\src\main\java\pages\WelcomePage.java
 D:\GIT\supercasinonewcupom\src\main\java\com\suite\Runner.java
 D:\GIT\supercasinonewcupom\src\main\java\pages\RegisterPage.java
 D:\GIT\supercasinonewcupom\src\main\java\pages\WinnersPage.java
+D:\GIT\supercasinonewcupom\src\main\java\pages\GameInfoPage.java
 D:\GIT\supercasinonewcupom\src\main\java\pages\TVPresentersPage.java
-D:\GIT\supercasinonewcupom\src\main\java\Connector\WebConnector.java
+D:\GIT\supercasinonewcupom\src\main\java\pages\VegasPage.java
+D:\GIT\supercasinonewcupom\src\main\java\pages\PromotionPage.java
 D:\GIT\supercasinonewcupom\src\main\java\pages\VideosPage.java
 D:\GIT\supercasinonewcupom\src\main\java\pages\FAQSPage.java
 D:\GIT\supercasinonewcupom\src\main\java\com\suite\Cashier\DepositPage.java
@@ -17,6 +19,7 @@ D:\GIT\supercasinonewcupom\src\main\java\pages\BasePage.java
 D:\GIT\supercasinonewcupom\src\main\java\pages\VIPPage.java
 D:\GIT\supercasinonewcupom\src\main\java\pages\GettingStartedPage.java
 D:\GIT\supercasinonewcupom\src\main\java\pages\TermsPage.java
+D:\GIT\supercasinonewcupom\src\main\java\pages\LivePage.java
 D:\GIT\supercasinonewcupom\src\main\java\pages\PrivacyPolicy.java
 D:\GIT\supercasinonewcupom\src\main\java\com\suite\StepDefinition.java
 D:\GIT\supercasinonewcupom\src\main\java\pages\HomePage.java
