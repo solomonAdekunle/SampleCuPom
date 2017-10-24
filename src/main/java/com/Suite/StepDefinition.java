@@ -25,6 +25,7 @@ import cucumber.api.java.en.When;
 import pages.AboutUsPage;
 import pages.BasePage;
 import pages.ChangePassword;
+import pages.ChatPage;
 import pages.ContactUsPage;
 import pages.FAQSPage;
 import pages.FooterPage;
@@ -70,6 +71,7 @@ public class StepDefinition extends BaseTest {
 	private LivePage livePage;
 	private PromotionPage promotionPage;
 	private GameInfoPage gameInfoPage;
+	private ChatPage chatPage;
 
 	public StepDefinition() {
 		super();
@@ -99,17 +101,13 @@ public class StepDefinition extends BaseTest {
 		livePage = new LivePage(BaseTest.driver);
 		promotionPage = new PromotionPage(BaseTest.driver);
 		gameInfoPage = new GameInfoPage(BaseTest.driver);
+		chatPage = new ChatPage(BaseTest.driver);
 
 	}
 
-	
-	
-	
-	
 	@Before()
-	public void checkPlayerMessaging(){
-		
-		
+	public void checkPlayerMessaging() {
+
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -125,6 +123,7 @@ public class StepDefinition extends BaseTest {
 	public void i_navigate_to_the_homepage_on(String browser) throws Throwable {
 		homePage.get(CONFIG.getProperty("siteName"));
 	}
+
 	/*
 	 * Navigating to the Registration page
 	 * 
@@ -135,6 +134,7 @@ public class StepDefinition extends BaseTest {
 		registerPage.get(CONFIG.getProperty("siteName"));
 
 	}
+
 	/*
 	 * Navigating to the Registration page
 	 * 
@@ -218,43 +218,61 @@ public class StepDefinition extends BaseTest {
 
 	@When("^I click on RegisterButton$")
 	public void i_click_on_RegisterButton() {
-		
 
 	}
-	/* Enter your UserName of Birth on the Registration page
-	 * @param {string} UserName- this is the UserName user entered on UserName Text box
+
+	/*
+	 * Enter your UserName of Birth on the Registration page
+	 * 
+	 * @param {string} UserName- this is the UserName user entered on UserName
+	 * Text box
 	 */
 	@When("^I enter regUsername as \"([^\"]*)\"$")
 	public void i_enter_regUsername_as(String UserName) {
 		registerPage.sendRegUsername(UserName);
 
 	}
-	/* Enter your Password on the Registration page
-	 * @param {string} password- this is the User password entered on Password Text box
+
+	/*
+	 * Enter your Password on the Registration page
+	 * 
+	 * @param {string} password- this is the User password entered on Password
+	 * Text box
 	 */
 	@When("^I enter RegPassword as \"([^\"]*)\"$")
 	public void i_enter_RegPassword_as(String password) {
 		registerPage.sendRegPassword(password);
 
 	}
-	/* Enter your ScreenName on the Registration page
-	 * @param {string} SCreenName- this is the User ScreenNmae entered on ScreenName Text box
+
+	/*
+	 * Enter your ScreenName on the Registration page
+	 * 
+	 * @param {string} SCreenName- this is the User ScreenNmae entered on
+	 * ScreenName Text box
 	 */
 	@When("^I enter a RegScreenName as \"([^\"]*)\"$")
 	public void i_enter_a_RegScreenName_as(String ScreenName) {
 		registerPage.sendOnscreenName(ScreenName);
 
 	}
-	/* Enter your Surname on the Registration page
-	 * @param {string} surname- this is the User Surname entered on surname Text box
+
+	/*
+	 * Enter your Surname on the Registration page
+	 * 
+	 * @param {string} surname- this is the User Surname entered on surname Text
+	 * box
 	 */
 	@When("^I enter RegEmail as \"([^\"]*)\"$")
 	public void i_enter_RegEmail_as(String Email) {
 		registerPage.sendEmail(Email);
 
 	}
-	/* Enter your FirstName on the Registration page
-	 * @param {string} firstName- this is the User firstName entered on surname Text box
+	/*
+	 * Enter your FirstName on the Registration page
+	 * 
+	 * @param {string} firstName- this is the User firstName entered on surname
+	 * Text box
 	 */
 
 	@When("^I enter RegFirstName as \"([^\"]*)\"$")
@@ -262,75 +280,110 @@ public class StepDefinition extends BaseTest {
 		registerPage.sendFirstName(firstName);
 
 	}
-	/* Enter your Surname of Birth on the Registration page
-	 * @param {string} surname- this is the User Surname entered on surname Text box
+
+	/*
+	 * Enter your Surname of Birth on the Registration page
+	 * 
+	 * @param {string} surname- this is the User Surname entered on surname Text
+	 * box
 	 */
 	@When("^I enter RegSurName as \"([^\"]*)\"$")
 	public void i_enter_RegSurName_as(String surname) {
 		registerPage.sendSurName(surname);
 
 	}
-	/* Enter your Day of Birth on the Registration page
-	 * @param {string} Day- this is the User Day of Birth selected from Date of birth Day Dropdown Menu
+
+	/*
+	 * Enter your Day of Birth on the Registration page
+	 * 
+	 * @param {string} Day- this is the User Day of Birth selected from Date of
+	 * birth Day Dropdown Menu
 	 */
 	@When("^I enter RegDOBDay as \"([^\"]*)\"$")
 	public void i_enter_RegDOBDay_as(String Day) {
 		registerPage.sendDOBday(Day);
 
 	}
-	/* Enter your Month of Birth on the Registration page
-	 * @param {string} Month- this is the User Month of Birth selected from Date of birth Month Dropdown Menu
+
+	/*
+	 * Enter your Month of Birth on the Registration page
+	 * 
+	 * @param {string} Month- this is the User Month of Birth selected from Date
+	 * of birth Month Dropdown Menu
 	 */
 	@When("^I enter RegDOBMonth as \"([^\"]*)\"$")
 	public void i_enter_RegDOBMonth_as(String Month) {
 		registerPage.sendDOBmonth(Month);
 	}
-	/* Enter your Year of Birth on the Registration page
-	 * @param {string} Year- this is the User Year of Birth selected from Date of birth Year Dropdown Menu
+
+	/*
+	 * Enter your Year of Birth on the Registration page
+	 * 
+	 * @param {string} Year- this is the User Year of Birth selected from Date
+	 * of birth Year Dropdown Menu
 	 */
 	@When("^I enter RegDOBYear as \"([^\"]*)\"$")
 	public void i_enter_RegDOBYear_as(String Year) {
 		registerPage.sendDOByear(Year);
 
 	}
+
 	/* Click on the Female Gender Radio button */
 	@When("^I click Gender Type as Female$")
 	public void i_click_Gender_Type_as_Female() {
-     registerPage.clickGenderType();
+		registerPage.clickGenderType();
 	}
-	/* User click on Click here link to Enter your address Manually on Registration Page */
+
+	/*
+	 * User click on Click here link to Enter your address Manually on
+	 * Registration Page
+	 */
 	@When("^I click on RegClickHere$")
 	public void i_click_on_RegClickHere() {
 		registerPage.clickEnterManually();
 
 	}
-	/* Enter your Country on the Registration page
-	 * @param {string} country- this is the country user selected from the country dropdown menu.
+
+	/*
+	 * Enter your Country on the Registration page
+	 * 
+	 * @param {string} country- this is the country user selected from the
+	 * country dropdown menu.
 	 */
 	@When("^I enter Country as \"([^\"]*)\"$")
 	public void i_enter_Country_as(String country) {
-     registerPage.sendCountry(country);
+		registerPage.sendCountry(country);
 	}
-	/* Select your currency on the Registration page
-	 * @param {string} CurrencyType- this is the Currency type user selected from the currency Dropdown menu
+
+	/*
+	 * Select your currency on the Registration page
+	 * 
+	 * @param {string} CurrencyType- this is the Currency type user selected
+	 * from the currency Dropdown menu
 	 */
 	@When("^I enter Currency as \"([^\"]*)\"$")
 	public void i_enter_Currency_as(String CurrencyType) {
 		registerPage.sendCurrency(CurrencyType);
 
 	}
-	/* Enter your Address on the Registration page
-	 * @param {string} Address- this is the User house Number and Street name entered into the Contact Number
-	 *            text box.
+
+	/*
+	 * Enter your Address on the Registration page
+	 * 
+	 * @param {string} Address- this is the User house Number and Street name
+	 * entered into the Contact Number text box.
 	 */
 	@When("^I enter RegAddress as \"([^\"]*)\"$")
 	public void i_enter_RegAddress_as(String Address) {
 		registerPage.sendAddress(Address);
 
 	}
-	/* Enter your Town address on the Registration page
-	 * @param {string} Town- this is Town  of your address entered into the Town/City
-	 *            text box.
+
+	/*
+	 * Enter your Town address on the Registration page
+	 * 
+	 * @param {string} Town- this is Town of your address entered into the
+	 * Town/City text box.
 	 */
 	@When("^I enter RegTown as \"([^\"]*)\"$")
 	public void i_enter_RegTown_as(String Town) {
@@ -360,10 +413,12 @@ public class StepDefinition extends BaseTest {
 	public void i_enter_RegPostCode_as(String Postcode) {
 		registerPage.sendPostCode(Postcode);
 	}
+
 	@When("^I enter RegDialingCode as \"([^\"]*)\"$")
-	public void i_enter_RegDialingCode_as(String diallingcode)  {
-	    registerPage.sendDiallingCode(diallingcode);
+	public void i_enter_RegDialingCode_as(String diallingcode) {
+		registerPage.sendDiallingCode(diallingcode);
 	}
+
 	/*
 	 * Enter your Contact Mobile number on the Registration page
 	 * 
@@ -905,6 +960,13 @@ public class StepDefinition extends BaseTest {
 
 	}
 
+	/* Click on the Chat Icon */
+	@When("^I click on the chat icon$")
+	public void i_click_on_the_chat_icon() {
+		basePage.clickChatIcon();
+
+	}
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	/* This Are only for @Then Methods */
@@ -1074,79 +1136,89 @@ public class StepDefinition extends BaseTest {
 		Assert.assertTrue(registerPage.isRegisterHouseNumberInputBoxPresent());
 
 	}
-	
+
 	/* Verify if Error Message will be displayed with an invalid data */
 	@Then("^I should see Invalid Error Message displayed by the Email input box on Registration Page$")
-	public void i_should_see_Invalid_Error_Message_displayed_by_the_Email_input_box_on_Registration_Page()  {
+	public void i_should_see_Invalid_Error_Message_displayed_by_the_Email_input_box_on_Registration_Page() {
 		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
-	    
+
 	}
+
 	/* Verify if Error Message will be displayed with an invalid data */
 	@Then("^I should see Error Message displayed by the Password input box on Registration Page$")
-	public void i_should_see_Error_Message_displayed_by_the_Password_input_box_on_Registration_Page()  {
+	public void i_should_see_Error_Message_displayed_by_the_Password_input_box_on_Registration_Page() {
 		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
-	    
+
 	}
+
 	/* Verify if Error Message will be displayed with an invalid data */
 	@Then("^I should see Error Message displayed by the UserName input box on Registration Page$")
 	public void i_should_see_Error_Message_displayed_by_the_UserName_input_box_on_Registration_Page() {
 		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
-	    
+
 	}
+
 	/* Verify if Error Message will be displayed with an invalid data */
 	@Then("^I should see Error Message displayed by the OnScreenName input box on Registration Page$")
-	public void i_should_see_Error_Message_displayed_by_the_OnScreenName_input_box_on_Registration_Page()  {
+	public void i_should_see_Error_Message_displayed_by_the_OnScreenName_input_box_on_Registration_Page() {
 		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
-	    
+
 	}
+
 	/* Verify if Error Message will be displayed with an invalid data */
 	@Then("^I should see Error Message displayed by the FirstName input box on Registration Page$")
-	public void i_should_see_Error_Message_displayed_by_the_FirstName_input_box_on_Registration_Page(){
+	public void i_should_see_Error_Message_displayed_by_the_FirstName_input_box_on_Registration_Page() {
 		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
-	    
+
 	}
+
 	/* Verify if Error Message will be displayed with an invalid data */
 	@Then("^I should see Error Message displayed by the SurName input box on Registration Page$")
 	public void i_should_see_Error_Message_displayed_by_the_SurName_input_box_on_Registration_Page() {
 		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
-	    
+
 	}
+
 	/* Verify if Error Message will be displayed with an invalid data */
 	@Then("^I should see Error Message displayed by the Address input box on Registration Page$")
-	public void i_should_see_Error_Message_displayed_by_the_Address_input_box_on_Registration_Page()  {
+	public void i_should_see_Error_Message_displayed_by_the_Address_input_box_on_Registration_Page() {
 		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
-	    
+
 	}
+
 	/* Verify if Error Message will be displayed with an invalid data */
 	@Then("^I should see Error Message displayed by the Postcode input box on Registration Page$")
 	public void i_should_see_Error_Message_displayed_by_the_Postcode_input_box_on_Registration_Page() {
 		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
-	    
+
 	}
+
 	/* Verify if Error Message will be displayed with an invalid data */
 	@Then("^I should see Error Message displayed by the Town input box on Registration Page$")
 	public void i_should_see_Error_Message_displayed_by_the_Town_input_box_on_Registration_Page() {
 		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
-	    
+
 	}
+
 	/* Verify if Error Message will be displayed with an invalid data */
 	@Then("^I should see Error Message displayed by the County input box on Registration Page$")
 	public void i_should_see_Error_Message_displayed_by_the_County_input_box_on_Registration_Page() {
-	    
+
 	}
+
 	/* Verify if Error Message will be displayed with an invalid data */
 	@Then("^I should see Error Message displayed by the Contact Number input box on Registration Page$")
 	public void i_should_see_Error_Message_displayed_by_the_Contact_Number_input_box_on_Registration_Page() {
 		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
-	    
-	}
-	/* Verify if Error Message will be displayed with an invalid data */
-	@Then("^I should see Error Message displayed by the Deposit linit Amount input box on Registration Page$")
-	public void i_should_see_Error_Message_displayed_by_the_Deposit_linit_Amount_input_box_on_Registration_Page()  {
-		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
-	    
+
 	}
 
+	/* Verify if Error Message will be displayed with an invalid data */
+	@Then("^I should see Error Message displayed by the Deposit linit Amount input box on Registration Page$")
+	public void i_should_see_Error_Message_displayed_by_the_Deposit_linit_Amount_input_box_on_Registration_Page() {
+		Assert.assertTrue(registerPage.isRegInvalidDataErrorMessagePresent());
+
+	}
 
 	// Verify if Error Message will be displayed on Register form with Invalid
 	// Data
@@ -1531,7 +1603,6 @@ public class StepDefinition extends BaseTest {
 
 	@Then("^I should see my new Account Balance increase by \"([^\"]*)\"$")
 	public void i_should_see_my_new_Account_Balance_increase_by(String amount) {
-		// String Amountfigure = amount.replace(",", "").replace("£", "");
 		double AmountDeposit = Double.parseDouble(amount);
 		double Prev = depositPage.getCashierBalancePresent() + AmountDeposit;
 		System.out.println(Prev);
@@ -1640,7 +1711,7 @@ public class StepDefinition extends BaseTest {
 	public void i_should_see_no_Other_Amount_as(String arg1) {
 
 	}
-	
+
 	// Verify if Title Page displayed is Change Password
 	@Then("^I should See ChangePassword Title displayed$")
 	public void i_should_See_ChangePassword_Title_displayed() {
@@ -2136,7 +2207,7 @@ public class StepDefinition extends BaseTest {
 
 	// Verify if one of the Live game on Live home launched.
 	@Then("^I should see the live Game launching$")
-	public void i_should_see_the_live_Game_launching() throws InterruptedException  {
+	public void i_should_see_the_live_Game_launching() throws InterruptedException {
 		livePage.isLiveGameLaunch();
 	}
 
@@ -2342,11 +2413,19 @@ public class StepDefinition extends BaseTest {
 	public void i_should_see_Roulette_GameSearch_game_display_from_the_Search() {
 		Assert.assertTrue(homePage.isVegasGameSearchReturnPresent());
 	}
-	
+
+	/* Verify if Register Now Button on Registration page is Disable */
 	@Then("^I should see Disabled Register Now button displayed$")
 	public void i_should_see_Disabled_Register_Now_button_displayed() {
 		Assert.assertTrue(registerPage.isDisabledRegisterNowButtonPresent());
-	   
+
+	}
+
+	/* Verify if Chat Pop-up frame is launched */
+	@Then("^I should see a Chat launch pop-up$")
+	public void i_should_see_a_Chat_launch_pop_up() {
+	Assert.assertTrue(chatPage.isChatPopUpLaunched());
+
 	}
 
 	@After()

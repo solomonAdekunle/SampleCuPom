@@ -6,7 +6,7 @@ Feature: Login
   
     
   #@ignore
-   @Login 
+   @Login
  Scenario Outline:Login with Invalid data
   Given I navigate to the homepage on "<browser>"
   When  I enter Username as "<username>"

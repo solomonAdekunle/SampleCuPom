@@ -279,7 +279,12 @@ public class Constant  {
 		  public static String RouletteExpressPremium=".NetplayRoulette_TEST.rep";
 		  public static String RouletteExpressPremiumPLayForReal=".NetplayRoulette_TEST.rep .action-button.register.play_for_real.button";
 		  
+		  // Elements of Chat icon
+		  public static String ChatIcon="div.block-lobby-components a.betssonChatLink";
+		  public static String ChatboxSuperCasinoLogo="#rn_PageTitle img";
 		  
+		  //Element for Home Page Help icon
+		  public static String HelpIconLink ="div.block-lobby-components a.help_button";
 	 
 	 
 	 

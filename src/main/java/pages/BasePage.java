@@ -36,35 +36,35 @@ public class BasePage {
 		driver.findElement(By.xpath("//*[@id='password']")).sendKeys(password);
 
 	}
-
+     /* click on sigin button on the Home Page */
 	public void clickSigin() {
 		driver.findElement(By.cssSelector("div.playtech-login-block button.sign-in")).click();
 
 	}
-
+      /* Click on Join Now Button */
 	public void clickJoinNow() {
 		driver.findElement(By.xpath("//a[@class='button success register']")).click();
-		// driver.getCurrentUrl();
+		
 
 	}
-
+    // Get the Current Url address
 	public String getCurrentUrl() {
 		String Url = driver.getCurrentUrl();
 		return Url;
 	}
-
+    /* Check if Deposit button is displayed */
 	public boolean isDepositButtonPresent() {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.HP_DeopsitButton)));
 		return driver.findElement(By.xpath("//*[@id='account_box']/a")).isDisplayed();
 	}
 
-	
+	/* Click on ForgottenDetails link */
 	public void clickForgottenDetailsLink() {
 		driver.findElement(By.cssSelector(Constant.HomePage_ForgottenDetailsLink)).click();
 
 	}
-
+   /* Check if Login Error message is displayed */
 	public boolean isLoginErrorMessPoxBoxPresent() {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.Login_ErrorPopBox)));
@@ -90,7 +90,7 @@ public class BasePage {
 				.presenceOfElementLocated(By.cssSelector("div#authcache-block-account-FLEX_account_block a.deposit")));
 		driver.findElement(By.cssSelector(Constant.HP_DeopsitButton)).click();
 	}
-
+    /*  Mouse hover over the Account menu link */
 	public void moveAccountMenu() {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Constant.AccountMenuDropdown)));
@@ -99,7 +99,7 @@ public class BasePage {
 		move.moveToElement(AccounMenu).build().perform();
 		//
 	}
-
+    /* Click Change Password link */
 	public void clickChangePasswordLink() {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.AccountMenu_ChangePassword)));
@@ -107,7 +107,7 @@ public class BasePage {
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ChangePasswordLink);
 
 	}
-
+	/* click on withdraw link within the Account Menu */
 	public void clickWithdrawLink() {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.AccountMenu_Withdrawl)));
@@ -115,33 +115,39 @@ public class BasePage {
 		driver.findElement(By.cssSelector(Constant.AccountMenu_Withdrawl)).click();
 
 	}
-
+    /* Click on Chat icon on the Home Page */
 	public void clickChatIcon() {
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.ChatIcon)));
+		driver.findElement(By.cssSelector(Constant.ChatIcon)).click();
+
 
 	}
-
+     /* Click on Help icon link */
 	public void clickHelpIcon() {
-
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.HelpIconLink)));
+		driver.findElement(By.cssSelector(Constant.HelpIconLink)).click();
 	}
-
+    /* Click on Casino Tab */
 	public void clickCasinoTab() {
 		driver.findElement(By.cssSelector(Constant.VerticalTab_Casino)).click();
 
 	}
-
+     /* click Vegas Tab */
 	public void clickVegasTab() {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(Constant.VerticalTab_Vegas)));
 		driver.findElement(By.cssSelector(Constant.VerticalTab_Vegas)).click();
 
 	}
-
+     /* Click on Live Tab */
 	public void clickLiveTab() throws InterruptedException {
 		Thread.sleep(2000);
 		driver.findElement(By.cssSelector(Constant.VerticalTab_Live)).click();
 
 	}
-
+   /* Click on Promotions tab */
 	public void clickPromotionsTab() {
 		driver.findElement(By.cssSelector(Constant.VerticalTab_Promotions)).click();
 

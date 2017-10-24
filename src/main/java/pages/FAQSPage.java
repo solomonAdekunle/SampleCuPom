@@ -12,7 +12,7 @@ public class FAQSPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	/* Check if FAQS is displayed as a title on FAQS Page */
 	public boolean isFaqsTitlePagePresent() {
 		return driver.findElement(By.cssSelector(Constant.FAQS_TitlePage)).isDisplayed();
 	}

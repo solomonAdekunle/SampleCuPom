@@ -13,7 +13,7 @@
 
 	<properties>
 		<cucumber-jvm.version>1.2.7</cucumber-jvm.version>
-		<selenium.version>3.4.0</selenium.version>
+		<selenium.version>3.6.0</selenium.version>
 		<junit.version>4.12</junit.version>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
@@ -77,8 +77,7 @@
 						<argument>--plugin</argument>
 						<argument>html:target/cucumber-html-report</argument>
 						<argument>--tags</argument>
-						<argument>@Login,@RegisterButton,@Register,
-							@RegisterButton,@ContactUs,@footer,@ForgottenDetails,@GameLaunch,@VegasGames,@Promotion,@RegisterNewCard,@DepositAppoved,@Withdrawal,@GameSearch</argument>
+						<argument>@Login,@RegisterButton,@ContactUs,@footer,@ForgottenDetails,@GameLaunch,@VegasGames,@Promotion,@RegisterNewCard,@DepositAppoved,@Withdrawal,@GameSearch</argument>
 						<argument>--glue</argument>
 						<argument>com/</argument>
 						<argument>src/</argument>
@@ -190,6 +189,11 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.0</version>
 		</dependency>
+		<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>1.3.2</version>
+</dependency>
 		</dependencies>
 
 </project>
