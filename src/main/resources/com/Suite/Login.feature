@@ -1,3 +1,4 @@
+@Smoke
 Feature: Login
          User should be able to login with a valid username and password
          after logining user should see his usernameInfo, account balance , Deposit button 

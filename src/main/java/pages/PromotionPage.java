@@ -21,7 +21,7 @@ public class PromotionPage extends BasePage {
 
 	public boolean isPromMoreInfoButtonPresent() {
 		List<WebElement> InfoButton = driver.findElements(By.cssSelector(Constant.PromoMoreInfo_Buttons));
-		WebElement Button = InfoButton.get(1);
+		WebElement Button = InfoButton.get(0);
 		return Button.isDisplayed();
 	}
 

@@ -91,7 +91,10 @@ public class HomePage extends BasePage {
 	public void clickRouletteGames() throws InterruptedException {
 		List<WebElement> gameBox = driver.findElements(By.cssSelector("div.netplay-games"));
 		System.out.println(gameBox.size());
+		
 		WebElement RouletteExpressPremiumPlayForReal = gameBox.get(3);
+		WebDriverWait wait= new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.visibilityOf(RouletteExpressPremiumPlayForReal));
 		RouletteExpressPremiumPlayForReal.click();
 		Thread.sleep(2000);
 		Set<String> Windowids = driver.getWindowHandles();

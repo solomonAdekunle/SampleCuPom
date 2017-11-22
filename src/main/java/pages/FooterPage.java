@@ -1,7 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -152,67 +154,88 @@ public class FooterPage extends BasePage {
 
 	/* Click on Getting Started link on the footer */
 	public void clickGettingStartedLink() {
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(Constant.Footer_GettingStartedLink)));
-		driver.findElement(By.cssSelector(Constant.Footer_GettingStartedLink)).click();
-
+		WebDriverWait wait = new WebDriverWait(driver,25);
+		WebElement GettingStartedLink=driver.findElement(By.cssSelector(Constant.Footer_GettingStartedLink));
+		//wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(Constant.Footer_GettingStartedLink)));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", GettingStartedLink);
+	
 	}
 
 	/* Click on TV Presenter link on the footer */
 	public void clickTVPresentLink() {
-		driver.findElement(By.cssSelector(Constant.Footer_TvPresenterLink)).click();
+		WebElement TvPresenterLink=driver.findElement(By.cssSelector(Constant.Footer_TvPresenterLink));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", TvPresenterLink);
+		//driver.findElement(By.cssSelector(Constant.Footer_TvPresenterLink)).click();
 
 	}
 
 	/* Click on Video link on the footer */
 	public void clickVideo() {
-		driver.findElement(By.cssSelector(Constant.Footer_VideosLink)).click();
+		WebElement VideoLink=driver.findElement(By.cssSelector(Constant.Footer_VideosLink));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", VideoLink);
+		//driver.findElement(By.cssSelector(Constant.Footer_VideosLink)).click();
 	}
 
 	/* Click on VIP link on the footer */
 	public void clickVIPLink() {
-		driver.findElement(By.cssSelector(Constant.Footer_VIPLink)).click();
+		WebElement VIPLink=driver.findElement(By.cssSelector(Constant.Footer_VIPLink));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", VIPLink);
+		//driver.findElement(By.cssSelector(Constant.Footer_VIPLink)).click();
 	}
 
 	/* Click on Winners link on the footer */
 	public void clickWinnerLink() {
-		driver.findElement(By.cssSelector(Constant.Footer_WinnersLink)).click();
+		WebElement WinnersLink=driver.findElement(By.cssSelector(Constant.Footer_WinnersLink));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", WinnersLink);
+		//driver.findElement(By.cssSelector(Constant.Footer_WinnersLink)).click();
 
 	}
 
 	/* Click on About-us link on the footer */
 	public void clickAboutUs() {
-		driver.findElement(By.cssSelector(Constant.Footer_AboutUSLink)).click();
+		WebElement AboutUSLink=driver.findElement(By.cssSelector(Constant.Footer_AboutUSLink));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", AboutUSLink);
+		//driver.findElement(By.cssSelector(Constant.Footer_AboutUSLink)).click();
 
 	}
 
 	/* Click on Getting Started link on the footer */
 	public void clickContactUsLink() {
-		driver.findElement(By.cssSelector(Constant.Footer_ConTactUSLink)).click();
+		WebElement ContactUSLink=driver.findElement(By.cssSelector(Constant.Footer_ConTactUSLink));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ContactUSLink);
+		//driver.findElement(By.cssSelector(Constant.Footer_ConTactUSLink)).click();
 
 	}
 
 	/* Click on FAQS link on the footer */
 	public void clickFAQSLink() {
-		driver.findElement(By.cssSelector(Constant.Footer_FAQSLink)).click();
+		WebElement FAQSLink=driver.findElement(By.cssSelector(Constant.Footer_FAQSLink));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", FAQSLink);
+		//driver.findElement(By.cssSelector(Constant.Footer_FAQSLink)).click();
 
 	}
 
 	/* Click on Privacy Policy link on the footer */
 	public void clickPrivacyPolicylink() {
-		driver.findElement(By.cssSelector(Constant.Footer_PrivacyPolicyLink)).click();
+		WebElement PrivacyPolicyLink=driver.findElement(By.cssSelector(Constant.Footer_PrivacyPolicyLink));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", PrivacyPolicyLink);
+		//driver.findElement(By.cssSelector(Constant.Footer_PrivacyPolicyLink)).click();
 
 	}
 
 	/* Click on Responsible Gambling link on the footer */
 	public void clickResponsibleGamblingLink() {
-		driver.findElement(By.cssSelector(Constant.Footer_ResponsibleGamblingLink)).click();
+		WebElement ResponsibleGamblingLink=driver.findElement(By.cssSelector(Constant.Footer_ResponsibleGamblingLink));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ResponsibleGamblingLink);
+		//driver.findElement(By.cssSelector(Constant.Footer_ResponsibleGamblingLink)).click();
 
 	}
 
 	/* Click on Terms link on the footer */
 	public void clickTermLink() {
-		driver.findElement(By.cssSelector(Constant.Footer_TermsLink)).click();
+		WebElement TermsLink=driver.findElement(By.cssSelector(Constant.Footer_TermsLink));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", TermsLink);
+		//driver.findElement(By.cssSelector(Constant.Footer_TermsLink)).click();
 
 	}
 }

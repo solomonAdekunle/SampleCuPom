@@ -1,7 +1,7 @@
 Feature: Game Launch
         User Should be able to Launch a game after loggin with a valid username and Password
 #@ignore
- @GameLaunch    
+ @GameLaunch, @Smoke  
 Scenario Outline::User Launching a Roulette Live TV game
   Given  I have loggedin on the BasePage 
    When I click on "<GameType>"

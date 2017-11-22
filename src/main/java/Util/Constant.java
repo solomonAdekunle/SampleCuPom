@@ -14,10 +14,10 @@ public class Constant  {
 	public static String Reg_Email="email";
 	public static String Reg_FirstName="fname";
 	public static String Reg_SurName="surname";
-	public static  String Reg_DOB_Day="dob_day";
-	public static String  Reg_DOB_Month="dob_month";
-	public static String Reg_DOB_Year="dob_year";
-	public static String Reg_Enter_Manually="";
+	public static  String Reg_DOB_Day="date_select[day]";
+	public static String  Reg_DOB_Month="date_select[month]";
+	public static String Reg_DOB_Year="date_select[year]";
+	public static String Reg_Enter_Manually="#enter_manually a";
 	public static String  Reg_Address="address";
 	public static String Reg_Town="city";
 	public static String Reg_County="county";
@@ -28,7 +28,7 @@ public class Constant  {
 	public static String Reg_terms="a[href='/terms']";
 	public static String Reg_privacyPolicy="a[href='/privacy']";
 	public static String Reg_Compilaance_Message="div.registration-form-legal-footer p";
-	public static String Reg_Submit="registration-submit";
+	public static String Reg_Submit="registration_submit";
 	public static String  Reg_DepositLimitLink="a.off .click-button";
 	public static String Reg_DepositLimit_ChooseType="deposit_limits";
 	public static String Reg_DepositLimit_ChooseLimit="deposit_amount";
@@ -49,11 +49,11 @@ public class Constant  {
 	public static String Reg_Country="country";
 	public static String Reg_Currency="currency";
 	public static String Reg_CountryDialingCode="phone_prefix";
-	public static String Reg_FindAddressButton="";
+	public static String Reg_FindAddressButton="postcode_searchbutton";
 	public static String Reg_WelToSuperCasinoText="section[class^=' registrationPage__info'] h2";
 	public static String Reg_JackpotSliderBlock="div[class^='jackpots__jackpotsWrapper'] h2";
 	public static String Reg_PromoBanner="";
-	public static String Reg_RegisterTitle="h2[class^='registrationPage__registrationTitle']";
+	public static String Reg_RegisterTitle="title";
 	public static String Reg_HelpIconlink="div[class^='header__help'] a";
 	public static String Reg_ChatIconlink="div[class^='header__chat'] a";
 	public static String Reg_InvalidDataErrorMessage="div[class^='tooltip__error']";

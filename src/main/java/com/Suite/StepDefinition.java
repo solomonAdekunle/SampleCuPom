@@ -244,11 +244,23 @@ public class StepDefinition extends BaseTest {
 		registerPage.sendRegPassword(password);
 
 	}
+	/*
+	 * Enter your ConfirmPassword on the Registration page
+	 * 
+	 * @param {string} ConfPassword- this is the User ConfirmPassword entered on Password
+	 * Text box
+	 */
+	@When("^I enter RegConfirmPassword as \"([^\"]*)\"$")
+	public void i_enter_RegConfirmPassword_as(String ConfPass)  {
+		registerPage.sendRegConfPassword(ConfPass);
+	    
+	}
+
 
 	/*
 	 * Enter your ScreenName on the Registration page
 	 * 
-	 * @param {string} SCreenName- this is the User ScreenNmae entered on
+	 * @param {string} ScreenName- this is the User ScreenNmae entered on
 	 * ScreenName Text box
 	 */
 	@When("^I enter a RegScreenName as \"([^\"]*)\"$")
@@ -258,9 +270,9 @@ public class StepDefinition extends BaseTest {
 	}
 
 	/*
-	 * Enter your Surname on the Registration page
+	 * Enter your E-mail Address on the Registration page
 	 * 
-	 * @param {string} surname- this is the User Surname entered on surname Text
+	 * @param {string} e-mail- this is the User e-mail entered on E-mail text
 	 * box
 	 */
 	@When("^I enter RegEmail as \"([^\"]*)\"$")
@@ -268,6 +280,23 @@ public class StepDefinition extends BaseTest {
 		registerPage.sendEmail(Email);
 
 	}
+	
+	/*
+	 * Enter your Title on the Registration page
+	 * 
+	 * @param {string} Title- this is the User Title Selected on Title DropDown 
+	 * box
+	 */
+	@When("^I enter RegTitle as \"([^\"]*)\"$")
+	public void i_enter_RegTitle_as(String title){
+		registerPage.sendTitle(title);
+	    
+	}
+	
+	
+	
+	
+	
 	/*
 	 * Enter your FirstName on the Registration page
 	 * 
@@ -617,7 +646,7 @@ public class StepDefinition extends BaseTest {
 	// Select amount limit from the drop down menu on Registration page
 	@When("^I enter Choose limit as \"([^\"]*)\"$")
 	public void i_enter_Choose_limit_as(String Limit) {
-		registerPage.sendChooseLimitWeekly(Limit);
+		registerPage.sendChooseLimit(Limit);
 	}
 
 	// Enter amount on the the Other amount text box on Deposit limit
@@ -1251,6 +1280,10 @@ public class StepDefinition extends BaseTest {
 		Assert.assertTrue(registerPage.isRegisterContactNumberInputBoxPresent());
 
 	}
+	@Then("^I should see Deposit Limit Link$")
+	public void i_should_see_Deposit_Limit_Link() {
+		Assert.assertTrue(registerPage.isDepositLimitLinkPresent());
+	}
 
 	/*
 	 * Verify that Deposit Limit Type Dropdown box is displayed on the
@@ -1269,6 +1302,15 @@ public class StepDefinition extends BaseTest {
 	public void i_should_see_Deposit_Limit_Amount_Dropdown_box_displayed_on_Registration_Page() {
 		Assert.assertTrue(registerPage.isDepositLimitChooseLimitPresent());
 	}
+	
+	
+	@Then("^I should see Other Amount  as \"([^\"]*)\"$")
+	public void i_should_see_Other_Amount_as(String Value)  {
+		Assert.assertTrue(registerPage.isDepositLimitMonthlyPresent(Value));
+	   
+	}
+
+
 
 	/* Verify that Free Bonus Check box is displayed on the Registration page */
 	@Then("^I should see Free Bonuses and Offer Check box checked displayed on Registration Page$")

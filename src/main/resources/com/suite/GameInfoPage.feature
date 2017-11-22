@@ -1,5 +1,5 @@
 Feature: User should be able to Navigate to Game info page of any game on the site
-@ignore
+#@ignore
 @gameInfo
 Scenario: Unauthenticated user Navigating to Roulette Game  game Info page 
  Given I navigate to the homepage on "<browser>"
@@ -15,7 +15,7 @@ Then I should see Roulette Express Premium as title Page
  And I should see AppStore logo on Roulette Express Premium Game Info
  And I should see Android Logo on Roulette Express Premium Game Info
  
- #@ignore
+@ignore
 @gameInfo
 Scenario: Unauthenticated user Navigating to Roulette Game  game Info page and Click onPlay For Real
  Given I navigate to the homepage on "<browser>"
@@ -65,7 +65,7 @@ Then I should see the Name of the game as title Page
  And I should see Game Details Information
  And I should see Game Devices images
  And I should see Play for Real Button on this Playtech game GameInfo page
- And I should see Play For Fun Button on this Playtech game GameInfo page
+ #And I should see Play For Fun Button on this Playtech game GameInfo page
  And I should see the Game Banner display on this Playtech game GameInfo page
  And I should see Jackpot slider on the this Playtech game GameInfo page
  And I should see Winners Slider this Playtech game GameInfo page
@@ -80,7 +80,7 @@ When I click on Playtech casino slot Game Info icon
 And I click on Play For Real on this Playtech game GameInfo page
 Then  I should see a Login Pop-up box displayed on this Playtech game GameInfo page
  
- #@ignore
+ @ignore
 @gameInfo
 Scenario: Unauthenticated user Navigating to Playtech Casino Slot game Info page and Click on Play For Fun
  Given I navigate to the homepage on "<browser>" 
@@ -96,12 +96,12 @@ Then I should see the Name of the game as title Page
  And I should see Game Details Information
  And I should see Game Devices images
  And I should see Play for Real Button on this Playtech game GameInfo page
- And I should see Play For Fun Button on this Playtech game GameInfo page
+ #And I should see Play For Fun Button on this Playtech game GameInfo page
  And I should see the Game Banner display on this Playtech game GameInfo page
  And I should see Jackpot slider on the this Playtech game GameInfo page
  And I should see Winners Slider this Playtech game GameInfo page
  And I should see AppStore logo on this Playtech game GameInfo page
- And I should see Android Logo on this Playtech game GameInfo page
+# And I should see Android Logo on this Playtech game GameInfo page
 #@ignore
 @gameInfo 
 Scenario: Authenticated user navigating to Playtech Casino Slot game Info page
@@ -109,7 +109,7 @@ Given I have loggedin on the BasePage
 When I click on Playtech casino slot Game Info icon
 And I click on Play For Real on this Playtech game GameInfo page
 Then I should see a game Launching in another window
-#@ignore
+@ignore
 @gameInfo
 Scenario: Authenticated user navigating to Playtech Casino Slot game Info page
 Given I have loggedin on the BasePage
@@ -146,7 +146,7 @@ Then I should see the Name of the game as title Page
  And I should see Game Details Information
  And I should see Game Devices images
  And I should see Play for Real Button on this Playtech game GameInfo page
- And I should see Play For Fun Button on this Playtech game GameInfo page
+ #And I should see Play For Fun Button on this Playtech game GameInfo page
  And I should see the Game Banner display on this Playtech game GameInfo page
  And I should see Jackpot slider on the this Playtech game GameInfo page
  And I should see Winners Slider this Playtech game GameInfo page

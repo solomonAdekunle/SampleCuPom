@@ -14,6 +14,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -26,7 +27,7 @@ public class BaseTest {
 	Properties OR = null;
 	Properties CONFIG = null;
 	WebDriver mozilla = null;
-	WebDriver chrome =null;
+	WebDriver chrome = null;
 	WebDriver ie = null;
 
 	private static String OS = System.getProperty("os.name").toLowerCase();
@@ -62,10 +63,10 @@ public class BaseTest {
 		} catch (Exception e) {
 			System.out.println("Error on intializing properties files" + e.getMessage());
 		}
-//		if (driver == null) {
-//			
-//		}
-		
+		// if (driver == null) {
+		//
+		// }
+
 		// log("Opening browser "+browserType);
 		String browserType = CONFIG.getProperty("browser");
 		if (browserType.equals("Mozilla")) {
@@ -74,8 +75,8 @@ public class BaseTest {
 			prof.getProfile("ProfileSeleniumQA");
 			profile.setPreference("dom.max_chrome_script_run_time", 0);
 			profile.setPreference("dom.max_script_run_time", 0);
-			//ffProfile.setAcceptUntrustedCertificates(true);
-			//ffProfile.setAssumeUntrustedCertificateIssuer(false);
+			// ffProfile.setAcceptUntrustedCertificates(true);
+			// ffProfile.setAssumeUntrustedCertificateIssuer(false);
 			FirefoxOptions options = new FirefoxOptions();
 			DesiredCapabilities cap = new DesiredCapabilities();
 			cap.setCapability("webdriver.gecko.args", Arrays.asList("--whitelisted-ips=''"));
@@ -86,37 +87,34 @@ public class BaseTest {
 				options.setBinary("lib/geckodriver");
 				System.setProperty("webdriver.gecko.driver", "lib/geckodriver");
 			}
-				driver = new FirefoxDriver();
+			driver = new FirefoxDriver();
 		} else if (browserType.equals("Chrome")) {
-			
 			// options.addArguments("no-sandbox");
-			DesiredCapabilities cap = DesiredCapabilities.chrome();
-			cap.setCapability("webdriver.chrome.args", Arrays.asList("--whitelisted-ips=''"));
-			ChromeDriverService service = new ChromeDriverService.Builder()
-					.usingDriverExecutable(new File("lib\\chromedriver.exe"))
-					.usingAnyFreePort()
-                    .build();
-			if (!isUnix()) {
-				File file = new File("lib\\chromedriver.exe");
+			ChromeOptions options = new ChromeOptions();
+				DesiredCapabilities cap = DesiredCapabilities.chrome();
+				cap.setCapability("webdriver.chrome.args", Arrays.asList("--whitelisted-ips=''"));
+				if (!isUnix()) {
+			File file = new File("lib\\chromedriver.exe");
 				System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-				// options.addExtensions(new File("lib\\chromedriver.exe"));
+				options.addExtensions(new File("lib\\chromedriver.exe"));
 			} else {
 				File file = new File("lib/chromedriver");
 				// options.addExtensions(new File("lib/chromedriver"));
 				System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-			}
+				}
+			driver = new ChromeDriver(cap);
 
-			driver  = new ChromeDriver(service,cap);
+			
 		} else if (browserType.equals("IE")) {
 			// set the IE server exe path and initialize
 		}
 
-		driver.manage().window().setSize(new Dimension(1366,768));
+		/* Maximize the window */
+		driver.manage().window().maximize();
+		//driver.manage().window().setSize(new Dimension(1366, 768));
 		// implicit wait
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-		
-		
 	}
 
 	public void quit() {

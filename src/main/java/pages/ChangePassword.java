@@ -76,7 +76,6 @@ public class ChangePassword extends BasePage {
 	/* Check if  User has Successfully change his/her password */
 	public String isYourPasswordHasSuccessfullyChangeTextPresent() throws InterruptedException {
 
-		Thread.sleep(2000l);
 		String Var1 = driver.findElement(By.cssSelector(Constant.YourPasswordHasChangeSuccefully_titlePage)).getText();
 		System.out.println(Var1);
 		Assert.assertEquals(Var1, "YOUR PASSWORD HAS BEEN SUCCESSFULLY CHANGED");

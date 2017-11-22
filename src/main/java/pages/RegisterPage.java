@@ -29,15 +29,18 @@ public class RegisterPage extends BasePage {
 			UserName = generateStringWithAllobedSplChars(20, "");
 		}
 
-		driver.findElement(By.name("username")).sendKeys(UserName);
+		driver.findElement(By.name("account_username")).sendKeys(UserName);
 
 	}
 
 	public void sendRegPassword(String password) {
-		driver.findElement(By.name("password")).sendKeys(password);
+		driver.findElement(By.name("account_password")).sendKeys(password);
 
 	}
+	public void sendRegConfPassword(String ConfPass) {
+		driver.findElement(By.name("password_confirm")).sendKeys(ConfPass);
 
+	}
 	
 
 	public void sendOnscreenName(String screenName) {
@@ -54,7 +57,11 @@ public class RegisterPage extends BasePage {
 		driver.findElement(By.name(Constant.Reg_Email)).sendKeys(Email);
 
 	}
-
+   
+	
+	public void sendTitle(String title){
+		driver.findElement(By.name(Constant.Reg_RegisterTitle)).sendKeys(title);
+	}
 	
 	public void sendFirstName(String firstName) {
 		driver.findElement(By.name(Constant.Reg_FirstName)).sendKeys(firstName);
@@ -132,9 +139,9 @@ public class RegisterPage extends BasePage {
 		driver.findElement(By.cssSelector("select#edit-deposit-amount")).click();
 		String Menu_Selector = "div.form-item-deposit-amount option[value='{0}']";
 		// long LimitValue= Long.parseLong(Limit);
-		float f = Float.parseFloat(Limit);
-		Menu_Selector = Menu_Selector.replace("{0}", String.valueOf(f));
-		System.out.println(f);
+		//float f = Float.parseFloat(Limit);
+		Menu_Selector = Menu_Selector.replace("{0}", Limit);
+		System.out.println(Limit);
 		driver.findElement(By.cssSelector(Menu_Selector)).click();
 
 		
@@ -142,12 +149,14 @@ public class RegisterPage extends BasePage {
 	}
 
 	public void sendChooseLimitWeekly(String Limit) {
-		// driver.findElement(By.xpath(Constant.Reg_DepositLimitValueBox)).click();
-		// driver.findElement(By.cssSelector(Constant.Reg_DepositLimit_ChooseLimitValue3)).click();
+		 driver.findElement(By.xpath(Constant.Reg_DepositLimitValueBox)).click();
+		driver.findElement(By.cssSelector(Constant.Reg_DepositLimit_ChooseLimitValue3)).click();
 	}
 
 	public void sendChooseLimitOther(String Other) {
-		// driver.findElement(By.cssSelector(Constant.Reg_DepositLimit_ChooseLimitOther)).sendKeys(Other);
+		//WebDriverWait wait = new WebDriverWait(driver,30);
+		 //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(Constant.Reg_DepositLimit_ChooseLimitOther)));
+		 driver.findElement(By.cssSelector(Constant.Reg_DepositLimit_ChooseLimitOther)).sendKeys(Other);
 	}
 
 	public void checkFreeBonus() {
@@ -165,7 +174,7 @@ public class RegisterPage extends BasePage {
 	}
 
 	public void clickDepositLimit() {
-		driver.findElement(By.name(Constant.Reg_DepositLimitLink)).click();
+		driver.findElement(By.cssSelector(Constant.Reg_DepositLimitLink)).click();
 		// WebDriverWait wait = new WebDriverWait(driver,30);
 		// wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(Constant.Reg_DepositLimit_ChooseType)));
 
@@ -175,9 +184,12 @@ public class RegisterPage extends BasePage {
 		driver.findElement(By.name(Constant.Reg_DepositLimit_close)).click();
 
 	}
-
+	public void clickEnterYourAddressManually(){
+		driver.findElement(By.cssSelector(Constant.Reg_Enter_Manually)).click();
+	}
+	
 	public void clickRegSubmit() {
-		WebElement RegisterSubmit = driver.findElement(By.name(Constant.Reg_Submit));
+		WebElement RegisterSubmit = driver.findElement(By.id(Constant.Reg_Submit));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", RegisterSubmit);
 		// driver.findElement(By.cssSelector(Constant.Reg_Submit)).click();
 
@@ -304,7 +316,9 @@ public class RegisterPage extends BasePage {
 		return driver.findElement(By.cssSelector(Constant.Reg_Compilaance_Message)).isDisplayed();
 	}
 
-
+	public boolean isDepositLimitLinkPresent(){
+	 return	driver.findElement(By.cssSelector(Constant.Reg_DepositLimitLink)).isDisplayed();
+	}
 
 	public boolean isDepositLimitChooseTypePresent() {
 		return driver.findElement(By.name(Constant.Reg_DepositLimit_ChooseType)).isDisplayed();
@@ -346,7 +360,9 @@ public class RegisterPage extends BasePage {
 
 	
 	public boolean isRegErrorMessagePresent() {
-		boolean Failure = driver.findElement(By.cssSelector(Constant.Reg_InvalidDataErrorMessage)).isDisplayed();
+		WebDriverWait wait= new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(Constant.Reg_ErrorText)));
+		boolean Failure = driver.findElement(By.cssSelector(Constant.Reg_ErrorText)).isDisplayed();
 		return Failure;
 	}
 	public boolean isRegInvalidDataErrorMessagePresent(){

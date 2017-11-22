@@ -78,7 +78,7 @@ public class BasePage {
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			WebElement PlayerMessaging = (WebElement) driver
 					.findElement(By.cssSelector("div.playerMessages-modal .footer .ok"));
-			if (PlayerMessaging.isDisplayed())
+			if (PlayerMessaging.isDisplayed()==true)
 				wait.until(ExpectedConditions.visibilityOf(PlayerMessaging));
 			PlayerMessaging.click();
 		} catch (Exception t) {
@@ -201,6 +201,5 @@ public class BasePage {
 		return url.getPath();
 	}
 
-	// store screenshot
 
 }
